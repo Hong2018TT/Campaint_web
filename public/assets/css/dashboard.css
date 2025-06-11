@@ -38,7 +38,7 @@ body{
 
 /* ============================= Slide bar left ============================= */
 .sidebar.collapsed{
-    width:78px;
+    width:74px;
 }
 
 .nav-link.active {
@@ -66,7 +66,7 @@ body{
     scrollbar-color: #FFF transparent;
 }
 .sidebar.collapsed .sidebar-toggler{
-    transform: translate(-10px, 55px);
+    transform: translate(-8px, 55px);
     border-radius: 100%;
 }
 .sidebar.collapsed .sidebar-toggler i{
@@ -135,8 +135,8 @@ body{
 /* For screens above 768px, use this */
 @media (min-width: 769px) {
     .sidebar.collapsed ~ .home-section {
-        left: 78px;
-        width: calc(100% - 78px);
+        left: 74px;
+        width: calc(100% - 74px);
     }
 }
 
