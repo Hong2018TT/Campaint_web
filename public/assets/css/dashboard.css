@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root{/* For set Variable Style Css */}
+
+body{
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-variation-settings:
+    "wdth" 100;
+}
+
+/* ============================= Dashboard Table Overflow-x-auto ============================= */
+/* Overflow table database */
+.tb-overflow::-webkit-scrollbar {
+    background: white;
+    height:6px; border-radius: 50%;
+}
+.tb-overflow::-webkit-scrollbar-thumb {
+    background: #002398; /* Tailwind 'green-500' */
+    border-radius: 5px;
+}
+
+/* ============================= Responsive Dropdown Profile Admin =============================*/
+@media (max-width: 640px) {
+    .dropdown-navbar{
+        left: -55px;
+    }
+}
+
+/* ============================= Responsive home-section scroll width 0px =============================*/
+.home-section::-webkit-scrollbar{
+    width:0px;
+}
+.home-body::-webkit-scrollbar{
+    width:0px;
+}
+
+/* ============================= Slide bar left ============================= */
+.sidebar.collapsed{
+    width:78px;
+}
+
+.nav-link.active {
+    background: linear-gradient(to right, #93c4fdc0, transparent);  font-weight: bold;
+}
+.sidebar.collapsed .nav-link :where(.nav-label,.dropdown-icon){
+    opacity: 0;
+    pointer-events: none;
+}
+/* overflow-y: unset; សម្រាប់ដោះ Overflow-y When I hover on items */
+.sidebar.collapsed .slide-nav .primary-nav{
+    transform: translateY(30px);
+    overflow-y: unset;
+}
+
+/* This place for set scroll when calc - 20 to bottom */
+.slide-nav .primary-nav{
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+    height: calc(100vh - 15px);
+    padding-bottom: 30px;
+}
+.slide-nav .primary-nav:hover{
+    scrollbar-color: #FFF transparent;
+}
+.sidebar.collapsed .sidebar-toggler{
+    transform: translate(-10px, 55px);
+    border-radius: 100%;
+}
+.sidebar.collapsed .sidebar-toggler i{
+    transition:  0.4s ease;
+    transform: rotate(180deg);
+}
+.sidebar.collapsed .logo-name{
+    opacity: 0;
+}
+
+/* ============================= Slide bar left Dropdown ============================= */
+.sidebar.collapsed .dropdown-menu{
+    position: absolute;
+    left: 100%;
+    top:-10px;
+    opacity: 0;
+    background-color: #002398;
+    padding:4px 0px 4px 0px;
+    pointer-events: none;
+    height: auto !important;
+    overflow-y:unset;
+    transition: 0;
+}
+.slide-nav .dropdown-menu{
+    transition: height 0.2s ease-out;
+}
+.sidebar.collapsed .nav-item:hover .dropdown-menu{
+    opacity: 1; transition: 0.4s ease;
+    pointer-events:auto; 
+    transform: translateY(10px);
+}
+.dropdown-menu .nav-item .dropdown-title{
+    display: none;
+}
+.sidebar.collapsed .dropdown-menu .nav-item .dropdown-link{
+    display: block;
+}
+.sidebar.collapsed .sidebar-menu-button{
+    display:none;
+}
+.slide-nav .dropdown-container.open .dropdown-icon{
+    transform: rotate(180deg);
+}
+
+/* ============================= Responsive Dashboard ============================= */
+@media (max-width: 768px) {
+    .sidebar.collapsed{
+        width: 260px;
+        left: -260px;
+    }
+    .sidebar.collapsed .slide-nav .primary-nav {
+        transform: translateY(15px);
+    }
+
+    .sidebar.collapsed .sidebar-toggler {
+        transform: none;
+    }
+
+    /* Move this inside the media query */
+    .sidebar.collapsed ~ .home-section {
+        left: 0;
+        width: 100%;
+    }
+}
+
+/* For screens above 768px, use this */
+@media (min-width: 769px) {
+    .sidebar.collapsed ~ .home-section {
+        left: 78px;
+        width: calc(100% - 78px);
+    }
+}
+
+/* ============================= Responsive Sldie bar width 690px ============================= */
+@media (max-width: 700px) {
+    .sidebar ~ .home-section {
+        left: 0px;
+        width: calc(100% - 0px);
+    }
+    .sidebar{
+        position: absolute;
+        z-index: 60;
+        background-color: #002398;
+        left:0px;
+    }
+    .sidebar {
+        overflow: hidden;
+    }
+}
+
+@media(max-width: 640px){
+    .header-main-tb{
+        padding-inline: 10px;
+    }
+    .tb-overflow{
+        margin-inline:10px;
+    }
+}
