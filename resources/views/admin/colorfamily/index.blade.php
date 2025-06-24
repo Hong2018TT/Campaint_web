@@ -2,7 +2,7 @@
 @section('content')
 
 {{-- content for display colorfamily --}}
-<div class="m-3 mb-6 sm:px-6 shadow-lg rounded-md bg-white">
+<div class="m-3 mb-6 shadow-lg rounded-md bg-white">
     <div class="header-main-tb">
         <div class="">
         <h1 class="text-xl font-semibold text-gray-900">Color Family</h1>
@@ -75,9 +75,9 @@
     </div>
 
     <hr class="text-gray-200">
-    <div class="mt-3 flow-root pb-2">
+    <div class="mt-3 flow-root pb-2 px-3">
         <div class="tb-overflow">
-            <div class="inline-block min-w-full pb-2 align-middle sm:px-2 pt-2">
+            <div class="inline-block min-w-full pb-2 align-middle pt-2">
                 <table id="#" class="table-filter min-w-full divide-y divide-blue-300">
                 {{-- th table --}}
                 <thead class="bg-[#002398]">

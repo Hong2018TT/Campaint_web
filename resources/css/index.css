@@ -11,17 +11,24 @@
 
 /* =============== For set Components for index.blade.php =============== */
 @layer components{
+  /* Spinner */
   .spinner-index{
-    @apply fixed inset-0 z-50 flex items-center justify-center
-   bg-[rgba(255,255,255,0.9)] opacity-100 transition-opacity duration-200;
+    @apply fixed inset-0 z-50 flex items-center justify-center bg-[rgba(255,255,255)] 
+    opacity-100 transition-opacity duration-200;
   }
+  /* Container Layout */
   .layout-box-index {
-    @apply p-7 rounded-sm w-full max-w-sm backdrop-blur-[100px]
-         text-black z-10 mx-2 bg-white/20;
+    @apply p-7 rounded-md w-full max-w-sm backdrop-blur-[100px]
+         text-black z-10 mx-2 bg-white/30 shadow-md shadow-white/50;
   }
+  /* Input style */
   .index-input{
-    @apply border text-black text-sm rounded-sm border-none bg-white/60
+    @apply border text-black text-sm rounded-sm border-none bg-white/60 
     block w-full ps-10 p-2.5 outline-3 focus:outline-blue-700 outline-white;
+  }
+  /* Icon style */
+  .ri-mail-fill ,.ri-lock-2-fill{
+    @apply text-blue-800 text-xl text-shadow-2xs;
   }
   @keyframes move-forever {
     0% {

@@ -62,6 +62,7 @@ userButton?.addEventListener('click', (e) => {
 //   }
 // });
 
+
 // For function add active .nav-link
 function highlightActiveNavLink() {
   const navLinks = document.querySelectorAll('.nav-link');
@@ -78,8 +79,44 @@ function highlightActiveNavLink() {
 function initializeTailwindDataTable(tableSelector) {
   $(tableSelector).each(function () {
     $(this).DataTable({
-      pageLength: 5,
-      lengthMenu: [5, 10, 25, 50],
+
+      // ✅ Add buttons extension
+      dom: '<"top flex flex-wrap items-center justify-between mb-2 gap-2 lg:ml-1"Bfl>rt<"bottom flex flex-wrap items-center justify-between mt-2 gap-2"ip>',
+        buttons: {
+          dom: {
+            button: {
+              className: '' // remove default 'btn' classes
+            }
+          },
+          buttons: [
+            {
+              extend: 'copy',
+              text: '<i class="ri-file-copy-2-fill"></i>',
+              className: 'bg-green-500 text-white px-2 py-0.5 rounded-sm hover:bg-green-600 transition cursor-pointer',
+              titleAttr: 'Copy to clipboard'
+            },
+            {
+              extend: 'excel',
+              text: '<i class="ri-file-excel-2-fill"></i>',
+              className: 'bg-blue-500 text-white px-2 py-0.5 rounded hover:bg-blue-600 transition cursor-pointer'
+            },
+            {
+              extend: 'csv',
+              text: '<i class="fas fa-file-csv"></i>',
+              className: 'bg-yellow-500 text-white px-2 py-0.5 rounded hover:bg-yellow-600 transition cursor-pointer'
+            },
+            {
+              extend: 'pdf',
+              text: '<i class="ri-file-pdf-2-fill"></i>',
+              className: 'bg-orange-500 text-white px-2 py-0.5 rounded hover:bg-red-600 transition cursor-pointer'
+            },
+            {
+              extend: 'print',
+              text: '<i class="ri-printer-fill"></i>',
+              className: 'bg-purple-500 text-white px-2 py-0.5 rounded hover:bg-purple-600 transition cursor-pointer'
+            }
+          ]
+        },
       language: {
         search: "",
         searchPlaceholder: "Search",
@@ -96,11 +133,11 @@ function initializeTailwindDataTable(tableSelector) {
         const info = wrapper.find('.dataTables_info');
         const paginate = wrapper.find('.dataTables_paginate');
 
-        const customTopBar = $('<div class="flex flex-wrap items-center justify-between mb-4 gap-2"></div>');
+        const customTopBar = $('<div class="flex flex-wrap items-center justify-between mb-2 gap-2"></div>');
         customTopBar.append(length);
         customTopBar.append(filter);
 
-        const customBottomBar = $('<div class="flex flex-wrap items-center justify-between mt-4 gap-2"></div>');
+        const customBottomBar = $('<div class="flex flex-wrap items-center justify-between gap-2"></div>');
         customBottomBar.append(info);
         customBottomBar.append(paginate);
 
@@ -111,7 +148,7 @@ function initializeTailwindDataTable(tableSelector) {
         info.addClass('text-[13px] text-blue-800');
       }
     });
-  });
+});
 
 // For write lenght phone
 const phoneInput = document.getElementById('phone');

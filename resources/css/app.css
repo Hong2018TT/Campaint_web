@@ -103,27 +103,27 @@
 @layer components{
   /* Main Header tb */
   .header-main-tb{
-    @apply flex sm:items-center justify-between items-center pt-3 pb-3;
+    @apply flex sm:items-center justify-between items-center p-2.5 ;
   }
   .tb-overflow{
-    @apply -my-1 overflow-x-auto sm:-mx-2;
+    @apply -my-1 overflow-x-auto;
   }
   /* Table Header */
   .table-header {
-    @apply p-4 text-left text-sm font-semibold text-white;
+    @apply p-3.5 text-left text-[16px] font-semibold text-white;
   }
 
   .table-header-action {
     @apply relative py-3.5 pr-4 pl-3 sm:pr-6 text-white;
   }
+  /* First column cell (Name, bold text) */
+  .table-cell-primary {
+    @apply py-2 text-sm font-medium whitespace-nowrap text-gray-900 pl-3;
+  }
+
   /* Common table cell */
   .table-cell {
     @apply p-3 text-sm whitespace-nowrap text-gray-500;
-  }
-
-  /* First column cell (Name, bold text) */
-  .table-cell-primary {
-    @apply py-2 pr-3 text-sm font-medium whitespace-nowrap text-gray-900 sm:pl-6;
   }
 
   /* Action cell */
@@ -133,11 +133,11 @@
 
   /* Action links */
   .table-action-edit {
-    @apply text-blue-600 hover:text-indigo-800 lg:mr-1 text-lg;
+    @apply text-blue-600 hover:text-indigo-800 text-lg leading-none;
   }
 
   .table-action-delete {
-    @apply text-red-600 hover:text-red-800 text-lg;
+    @apply text-red-600 hover:text-red-800 text-lg leading-none;
   }
 
   /* Background color nth-child even */
@@ -146,7 +146,7 @@
   }
 
   .btn-showall{
-    @apply cursor-pointer block rounded-sm px-3 py-2 text-center text-sm font-semibold underline
+    @apply cursor-pointer block rounded-sm px-2 py-2 text-center text-sm font-semibold underline
     text-blue-600 shadow-xs hover:text-blue-500;
   }
   /* Optional custom styles if needed */

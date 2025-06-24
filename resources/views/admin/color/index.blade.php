@@ -2,25 +2,25 @@
 @section('content')
 
 {{-- content for display color --}}
-<div class="m-3 mb-6 sm:px-6 shadow-lg rounded-md bg-white">
+<div class="m-3 mb-6 shadow-lg rounded-md bg-white">
     <div class="header-main-tb">
         <div class="">
         <h1 class="text-xl font-semibold text-gray-900">Color</h1>
         </div>
         <div class="sm:mt-0 sm:flex-none bg">
                 <a href="{{route('admin.color.create')}}">
-                        <button type="button" class="cursor-pointer block rounded-sm bg-blue-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-xs hover:bg-blue-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                        <i class="ri-add-line text-md"></i>
-                        Color</button>
+                    <button type="button" class="cursor-pointer block rounded-sm bg-blue-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-xs hover:bg-blue-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                      <i class="ri-add-line text-md"></i>
+                      Color</button>
                 </a>
         </div>
     </div>
 
     <hr class="text-gray-200">
 
-    <div class="mt-3 flow-root pb-2">
+    <div class="mt-3 flow-root pb-2 px-3">
     <div class="tb-overflow">
-      <div class="inline-block min-w-full pb-2 align-middle sm:px-2 pt-2">
+      <div class="inline-block min-w-full pb-2 align-middle pt-2">
         <table id="#" class="table-filter table-auto min-w-full divide-y divide-blue-300">
         {{-- th table --}}
           <thead class="bg-[#002398]">

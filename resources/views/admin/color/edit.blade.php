@@ -1,7 +1,7 @@
 @extends ('layout.backed')
 @section('content')
 {{-- Content for create product --}}
-<div class="m-3 pb-2 mb-4 sm:px-6 shadow-lg rounded-md bg-white px-2">
+<div class="m-3 pb-2 mb-4 shadow-lg rounded-md bg-white">
     <div class="header-main-tb">
 <div class="">
             <h1 class="text-2xl font-semibold text-gray-900">Edit Color</h1>
@@ -17,7 +17,7 @@
 
     <hr class="text-gray-200">
 
-    <div class="mt-5 flow-root pb-2">
+    <div class="mt-5 flow-root pb-2 px-3">
         <form id="#" name="#" calss="max-w-md mx-auto" action="#" method="post" enctype="multipart/form-data">
                 <div class="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 sm:gap-2 md:gap-4">
                     <div class="box-form">

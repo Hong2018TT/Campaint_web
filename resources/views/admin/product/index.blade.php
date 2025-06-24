@@ -2,12 +2,12 @@
 @section('content')
 
 {{-- Content for display product --}}
-<div class="m-3 mb-6 sm:px-6 shadow-lg rounded-md bg-white">
+<div class="m-3 mb-6 shadow-lg rounded-md bg-white">
     <div class="header-main-tb">
         <div class="">
             <h1 class="text-2xl font-semibold text-gray-900">Product</h1>
         </div>
-        <div class="sm:mt-0 sm:flex-none bg">
+        <div class="sm:mt-0 sm:flex-none">
             <a href="{{route('admin.product.create')}}">
                 <button type="button" class="cursor-pointer block rounded-sm bg-blue-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-xs hover:bg-blue-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">
                   <i class="ri-add-line text-md"></i>
@@ -16,12 +16,11 @@
         </div>
     </div>
 
-    <hr class="text-gray-200">
-
-    <div class="mt-3 flow-root pb-2">
+    <hr class="text-gray-300">
+    <div class="mt-3 flow-root pb-2 px-3">
     <div class="tb-overflow">
-      <div class="inline-block min-w-full pb-2 align-middle sm:px-2 pt-2">
-        <table id="#" class="table-filter table-auto min-w-full divide-y divide-blue-300">
+      <div class="inline-block min-w-full pb-2 align-middle pt-2">
+        <table id="#" class="table-filter min-w-full divide-y divide-blue-300">
         {{-- th table --}}
           <thead class="bg-[#002398]">
             <tr>
@@ -36,13 +35,13 @@
           </thead>
           {{-- tb table --}}
           <tbody class="divide-y divide-gray-200 bg-white">
+
             <tr class="td-bg-dash">
-              <td class="table-cell-primary">Lindsay Walton</td>
+              <td class="table-cell-primary">DDDD</td>
               <td class="table-cell">Front-end Developer</td>
               <td class="table-cell">lindsay.walton@example.com</td>
               <td class="table-cell">Member</td>
               <td class="table-cell-actions">
-
                 <a href="{{route('admin.product.edit')}}" class="table-action-edit"><i class="ri-edit-circle-fill"></i></a>
                 <div x-data="{ open: false }">
                   <button @click="open = true" class="table-action-delete">
@@ -67,16 +66,10 @@
                     </div>
                   </div>
                 </div>
-
               </td>
             </tr>
 
-              <!-- More people... -->
-                <a href="{{route('admin.product.edit')}}" class="table-action-edit"><i class='bx bxs-edit'></i></a>
-                <a href="#" class="table-action-delete"><i class='bx bx-trash-alt'></i></a>
-              </td>
-            </tr>
-
+          <!-- More people... -->
           </tbody>
         </table>
       </div>

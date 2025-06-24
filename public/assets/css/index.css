@@ -4,8 +4,7 @@ body{
     font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
-    font-variation-settings:
-    "wdth" 100;
+    font-variation-settings:"wdth" 100;
 }
 
 /* ============================= This Spinner For when refesh page before display form Login Admin ============================= */
@@ -14,26 +13,48 @@ body{
     pointer-events: none;
 }
 .parallax > use {
-animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+    animation: move-forever 20s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
 }
 .parallax > use:nth-child(1) {
-animation-delay: -2s;
-animation-duration: 7s;
+    animation-delay: -2s;
+    animation-duration: 7s;
 }
 .parallax > use:nth-child(2) {
-animation-delay: -3s;
-animation-duration: 10s;
+    animation-delay: -3s;
+    animation-duration: 10s;
 }
 .parallax > use:nth-child(3) {
-animation-delay: -4s;
-animation-duration: 13s;
+    animation-delay: -4s;
+    animation-duration: 13s;
 }
 .parallax > use:nth-child(4) {
-animation-delay: -5s;
-animation-duration: 20s;
+    animation-delay: -5s;
+    animation-duration: 20s;
 }
 @media (max-width: 768px) {
+    .layout-box-index{
+        box-shadow: 3px 3px 6px rgba(104, 104, 104, 0.2) inset,-3px -3px 6px rgba(104, 104, 104, 0.2) inset;
+    }
     .back-animation{
-        min-height: 200px;
+        min-height: 250px;
+    }
+    .parallax > use {
+        animation: move-forever 5s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+    }
+    .parallax > use:nth-child(1) {
+        animation-delay: -2s;
+        animation-duration: 4s;
+    }
+    .parallax > use:nth-child(2) {
+        animation-delay: -3s;
+        animation-duration: 7s;
+    }
+    .parallax > use:nth-child(3) {
+        animation-delay: -4s;
+        animation-duration: 10s;
+    }
+    .parallax > use:nth-child(4) {
+        animation-delay: -5s;
+        animation-duration: 17s;
     }
 }

@@ -23,10 +23,10 @@
     <button type="button" class="flex items-center p-1.5 cursor-pointer text-white" id="user-menu-button">
 
         <span class="sr-only">Open user menu</span>
-        <img class="profile-admin" src="{{ asset('assets/img/logo/Logo Campaint Original.png') }}" alt="">
+        <img class="profile-admin" src="{{ asset('assets/img/logo/Campaint Original.png') }}" alt="Logo image" loading="lazy">
         <span class="hidden lg:flex lg:items-center">
         <span class="ml-2 text-sm/6 font-semibold">Admin</span>
-                <i class="ri-arrow-down-s-fill text-lg transition-transform duration-300 caret-icon ml-1"></i>
+            <i class="ri-arrow-down-s-fill text-lg transition-transform duration-300 caret-icon ml-1"></i>
         </span>
     </button>
 
