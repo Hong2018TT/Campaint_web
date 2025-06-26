@@ -41,6 +41,7 @@ Route::get('/calculate-product',[CaculateProductController::class, 'index'])->na
 
 //====== selection User=====
 Route::get('/user',[UserController::class, 'index'])->name('admin.users.index');
+Route::get('/user-profile',[UserController::class, 'profile'])->name('admin.users.profile');
 
 Route::get('/about',[AboutController::class, 'index'])->name('admin.about.index');
 Route::get('/task',[TaskController::class, 'index'])->name('admin.task.index');

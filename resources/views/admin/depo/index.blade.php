@@ -25,31 +25,31 @@
                 {{-- th table --}}
                 <thead class="bg-[#002398]">
                     <tr>
-                    <th scope="col" class="table-header">ID</th>
-                    <th scope="col" class="table-header">Name (en)</th>
-                    <th scope="col" class="table-header">Name (kh)</th>
-                    <th scope="col" class="table-header">Address (en)</th>
-                    <th scope="col" class="table-header">Province (en)</th>
-                    <th scope="col" class="table-header">Address (kh)</th>
-                    <th scope="col" class="table-header">Province (kh)</th>
-                    <th scope="col" class="table-header">Phone</th>
-                    <th scope="col" class="table-header">Gps</th>
-                    <th scope="col" class="table-header-action">
-                        <span class="sr-only">Edit</span>
-                    </th>
+                        <th scope="col" class="table-header rounded-tl-md">ID</th>
+                        <th scope="col" class="table-header">Name (en)</th>
+                        <th scope="col" class="table-header">Name (kh)</th>
+                        <th scope="col" class="table-header">Address (en)</th>
+                        <th scope="col" class="table-header">Province (en)</th>
+                        <th scope="col" class="table-header">Address (kh)</th>
+                        <th scope="col" class="table-header">Province (kh)</th>
+                        <th scope="col" class="table-header">Phone</th>
+                        <th scope="col" class="table-header">Gps</th>
+                        <th scope="col" class="table-header-action rounded-tr-md">
+                            <span class="sr-only">Edit</span>
+                        </th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200 bg-white">
                     <tr class="td-bg-dash">
                         <td class="table-cell-primary">ID</td>
-                        <td class="table-cell">018-2</td>
-                        <td class="table-cell">018-2</td>
-                        <td class="table-cell">018-2</td>
-                        <td class="table-cell">018-2</td>
-                        <td class="table-cell">018-2</td>
-                        <td class="table-cell">018-2</td>
-                        <td class="table-cell">018-2</td>
-                        <td class="table-cell">018-2</td>
+                        <td class="table-cell">----</td>
+                        <td class="table-cell">----</td>
+                        <td class="table-cell">----</td>
+                        <td class="table-cell">----</td>
+                        <td class="table-cell">----</td>
+                        <td class="table-cell">----</td>
+                        <td class="table-cell">----</td>
+                        <td class="table-cell">----</td>
                         <td class="table-cell-actions">
 
                             <a href="{{route('admin.depo.edit')}}" class="table-action-edit"><i class="ri-edit-circle-fill"></i></a>

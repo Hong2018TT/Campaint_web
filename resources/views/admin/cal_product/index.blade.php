@@ -19,7 +19,8 @@
 
                     <div x-show="open" @include('components.modal.model-fade')
                         class="modal-box-md"
-                        @click.outside="open = false">
+                        {{-- For set mourseout --}}
+                        @click.outside="open = true">
 
                     <div class="modal-header-add">
                         Add Calculate product
@@ -74,11 +75,11 @@
                 {{-- th table --}}
                 <thead class="bg-[#002398]">
                     <tr>
-                    <th scope="col" class="table-header">ID</th>
-                    <th scope="col" class="table-header">COLOR CODE</th>
-                    <th scope="col" class="table-header">R</th>
-                    <th scope="col" class="table-header">G</th>
-                    <th scope="col" class="table-header-action">
+                    <th scope="col" class="table-header rounded-tl-md">ID</th>
+                    <th scope="col" class="table-header">Brand name</th>
+                    <th scope="col" class="table-header">Net / weight</th>
+                    <th scope="col" class="table-header">Coverage area</th>
+                    <th scope="col" class="table-header-action rounded-tr-md">
                         <span class="sr-only">Edit</span>
                     </th>
                     </tr>
@@ -86,9 +87,9 @@
                 <tbody class="divide-y divide-gray-200 bg-white">
                     <tr class="td-bg-dash">
                         <td class="table-cell-primary">ID</td>
-                        <td class="table-cell">018-2</td>
-                        <td class="table-cell">213</td>
-                        <td class="table-cell">218</td>
+                        <td class="table-cell">----</td>
+                        <td class="table-cell">----</td>
+                        <td class="table-cell">----</td>
                         <td class="table-cell-actions">
 
                             {{-- For model edit --}}
@@ -103,7 +104,8 @@
 
                                     <div x-show="open" @include('components.modal.model-fade')
                                         class="modal-box-md"
-                                        @click.outside="open = false">
+                                        {{-- For set mourseout --}}
+                                        @click.outside="open = true">
 
                                     <div class="modal-header-add">
                                         Edit Calculate product
@@ -158,7 +160,8 @@
 
                                     <div x-show="open" @include('components.modal.model-fade')
                                         class="modal-box-md"
-                                        @click.outside="open = false">
+                                        {{-- For set mourseout --}}
+                                        @click.outside="open = true">
 
                                     <div class="modal-header-del">Delete</div>
                                     <hr class="border-1 border-gray-400">

@@ -18,11 +18,11 @@
             <a href="{{route('admin.product.index')}}" class="nav-link dropdown-toggle">
                 <i class="ri-archive-fill text-xl transition-transform duration-300"></i>
                 <span class="nav-label">Product</span>
-                <i class="dropdown-icon ri-arrow-down-s-fill"></i>
+                <i class="dropdown-icon ri-arrow-down-s-line"></i>
             </a>
 
             {{-- Dropdown Menu --}}
-            <ul class="dropdown-menu pl-4">
+            <ul class="dropdown-menu pl-10">
                 <li class="nav-item px-3">
                     <a href="{{route('admin.product.index')}}" class="nav-link dropdown-title">Product</a>
                 </li>
@@ -83,7 +83,7 @@
             </ul>
         </li>
 
-        <li class="nav-item">
+        {{-- <li class="nav-item">
             <a href="{{route('admin.users.index')}}" class="nav-link">
                 <i class="ri-user-3-fill text-xl transition-transform duration-300"></i>
                 <span class="nav-label">User</span>
@@ -93,7 +93,7 @@
                     <a href="{{route('admin.users.index')}}" class="nav-link dropdown-link">User</a>
                 </li>
             </ul>
-        </li>
+        </li> --}}
 
         <li class="nav-item">
             <a href="{{route('admin.about.index')}}" class="nav-link">
@@ -109,8 +109,8 @@
 
         <li class="nav-item">
             <a href="{{route('admin.task.index')}}" class="nav-link">
-                <i class="ri-shadow-fill text-xl transition-transform duration-300"></i>
-                <span class="nav-label">Task</span>
+                <i class="ri-list-view text-xl transition-transform duration-300"></i>
+                <span class="nav-label">FAQ-Categories</span>
             </a>
             <ul class="dropdown-menu pl-4">
                 <li class="nav-item px-3">

@@ -9,4 +9,8 @@ class UserController extends Controller
     public function index(){
         return view('admin.users.index');
     }
+
+    public function profile(){
+        return view('admin.users.profile');
+    }
 }

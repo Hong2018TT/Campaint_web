@@ -25,11 +25,16 @@
         {{-- th table --}}
           <thead class="bg-[#002398]">
             <tr>
-              <th scope="col" class="table-header">Name</th>
-              <th scope="col" class="table-header">Title</th>
-              <th scope="col" class="table-header">Email</th>
-              <th scope="col" class="table-header">Role</th>
-              <th scope="col" class=".table-header-action">
+              <th scope="col" class="table-header rounded-tl-md">ID</th>
+              <th scope="col" class="table-header">Color code</th>
+              <th scope="col" class="table-header">Color name</th>
+              <th scope="col" class="table-header">R</th>
+              <th scope="col" class="table-header">G</th>
+              <th scope="col" class="table-header">B</th>
+              <th scope="col" class="table-header">color preview</th>
+              <th scope="col" class="table-header">product type</th>
+              <th scope="col" class="table-header">color family</th>
+              <th scope="col" class=".table-header-action rounded-tr-md">
                 <span class="sr-only">Edit</span>
               </th>
             </tr>
@@ -37,10 +42,15 @@
           {{-- tb table --}}
           <tbody class="divide-y divide-gray-200 bg-white">
             <tr class="td-bg-dash">
-              <td class="table-cell-primary">Lindsay Walton</td>
-              <td class="table-cell">Front-end Developer</td>
-              <td class="table-cell">lindsay.walton@example.com</td>
-              <td class="table-cell">Member</td>
+              <td class="table-cell-primary">----</td>
+              <td class="table-cell">----</td>
+              <td class="table-cell">----</td>
+              <td class="table-cell">----</td>
+              <td class="table-cell">----</td>
+              <td class="table-cell">----</td>
+              <td class="table-cell">----</td>
+              <td class="table-cell">----</td>
+              <td class="table-cell">----</td>
               <td class="table-cell-actions">
 
                 <a href="{{route('admin.color.edit')}}" class="table-action-edit"><i class="ri-edit-circle-fill"></i></a>
@@ -52,7 +62,8 @@
                   <!-- Backdrop -->
                   <div x-show="open" x-cloak @include('components.modal.model-transition')>
                     <div x-show="open" @include('components.modal.model-fade')
-                        class="modal-box-md" @click.outside="open = false">
+                        {{-- For set mourseout --}}
+                        class="modal-box-md" @click.outside="open = true">
 
                       <div class="modal-header-del">Delete</div>
                       <hr class="border-1 border-gray-400">

@@ -25,7 +25,6 @@
     <title>Campaint</title>
 </head>
 <body class="relative bg-mint-gradient">
-
   <aside class="sidebar">
     {{-- Header slide bar --}}
     @include('components.slide_header')
@@ -43,6 +42,8 @@
     <div class="home-body overflow-auto p-1">
         {{-- Main Content Dashboard --}}
         @yield('content')
+        
+    </script>
     </div>
 
   </main>
@@ -54,7 +55,7 @@
   </style>
   
     {{-- Link javacript Sweetalert two --}}
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
     <!-- Link jQuery -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     {{-- Link apline.js --}}

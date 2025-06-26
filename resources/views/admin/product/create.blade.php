@@ -10,7 +10,8 @@
         <div class="sm:mt-0 sm:flex-none bg">
             <a href="{{route('admin.product.index')}}">
                 <button type="button" class="cursor-pointer block rounded-sm bg-blue-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-xs">
-                <i class="ri-arrow-left-line"></i>
+                    <i class="ri-arrow-left-line"></i>
+                </button>
             </a>
         </div> 
     </div>

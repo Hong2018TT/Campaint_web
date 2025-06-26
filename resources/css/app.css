@@ -14,7 +14,7 @@
 @layer components {
   /* Set backgroud dashboard */
   .bg-mint-gradient {
-   background-image: linear-gradient(to right, #d6efff, #f4fbff, #eaf7ff, #e0f3ff, #d6efff);
+   background-image: linear-gradient(to right, #d6efff, #cce7f7, #eaf7ff, #e0f3ff, #d6efff);
   }
 
   /* Slide bar header */
@@ -41,8 +41,8 @@
     @apply list-none flex px-3 flex-col transform translate-y-4 transition-all duration-300;
   }
   .nav-link{
-    @apply text-white flex items-center gap-5 px-3 py-2 transition 
-    duration-300 text-shadow-lg/20 whitespace-nowrap rounded-md hover:bg-gradient-to-r hover:from-blue-300 hover:to-transparent hover:translate-x-1;
+    @apply text-white flex items-center gap-5 px-3 py-2 transition
+    duration-300 text-shadow-lg/20 whitespace-nowrap rounded-md hover:bg-gradient-to-r hover:from-blue-400 hover:to-transparent hover:translate-x-1;
   }
   .nav-item{
     @apply relative;
@@ -58,18 +58,14 @@
   .dropdown-icon{
     @apply ml-auto text-xl transition-all duration-200;
   }
-
   /* button action to show slide when media small */
   .sidebar-menu-button{
-    @apply md:hidden lg:hidden rounded-sm bg-[#002398] px-3 pt-1 shadow-xs text-white text-3xl cursor-pointer;
+    @apply md:block md:mr-2 lg:hidden rounded-sm bg-[#002398] shadow-xs text-white text-3xl cursor-pointer;
   }
   
   /* Bg-color dropdown top profile */
-  .dropdown-navbar-items{
-    @apply block px-3 py-1 text-sm hover:bg-gray-200;
-  }
   .search-navbar{
-  @apply w-auto h-10 pl-10 pr-4 text-sm text-[#0d0c22] placeholder-gray-400 bg-[#f3f3f4] rounded-lg border-2 border-transparent outline-none transition-all duration-300
+  @apply w-auto h-9 pl-8 pr-3 text-sm text-[#0d0c22] placeholder-gray-400 bg-[#f3f3f4] rounded-md border-2 border-transparent outline-none transition-all duration-300
                     focus:bg-white focus:border-blue-400/40 focus:ring-4 focus:ring-blue-400/10
                     hover:bg-white hover:border-blue-400/40 hover:ring-4 hover:ring-blue-400/10;
   }
@@ -80,13 +76,13 @@
   }
   /* Home content navbar top */
   .home-content{
-    @apply p-2.5 sticky top-0 flex items-center justify-between h-18 bg-[#002398] w-full z-50;
+    @apply p-2.5 sticky top-0 flex items-center justify-between h-16.5 bg-[#002398] w-full z-50;
   }
   .profile-admin{
     @apply size-8 rounded-full bg-white shadow-2xl;
   }
   .dropdown-navbar{
-    @apply absolute top-12 lg:left-0 md:-left-15 sm:-left-15 whitespace-nowrap bg-neutral-50 shadow-sm rounded-sm py-1 origin-top
+    @apply absolute top-12 lg:left-0 md:-left-15 sm:-left-15 whitespace-nowrap bg-white shadow-sm rounded-sm py-1 origin-top
                     transform scale-y-0 opacity-0 pointer-events-none transition duration-200 ease-out;
   }
 
@@ -132,12 +128,12 @@
   }
 
   /* Action links */
-  .table-action-edit {
-    @apply text-blue-600 hover:text-indigo-800 text-lg leading-none;
+  .table-action-edit{
+    @apply text-white text-sm leading-none p-1 bg-blue-500 rounded-sm shadow-xs hover:bg-blue-800 transition cursor-pointer;
   }
 
   .table-action-delete {
-    @apply text-red-600 hover:text-red-800 text-lg leading-none;
+    @apply text-white text-sm leading-none p-1 bg-red-500 rounded-sm shadow-xs hover:bg-red-800 transition cursor-pointer;
   }
 
   /* Background color nth-child even */
@@ -246,8 +242,12 @@
   .modal-box-2xl{
     @apply bg-white pb-4 rounded-sm shadow-lg max-w-2xl w-full mt-18 mx-2;
   }
+  .model-box-full{
+    @apply bg-white pb-4 rounded-sm shadow-lg max-w-full w-full mt-18 mx-2;
+  }
 }
 
+/* Set stlye Quill Editor */
 @layer components{
   .editor-wrapper{
     @apply h-50 overflow-y-auto resize-y rounded-br-sm rounded-bl-sm 
@@ -258,5 +258,21 @@
 @layer utilities{
   .box-form-img{
     @apply mb-2;
+  }
+}
+
+/* set style profile admin */
+@layer components{
+  .container-bg-profile{
+    @apply bg-white rounded-lg shadow-md overflow-hidden mx-2;
+  }
+
+  .box-img-profile{
+    @apply h-24 w-24 md:h-32 md:w-32 rounded-full object-cover border-8 border-white shadow-lg;
+  }
+
+  .btn-edit-profile{
+    @apply px-4 py-2 bg-indigo-500 text-white rounded-md hover:bg-indigo-600 cursor-pointer
+                        focus:outline-none focus:ring-2 focus:ring-indigo-400 transition duration-200;
   }
 }

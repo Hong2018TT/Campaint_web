@@ -38,22 +38,6 @@ document.querySelectorAll(".sidebar-toggler, .sidebar-menu-button").forEach(butt
 // Collapse sidebar by default on smalll screens
 if(window.innerWidth <= 1024 ) document.querySelector(".sidebar").classList.toggle("collapsed");
 
-// Use for Dropdown Items
-const userButton = document.getElementById('user-menu-button');
-const dropdownMenu = document.getElementById('user-dropdown');
-const caretIcon = userButton?.querySelector('.caret-icon');
-
-userButton?.addEventListener('click', (e) => {
-  e.stopPropagation();
-  dropdownMenu.classList.toggle('scale-y-100');
-  dropdownMenu.classList.toggle('opacity-100');
-  dropdownMenu.classList.toggle('pointer-events-auto');
-  dropdownMenu.classList.toggle('scale-y-0');
-  dropdownMenu.classList.toggle('opacity-0');
-  dropdownMenu.classList.toggle('pointer-events-none');
-  caretIcon?.classList.toggle('rotate-180');
-});
-
 // document.addEventListener('click', (e) => {
 //   if (!userButton?.contains(e.target) && !dropdownMenu?.contains(e.target)) {
 //     dropdownMenu?.classList.remove('scale-y-100', 'opacity-100', 'pointer-events-auto');

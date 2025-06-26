@@ -24,11 +24,11 @@
         {{-- th table --}}
           <thead class="bg-[#002398]">
             <tr>
-              <th scope="col" class="table-header">Name</th>
-              <th scope="col" class="table-header">Title</th>
-              <th scope="col" class="table-header">Email</th>
-              <th scope="col" class="table-header">Role</th>
-              <th scope="col" class=".table-header-action">
+              <th scope="col" class="table-header rounded-tl-md">ID</th>
+              <th scope="col" class="table-header">Name (English)</th>
+              <th scope="col" class="table-header">Name (khmer)</th>
+              <th scope="col" class="table-header">Image</th>
+              <th scope="col" class=".table-header-action rounded-tr-md">
                 <span class="sr-only">Edit</span>
               </th>
             </tr>
@@ -37,10 +37,11 @@
           <tbody class="divide-y divide-gray-200 bg-white">
 
             <tr class="td-bg-dash">
-              <td class="table-cell-primary">DDDD</td>
-              <td class="table-cell">Front-end Developer</td>
-              <td class="table-cell">lindsay.walton@example.com</td>
-              <td class="table-cell">Member</td>
+              <td class="table-cell-primary">1</td>
+              <td class="table-cell">----</td>
+              <td class="table-cell">----</td>
+              <td class="table-cell">----</td>
+
               <td class="table-cell-actions">
                 <a href="{{route('admin.product.edit')}}" class="table-action-edit"><i class="ri-edit-circle-fill"></i></a>
                 <div x-data="{ open: false }">
@@ -50,7 +51,7 @@
                   <!-- Backdrop -->
                   <div x-show="open" x-cloak @include('components.modal.model-transition')>
                     <div x-show="open" @include('components.modal.model-fade')
-                        class="modal-box-md" @click.outside="open = false">
+                        class="modal-box-md" @click.outside="open = true">
 
                       <div class="modal-header-del">Delete</div>
                       <hr class="border-1 border-gray-400">

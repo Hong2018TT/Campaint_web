@@ -19,7 +19,8 @@
 
                 <div x-show="open" @include('components.modal.model-fade')
                     class="modal-box-lg"
-                    @click.outside="open = false">
+                    {{-- For set mourseout --}}
+                    @click.outside="open = true">
 
                 <div class="modal-header-add">
                     Add Color Family
@@ -82,12 +83,12 @@
                 {{-- th table --}}
                 <thead class="bg-[#002398]">
                     <tr>
-                    <th scope="col" class="table-header">ID</th>
-                    <th scope="col" class="table-header">PHONE NUMBER</th>
-                    <th scope="col" class="table-header">PROFESSION</th>
-                    <th scope="col" class="table-header">PROVINCE</th>
-                    <th scope="col" class="table-header">SIGNED UP (DATE)</th>
-                    <th scope="col" class="table-header-action">
+                    <th scope="col" class="table-header rounded-tl-md">ID</th>
+                    <th scope="col" class="table-header">Name (english)</th>
+                    <th scope="col" class="table-header">Name (khmer)</th>
+                    <th scope="col" class="table-header">Color</th>
+                    <th scope="col" class="table-header">Paret</th>
+                    <th scope="col" class="table-header-action rounded-tr-md">
                         <span class="sr-only">Edit</span>
                     </th>
                     </tr>
@@ -96,10 +97,10 @@
                 <tbody class="divide-y divide-gray-200 bg-white">
                     <tr class="td-bg-dash">
                         <td class="table-cell-primary">1</td>
-                        <td class="table-cell">Lindsay Walton</td>
-                        <td class="table-cell">Front-end Developer</td>
-                        <td class="table-cell">lindsay.walton@example.com</td>
-                        <td class="table-cell">Member</td>
+                        <td class="table-cell">----</td>
+                        <td class="table-cell">----</td>
+                        <td class="table-cell">----</td>
+                        <td class="table-cell">----</td>
                         <td class="table-cell-actions">
                         {{-- For model edit --}}
                         <div x-data="{ open: false }">
@@ -113,7 +114,8 @@
 
                                 <div x-show="open" @include('components.modal.model-fade')
                                     class="modal-box-lg"
-                                    @click.outside="open = false">
+                                    {{-- For set mourseout --}}
+                                    @click.outside="open = true">
 
                                 <div class="modal-header-add">
                                     Edit Color Family
@@ -179,7 +181,8 @@
 
                                 <div x-show="open" @include('components.modal.model-fade')
                                     class="modal-box-md"
-                                    @click.outside="open = false">
+                                    {{-- For set mourseout --}}
+                                    @click.outside="open = true">
 
                                 <div class="modal-header-del">Delete</div>
                                 <hr class="border-1 border-gray-400">

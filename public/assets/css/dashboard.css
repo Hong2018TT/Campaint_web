@@ -42,7 +42,7 @@ body{
 }
 
 .nav-link.active {
-    background: linear-gradient(to right, #93c4fdc0, transparent);  font-weight: bold;
+    background: linear-gradient(to right, #54a3fe, transparent);  font-weight: bold;
 }
 .sidebar.collapsed .nav-link :where(.nav-label,.dropdown-icon){
     opacity: 0;
@@ -140,6 +140,18 @@ body{
     }
 }
 
+@media (max-width: 915px) {
+    .sidebar.collapsed{
+        width: 260px;
+        left: -260px;
+    }
+    /* Move this inside the media query */
+    .sidebar.collapsed ~ .home-section {
+        left: 0;
+        width: 100%;
+    }
+}
+
 /* ============================= Responsive Sldie bar width 690px ============================= */
 @media (max-width: 700px) {
     .sidebar ~ .home-section {
@@ -151,9 +163,7 @@ body{
         z-index: 60;
         background-color: #002398;
         left:0px;
-    }
-    .sidebar {
-        overflow: hidden;
+        overflow-y: hidden;
     }
 }
 
