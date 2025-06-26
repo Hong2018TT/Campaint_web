@@ -42,7 +42,7 @@
     <div class="home-body overflow-auto p-1">
         {{-- Main Content Dashboard --}}
         @yield('content')
-        
+
     </script>
     </div>
 
@@ -53,7 +53,27 @@
       display: none !important;
     }
   </style>
-  
+    <script>
+      // Check if the success message exists
+      // When Insert or Update data
+        @if (session('success'))
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "{{ session('success') }}",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        @elseif (session('error'))
+            Swal.fire({
+                position: "center",
+                icon: "error",
+                title: "{{ session('error') }}",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        @endif
+    </script>
     {{-- Link javacript Sweetalert two --}}
     {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
     <!-- Link jQuery -->
