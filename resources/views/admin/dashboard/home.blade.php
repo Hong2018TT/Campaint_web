@@ -72,273 +72,185 @@
             </tr>
           </thead>
           {{-- tb table --}}
-          <tbody class="divide-y divide-gray-200 bg-white">
-            <tr class="td-bg-dash">
-                <td class="table-cell-primary">ID</td>
-                <td class="table-cell">----</td>
-                <td class="table-cell">----</td>
-                <td class="table-cell">----</td>
-                <td class="table-cell">----</td>
-                <td class="table-cell">----</td>
-                <td class="table-cell">----</td>
-                <td class="table-cell">----</td>
-                <td class="table-cell">----</td>
-                <td class="table-cell-actions">
+            <tbody class="divide-y divide-gray-200 bg-white">
+                    <tr class="td-bg-dash">
+                        <td class="table-cell-primary">ID</td>
+                        <td class="table-cell">----</td>
+                        <td class="table-cell">----</td>
+                        <td class="table-cell">----</td>
+                        <td class="table-cell">----</td>
+                        <td class="table-cell">----</td>
+                        <td class="table-cell">----</td>
+                        <td class="table-cell">----</td>
+                        <td class="table-cell">----</td>
+                        <td class="table-cell-actions">
 
-                    <a href="{{route('admin.depo.edit')}}" class="table-action-edit"><i class="ri-edit-circle-fill"></i></a>
-                </div>
-                    <div x-data="{ open: false }">
-                        <button @click="open = true" class="table-action-delete">
-                            <i class="ri-delete-bin-6-fill"></i>
-                        </button>
-                        <!-- Backdrop -->
-                        <div x-show="open" x-cloak
-                            @include('components.modal.model-transition')>
-
-                            <div x-show="open" @include('components.modal.model-fade')
-                                class="modal-box-md"
-                                @click.outside="open = false">
-
-                            <div class="modal-header-del">Delete</div>
-                            <hr class="border-1 border-gray-400">
-
-                            <div class="modal-body text-left px-4 py-2 whitespace-normal">
-                                <p class="text-lg text-red-500">Are you sure you want to delete this item?</p>
-                            </div>
-
-                            <div class="model-footer flex justify-end space-x-2 px-4 pt-4">
-                                <a @click="open = false" class="btn-close-model">Close</a>
-                                <a href="#" class="btn-del-model">Delete</a>
-                            </div>
-                            </div>
+                            <a href="{{route('admin.depo.edit')}}" class="table-action-edit"><i class="ri-edit-circle-fill"></i></a>
                         </div>
-                    </div>
+                            <div x-data="{ open: false }">
+                                <button @click="open = true" class="table-action-delete">
+                                    <i class="ri-delete-bin-6-fill"></i>
+                                </button>
+                                <!-- Backdrop -->
+                                <div x-show="open" x-cloak
+                                    @include('components.modal.model-transition')>
 
-                </td>
-            </tr>
+                                    <div x-show="open" @include('components.modal.model-fade')
+                                        class="modal-box-md"
+                                        @click.outside="open = true">
 
-            <tr class="td-bg-dash">
-                <td class="table-cell-primary">ID</td>
-                <td class="table-cell">----</td>
-                <td class="table-cell">----</td>
-                <td class="table-cell">----</td>
-                <td class="table-cell">----</td>
-                <td class="table-cell">----</td>
-                <td class="table-cell">----</td>
-                <td class="table-cell">----</td>
-                <td class="table-cell">----</td>
-                <td class="table-cell-actions">
+                                    <div class="modal-header-del">Delete</div>
+                                    <hr class="border-1 border-gray-400">
 
-                    <a href="{{route('admin.depo.edit')}}" class="table-action-edit"><i class="ri-edit-circle-fill"></i></a>
-                </div>
-                    <div x-data="{ open: false }">
-                        <button @click="open = true" class="table-action-delete">
-                            <i class="ri-delete-bin-6-fill"></i>
-                        </button>
-                        <!-- Backdrop -->
-                        <div x-show="open" x-cloak
-                            @include('components.modal.model-transition')>
+                                    <div class="modal-body text-left px-4 py-2 whitespace-normal">
+                                        <p class="text-lg text-red-500">Are you sure you want to delete this item?</p>
+                                    </div>
 
-                            <div x-show="open" @include('components.modal.model-fade')
-                                class="modal-box-md"
-                                @click.outside="open = false">
-
-                            <div class="modal-header-del">Delete</div>
-                            <hr class="border-1 border-gray-400">
-
-                            <div class="modal-body text-left px-4 py-2 whitespace-normal">
-                                <p class="text-lg text-red-500">Are you sure you want to delete this item?</p>
+                                    <div class="model-footer flex justify-end space-x-2 px-4 pt-4">
+                                        <a @click="open = false" class="btn-close-model">Close</a>
+                                        <a href="#" class="btn-del-model">Delete</a>
+                                    </div>
+                                    </div>
+                                </div>
                             </div>
 
-                            <div class="model-footer flex justify-end space-x-2 px-4 pt-4">
-                                <a @click="open = false" class="btn-close-model">Close</a>
-                                <a href="#" class="btn-del-model">Delete</a>
-                            </div>
-                            </div>
+                        </td>
+                    </tr>
+
+                    <tr class="td-bg-dash">
+                        <td class="table-cell-primary">ID</td>
+                        <td class="table-cell">----</td>
+                        <td class="table-cell">----</td>
+                        <td class="table-cell">----</td>
+                        <td class="table-cell">----</td>
+                        <td class="table-cell">----</td>
+                        <td class="table-cell">----</td>
+                        <td class="table-cell">----</td>
+                        <td class="table-cell">----</td>
+                        <td class="table-cell-actions">
+
+                            <a href="{{route('admin.depo.edit')}}" class="table-action-edit"><i class="ri-edit-circle-fill"></i></a>
                         </div>
-                    </div>
+                            <div x-data="{ open: false }">
+                                <button @click="open = true" class="table-action-delete">
+                                    <i class="ri-delete-bin-6-fill"></i>
+                                </button>
+                                <!-- Backdrop -->
+                                <div x-show="open" x-cloak
+                                    @include('components.modal.model-transition')>
 
-                </td>
-            </tr>
+                                    <div x-show="open" @include('components.modal.model-fade')
+                                        class="modal-box-md"
+                                        @click.outside="open = true">
 
-            <tr class="td-bg-dash">
-                <td class="table-cell-primary">ID</td>
-                <td class="table-cell">----</td>
-                <td class="table-cell">----</td>
-                <td class="table-cell">----</td>
-                <td class="table-cell">----</td>
-                <td class="table-cell">----</td>
-                <td class="table-cell">----</td>
-                <td class="table-cell">----</td>
-                <td class="table-cell">----</td>
-                <td class="table-cell-actions">
+                                    <div class="modal-header-del">Delete</div>
+                                    <hr class="border-1 border-gray-400">
 
-                    <a href="{{route('admin.depo.edit')}}" class="table-action-edit"><i class="ri-edit-circle-fill"></i></a>
-                </div>
-                    <div x-data="{ open: false }">
-                        <button @click="open = true" class="table-action-delete">
-                            <i class="ri-delete-bin-6-fill"></i>
-                        </button>
-                        <!-- Backdrop -->
-                        <div x-show="open" x-cloak
-                            @include('components.modal.model-transition')>
+                                    <div class="modal-body text-left px-4 py-2 whitespace-normal">
+                                        <p class="text-lg text-red-500">Are you sure you want to delete this item?</p>
+                                    </div>
 
-                            <div x-show="open" @include('components.modal.model-fade')
-                                class="modal-box-md"
-                                @click.outside="open = false">
-
-                            <div class="modal-header-del">Delete</div>
-                            <hr class="border-1 border-gray-400">
-
-                            <div class="modal-body text-left px-4 py-2 whitespace-normal">
-                                <p class="text-lg text-red-500">Are you sure you want to delete this item?</p>
+                                    <div class="model-footer flex justify-end space-x-2 px-4 pt-4">
+                                        <a @click="open = false" class="btn-close-model">Close</a>
+                                        <a href="#" class="btn-del-model">Delete</a>
+                                    </div>
+                                    </div>
+                                </div>
                             </div>
 
-                            <div class="model-footer flex justify-end space-x-2 px-4 pt-4">
-                                <a @click="open = false" class="btn-close-model">Close</a>
-                                <a href="#" class="btn-del-model">Delete</a>
-                            </div>
-                            </div>
+                        </td>
+                    </tr>
+
+                    <tr class="td-bg-dash">
+                        <td class="table-cell-primary">ID</td>
+                        <td class="table-cell">----</td>
+                        <td class="table-cell">----</td>
+                        <td class="table-cell">----</td>
+                        <td class="table-cell">----</td>
+                        <td class="table-cell">----</td>
+                        <td class="table-cell">----</td>
+                        <td class="table-cell">----</td>
+                        <td class="table-cell">----</td>
+                        <td class="table-cell-actions">
+
+                            <a href="{{route('admin.depo.edit')}}" class="table-action-edit"><i class="ri-edit-circle-fill"></i></a>
                         </div>
-                    </div>
+                            <div x-data="{ open: false }">
+                                <button @click="open = true" class="table-action-delete">
+                                    <i class="ri-delete-bin-6-fill"></i>
+                                </button>
+                                <!-- Backdrop -->
+                                <div x-show="open" x-cloak
+                                    @include('components.modal.model-transition')>
 
-                </td>
-            </tr>
+                                    <div x-show="open" @include('components.modal.model-fade')
+                                        class="modal-box-md"
+                                        @click.outside="open = true">
 
-            <tr class="td-bg-dash">
-                <td class="table-cell-primary">ID</td>
-                <td class="table-cell">----</td>
-                <td class="table-cell">----</td>
-                <td class="table-cell">----</td>
-                <td class="table-cell">----</td>
-                <td class="table-cell">----</td>
-                <td class="table-cell">----</td>
-                <td class="table-cell">----</td>
-                <td class="table-cell">----</td>
-                <td class="table-cell-actions">
+                                    <div class="modal-header-del">Delete</div>
+                                    <hr class="border-1 border-gray-400">
 
-                    <a href="{{route('admin.depo.edit')}}" class="table-action-edit"><i class="ri-edit-circle-fill"></i></a>
-                </div>
-                    <div x-data="{ open: false }">
-                        <button @click="open = true" class="table-action-delete">
-                            <i class="ri-delete-bin-6-fill"></i>
-                        </button>
-                        <!-- Backdrop -->
-                        <div x-show="open" x-cloak
-                            @include('components.modal.model-transition')>
+                                    <div class="modal-body text-left px-4 py-2 whitespace-normal">
+                                        <p class="text-lg text-red-500">Are you sure you want to delete this item?</p>
+                                    </div>
 
-                            <div x-show="open" @include('components.modal.model-fade')
-                                class="modal-box-md"
-                                @click.outside="open = false">
-
-                            <div class="modal-header-del">Delete</div>
-                            <hr class="border-1 border-gray-400">
-
-                            <div class="modal-body text-left px-4 py-2 whitespace-normal">
-                                <p class="text-lg text-red-500">Are you sure you want to delete this item?</p>
+                                    <div class="model-footer flex justify-end space-x-2 px-4 pt-4">
+                                        <a @click="open = false" class="btn-close-model">Close</a>
+                                        <a href="#" class="btn-del-model">Delete</a>
+                                    </div>
+                                    </div>
+                                </div>
                             </div>
 
-                            <div class="model-footer flex justify-end space-x-2 px-4 pt-4">
-                                <a @click="open = false" class="btn-close-model">Close</a>
-                                <a href="#" class="btn-del-model">Delete</a>
-                            </div>
-                            </div>
+                        </td>
+                    </tr>
+
+                    <tr class="td-bg-dash">
+                        <td class="table-cell-primary">ID</td>
+                        <td class="table-cell">----</td>
+                        <td class="table-cell">----</td>
+                        <td class="table-cell">----</td>
+                        <td class="table-cell">----</td>
+                        <td class="table-cell">----</td>
+                        <td class="table-cell">----</td>
+                        <td class="table-cell">----</td>
+                        <td class="table-cell">----</td>
+                        <td class="table-cell-actions">
+
+                            <a href="{{route('admin.depo.edit')}}" class="table-action-edit"><i class="ri-edit-circle-fill"></i></a>
                         </div>
-                    </div>
+                            <div x-data="{ open: false }">
+                                <button @click="open = true" class="table-action-delete">
+                                    <i class="ri-delete-bin-6-fill"></i>
+                                </button>
+                                <!-- Backdrop -->
+                                <div x-show="open" x-cloak
+                                    @include('components.modal.model-transition')>
 
-                </td>
-            </tr>
+                                    <div x-show="open" @include('components.modal.model-fade')
+                                        class="modal-box-md"
+                                        @click.outside="open = true">
 
-            <tr class="td-bg-dash">
-                <td class="table-cell-primary">ID</td>
-                <td class="table-cell">----</td>
-                <td class="table-cell">----</td>
-                <td class="table-cell">----</td>
-                <td class="table-cell">----</td>
-                <td class="table-cell">----</td>
-                <td class="table-cell">----</td>
-                <td class="table-cell">----</td>
-                <td class="table-cell">----</td>
-                <td class="table-cell-actions">
+                                    <div class="modal-header-del">Delete</div>
+                                    <hr class="border-1 border-gray-400">
 
-                    <a href="{{route('admin.depo.edit')}}" class="table-action-edit"><i class="ri-edit-circle-fill"></i></a>
-                </div>
-                    <div x-data="{ open: false }">
-                        <button @click="open = true" class="table-action-delete">
-                            <i class="ri-delete-bin-6-fill"></i>
-                        </button>
-                        <!-- Backdrop -->
-                        <div x-show="open" x-cloak
-                            @include('components.modal.model-transition')>
+                                    <div class="modal-body text-left px-4 py-2 whitespace-normal">
+                                        <p class="text-lg text-red-500">Are you sure you want to delete this item?</p>
+                                    </div>
 
-                            <div x-show="open" @include('components.modal.model-fade')
-                                class="modal-box-md"
-                                @click.outside="open = false">
-
-                            <div class="modal-header-del">Delete</div>
-                            <hr class="border-1 border-gray-400">
-
-                            <div class="modal-body text-left px-4 py-2 whitespace-normal">
-                                <p class="text-lg text-red-500">Are you sure you want to delete this item?</p>
+                                    <div class="model-footer flex justify-end space-x-2 px-4 pt-4">
+                                        <a @click="open = false" class="btn-close-model">Close</a>
+                                        <a href="#" class="btn-del-model">Delete</a>
+                                    </div>
+                                    </div>
+                                </div>
                             </div>
 
-                            <div class="model-footer flex justify-end space-x-2 px-4 pt-4">
-                                <a @click="open = false" class="btn-close-model">Close</a>
-                                <a href="#" class="btn-del-model">Delete</a>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
+                        </td>
+                    </tr>
 
-                </td>
-            </tr>
-
-            <tr class="td-bg-dash">
-                <td class="table-cell-primary">ID</td>
-                <td class="table-cell">----</td>
-                <td class="table-cell">----</td>
-                <td class="table-cell">----</td>
-                <td class="table-cell">----</td>
-                <td class="table-cell">----</td>
-                <td class="table-cell">----</td>
-                <td class="table-cell">----</td>
-                <td class="table-cell">----</td>
-                <td class="table-cell-actions">
-
-                    <a href="{{route('admin.depo.edit')}}" class="table-action-edit"><i class="ri-edit-circle-fill"></i></a>
-                </div>
-                    <div x-data="{ open: false }">
-                        <button @click="open = true" class="table-action-delete">
-                            <i class="ri-delete-bin-6-fill"></i>
-                        </button>
-                        <!-- Backdrop -->
-                        <div x-show="open" x-cloak
-                            @include('components.modal.model-transition')>
-
-                            <div x-show="open" @include('components.modal.model-fade')
-                                class="modal-box-md"
-                                @click.outside="open = false">
-
-                            <div class="modal-header-del">Delete</div>
-                            <hr class="border-1 border-gray-400">
-
-                            <div class="modal-body text-left px-4 py-2 whitespace-normal">
-                                <p class="text-lg text-red-500">Are you sure you want to delete this item?</p>
-                            </div>
-
-                            <div class="model-footer flex justify-end space-x-2 px-4 pt-4">
-                                <a @click="open = false" class="btn-close-model">Close</a>
-                                <a href="#" class="btn-del-model">Delete</a>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </td>
-            </tr>
-
-          <!-- More people... -->
-          </tbody>
+                    <!-- More people... -->
+                </tbody>
         </table>
       </div>
     </div>

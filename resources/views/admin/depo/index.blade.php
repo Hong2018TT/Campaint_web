@@ -64,7 +64,7 @@
 
                                     <div x-show="open" @include('components.modal.model-fade')
                                         class="modal-box-md"
-                                        @click.outside="open = false">
+                                        @click.outside="open = true">
 
                                     <div class="modal-header-del">Delete</div>
                                     <hr class="border-1 border-gray-400">
