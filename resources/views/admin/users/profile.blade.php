@@ -8,10 +8,15 @@
             <div class="h-32 sm:h-88 md:h-88 bg-cover bg-center object-cover" style="background-image: url({{asset('assets/img/admin/bg-campaint.jpg')}})" loading="lazy"></div>
             <div class="p-6 md:p-8 relative">
                 <div class="absolute -top-16 left-8">
-                    <img class="box-img-profile" 
-                            src="{{asset('assets/img/admin/icon-user.jpg')}}"
-                            alt="Admin Avatar" loading="lazy"
-                            onerror="this.onerror=null;this.src='https://placehold.co/128x128/E2E8F0/4A5568?text=Admin';"/>
+                    <picture>
+                        <source type="image/avif" srcset="image-sm.avif, image-lg.avif 2x">
+                        <source type="image/webp" srcset="image-sm.webp, image-lg.webp 2x">
+
+                        <img class="box-img-profile" 
+                                src="{{asset('assets/img/admin/icon-user.jpg')}}"
+                                alt="Admin Avatar" loading="lazy"
+                                onerror="this.onerror=null;this.src='https://placehold.co/128x128/E2E8F0/4A5568?text=Admin';"/>
+                    </picture>
                 </div>
                 <div class="mt-10 md:mt-0 md:ml-40">
                     <h2 id="user-name" class="text-2xl md:text-3xl font-bold">----</h2>
