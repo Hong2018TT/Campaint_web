@@ -76,7 +76,7 @@
   }
   /* Home content navbar top */
   .home-content{
-    @apply p-2.5 sticky top-0 flex items-center justify-between h-16.5 bg-[#002398] w-full z-50;
+    @apply p-2.5 sticky top-0 flex items-center justify-between h-16.5 bg-[#E7332A] w-full z-50;
   }
   .profile-admin{
     @apply size-8 rounded-full bg-white shadow-2xl;
