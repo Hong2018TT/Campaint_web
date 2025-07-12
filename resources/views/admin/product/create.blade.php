@@ -159,7 +159,7 @@
                         </span>
                         </div>
                         <div class="editor-wrapper">
-                            <div id="editor"></div>
+                            <div id="editor1"></div>
                         </div>
                 </div>
             </div>

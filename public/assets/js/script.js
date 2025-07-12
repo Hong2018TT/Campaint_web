@@ -149,7 +149,7 @@ phoneInput.addEventListener('input', (e) => {
 }
 
 // This For style input description editor
-const quill = new Quill('#editor', {
+const quill = new Quill('#editor1', {
   modules: {
     syntax: true,
     toolbar: '#toolbar-container',

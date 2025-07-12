@@ -14,7 +14,7 @@
 @layer components {
   /* Set backgroud dashboard */
   .bg-mint-gradient {
-   background-image: linear-gradient(to right, #d6efff, #cce7f7, #eaf7ff, #e0f3ff, #d6efff);
+   background-image: linear-gradient(80deg, #d6efff, #cce7f7, #eaf7ff, #e0f3ff, #d6efff);
   }
 
   /* Slide bar header */
@@ -250,7 +250,7 @@
 /* Set stlye Quill Editor */
 @layer components{
   .editor-wrapper{
-    @apply h-50 overflow-y-auto resize-y rounded-br-sm rounded-bl-sm 
+    @apply h-56 overflow-y-auto resize-y rounded-br-sm rounded-bl-sm 
            focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600;
   }
 }
