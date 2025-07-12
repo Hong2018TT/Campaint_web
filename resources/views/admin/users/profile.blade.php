@@ -9,9 +9,6 @@
             <div class="p-6 md:p-8 relative">
                 <div class="absolute -top-16 left-8">
                     <picture>
-                        <source type="image/avif" srcset="image-sm.avif, image-lg.avif 2x">
-                        <source type="image/webp" srcset="image-sm.webp, image-lg.webp 2x">
-
                         <img class="box-img-profile" 
                                 src="{{asset('assets/img/admin/icon-user.jpg')}}"
                                 alt="Admin Avatar" loading="lazy"
