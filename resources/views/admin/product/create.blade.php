@@ -2,10 +2,10 @@
 @section('content')
 
 {{-- Content for create product --}}
-<div class="m-3 pb-2 mb-4 shadow-lg rounded-md bg-white">
+<div class="shadow-lg rounded-md bg-white">
     <div class="header-main-tb">
         <div class="">
-            <h1 class="text-2xl font-semibold text-gray-900">Add Product</h1>
+            <h1 class="text-xl font-semibold text-gray-900">Add Product</h1>
         </div>
         <div class="sm:mt-0 sm:flex-none bg">
             <a href="{{route('admin.product.index')}}">
@@ -18,7 +18,7 @@
 
     <hr class="text-gray-200">
 
-    <div class="mt-3 flow-root pb-2 px-3">
+    <div class="mt-3 flow-root pb-1 px-3">
         <form id="#" name="#" calss="max-w-md mx-auto" action="#" method="post" enctype="multipart/form-data">
             <div class="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 sm:gap-2 md:gap-4">
                 <div class="box-form">
@@ -113,59 +113,16 @@
                 <div class="box-form">
                     <label for="description" class="title-form">Description</label>
                     <textarea id="message" rows="6" class="description-write sr-only" placeholder="Write your description here..."></textarea>
-                    <div id="toolbar-container">
-                        <span class="ql-formats">
-                            <select class="ql-font"></select>
-                            <select class="ql-size"></select>
-                        </span>
-                        <span class="ql-formats">
-                            <button class="ql-bold"></button>
-                            <button class="ql-italic"></button>
-                            <button class="ql-underline"></button>
-                            <button class="ql-strike"></button>
-                        </span>
-                        <span class="ql-formats">
-                            <select class="ql-color"></select>
-                            <select class="ql-background"></select>
-                        </span>
-                        <span class="ql-formats">
-                            <button class="ql-script" value="sub"></button>
-                            <button class="ql-script" value="super"></button>
-                        </span>
-                        <span class="ql-formats">
-                            <button class="ql-header" value="1"></button>
-                            <button class="ql-header" value="2"></button>
-                            <button class="ql-blockquote"></button>
-                            <button class="ql-code-block"></button>
-                        </span>
-                        <span class="ql-formats">
-                            <button class="ql-list" value="ordered"></button>
-                            <button class="ql-list" value="bullet"></button>
-                            <button class="ql-indent" value="-1"></button>
-                            <button class="ql-indent" value="+1"></button>
-                        </span>
-                        <span class="ql-formats">
-                            <button class="ql-direction" value="rtl"></button>
-                            <select class="ql-align"></select>
-                        </span>
-                        <span class="ql-formats">
-                            <button class="ql-link"></button>
-                            <button class="ql-image"></button>
-                            <button class="ql-video"></button>
-                            <button class="ql-formula"></button>
-                        </span>
-                        <span class="ql-formats">
-                            <button class="ql-clean"></button>
-                        </span>
-                        </div>
-                        <div class="editor-wrapper">
-                            <div id="editor1"></div>
-                        </div>
+                    <!-- Create the editor container -->
+                    <div class="editor-container">
+                        <!-- Create the first editor container -->
+                        <div id="editor" class="editor-wrapper" name="product-create"></div>
+                    </div>
                 </div>
             </div>
 
             <fieldset class="border border-gray-300 px-4 pb-2 rounded mt-3">
-                <legend class="text-md rounded-xs font-bold text-white px-2 bg-blue-800 pb-0.5">Image:</legend>
+                <legend class="text-sm rounded-xs font-bold text-white px-2 bg-blue-800 pb-0.5">Image:</legend>
                     <div class="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 sm:gap-2 md:gap-4 mt-3">
                         {{-- Section main image product --}}
                         <div class="box-form-img">
@@ -261,13 +218,12 @@
             </fieldset>
 
             <div class="mt-4 flex justify-end">
-                <button type="button" class="btn-form">Save</button>
-                <button type="button" class="btn-form-cancel">Cancel</button>
+                <button type="submit" class="btn-form">Save</button>
+                <button type="reset" class="btn-form-cancel">Cancel</button>
             </div>
         </form>
     </div>
 </div>
 
 <!-- Quill Editor Container -->
-
 @endsection

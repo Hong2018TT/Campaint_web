@@ -2,7 +2,7 @@
 @section('content')
 
 {{-- content for display task --}}
-<div class="mb-6 rounded-md max-w-6xl mx-auto mt-2">
+<div class="mb-6 rounded-md max-w-7xl mx-auto mt-2">
     <!-- Profile Header -->
         <div class="container-bg-profile">
             <div class="h-32 sm:h-88 md:h-88 bg-cover bg-center object-cover" style="background-image: url({{asset('assets/img/admin/bg-campaint.jpg')}})" loading="lazy"></div>

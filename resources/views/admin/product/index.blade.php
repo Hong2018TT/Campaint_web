@@ -2,10 +2,10 @@
 @section('content')
 
 {{-- Content for display product --}}
-<div class="m-3 mb-6 shadow-lg rounded-md bg-white">
+<div class="shadow-lg rounded-md bg-white">
     <div class="header-main-tb">
         <div class="">
-            <h1 class="text-2xl font-semibold text-gray-900">Product</h1>
+            <h1 class="text-xl font-semibold text-gray-900">Product</h1>
         </div>
         <div class="sm:mt-0 sm:flex-none">
             <a href="{{route('admin.product.create')}}">
@@ -17,6 +17,7 @@
     </div>
 
     <hr class="text-gray-300">
+    
     <div class="mt-3 flow-root pb-2 px-3">
     <div class="tb-overflow">
       <div class="inline-block min-w-full pb-2 align-middle pt-2">

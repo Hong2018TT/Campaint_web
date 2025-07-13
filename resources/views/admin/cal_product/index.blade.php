@@ -2,7 +2,7 @@
 @section('content')
 
 {{-- content for display calculate product --}}
-<div class="m-3 mb-6 shadow-lg rounded-md bg-white">
+<div class="shadow-lg rounded-md bg-white">
     <div class="header-main-tb">
         <div class="">
             <h1 class="text-xl font-semibold text-gray-900">Calculate product</h1>
@@ -14,55 +14,55 @@
             </button>
 
             <!-- Backdrop -->
-                <div x-show="open" x-cloak
-                    @include('components.modal.model-transition')>
+            <div x-show="open" x-cloak
+                @include('components.modal.model-transition')>
 
-                    <div x-show="open" @include('components.modal.model-fade')
-                        class="modal-box-md"
-                        {{-- For set mourseout --}}
-                        @click.outside="open = true">
+                <div x-show="open" @include('components.modal.model-fade')
+                    class="modal-box-md"
+                    {{-- For set mourseout --}}
+                    @click.outside="open = true">
 
-                    <div class="modal-header-add">
-                        Add Calculate product
-                    </div>
-                    <hr class="border-1 border-gray-400">
-                    <div class="modal-body p-4">
-                        <form id="" name="" action="#" method="POST">
-                            <div class="grid grid-cols-1 text-left">
-                                <div class="box-form">
-                                    <label for="brand" class="title-form">Brand Name:</label>
-                                    <div class="form-outline">
-                                        <input type="text" name="brand" id="brand" class="form-input" placeholder="Enter your brand">
-                                    </div>
-                                </div>
-                                <div class="box-form">
-                                    <label for="net_weight" class="title-form">Net/Weight</label>
-                                    <div class="form-outline">
-                                        <input type="text" name="net_weight" id="net_weight" class="form-input" placeholder="Enter your net/weight">
-                                    </div>
-                                </div>
-
-                                <div class="box-form">
-                                    <label for="coverage_area" class="title-form">Coverage Area:</label>
-                                    <div class="form-outline">
-                                        <input type="text" name="coverage_area" id="coverage_area" class="form-input" placeholder="Enter your coverage area">
-                                    </div>
-                                </div>
-
-                                <div class="box-form">
-                                    <label for="coverage_area" class="title-form">Result:</label>
-                                    <span class="">111</span>
+                <div class="modal-header-add">
+                    Add Calculate product
+                </div>
+                <hr class="border-1 border-gray-400">
+                <div class="modal-body p-4">
+                    <form id="" name="" action="#" method="POST">
+                        <div class="grid grid-cols-1 text-left">
+                            <div class="box-form">
+                                <label for="brand" class="title-form">Brand Name:</label>
+                                <div class="form-outline">
+                                    <input type="text" name="brand" id="brand" class="form-input" placeholder="Enter your brand">
                                 </div>
                             </div>
-                        </form>
-                    </div>
+                            <div class="box-form">
+                                <label for="net_weight" class="title-form">Net/Weight</label>
+                                <div class="form-outline">
+                                    <input type="text" name="net_weight" id="net_weight" class="form-input" placeholder="Enter your net/weight">
+                                </div>
+                            </div>
 
-                    <div class="model-footer flex justify-end space-x-2 px-4 pt-4">
-                        <button  @click="open = false" class="btn-close-model">Close</button>
-                        <button class="btn-save-model">Save</button>
-                    </div>
-                    </div>
+                            <div class="box-form">
+                                <label for="coverage_area" class="title-form">Coverage Area:</label>
+                                <div class="form-outline">
+                                    <input type="text" name="coverage_area" id="coverage_area" class="form-input" placeholder="Enter your coverage area">
+                                </div>
+                            </div>
+
+                            <div class="box-form">
+                                <label for="coverage_area" class="title-form">Result:</label>
+                                <span class="">111</span>
+                            </div>
+                        </div>
+                    </form>
                 </div>
+
+                <div class="model-footer flex justify-end space-x-2 px-4 pt-4">
+                    <button  @click="open = false" class="btn-close-model">Close</button>
+                    <button class="btn-save-model">Save</button>
+                </div>
+                </div>
+            </div>
         </div>
     </div>
 

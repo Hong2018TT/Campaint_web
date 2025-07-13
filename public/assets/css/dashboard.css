@@ -111,6 +111,11 @@ body{
     transform: rotate(180deg);
 }
 
+/* Customer editor quill */
+.ql-editor {
+    min-height: 18rem; /* You can change this value */
+}
+
 /* ============================= Responsive Dashboard ============================= */
 @media (max-width: 768px) {
     .sidebar.collapsed{

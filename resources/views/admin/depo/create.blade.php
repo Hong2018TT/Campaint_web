@@ -1,7 +1,7 @@
 @extends ('layout.backed')
 @section('content')
 {{-- Content for create product --}}
-<div class="m-3 pb-2 mb-4 shadow-lg rounded-md bg-white">
+<div class="mb-3 shadow-lg rounded-md bg-white">
     <div class="header-main-tb">
         <div class="">
             <h1 class="text-2xl font-semibold text-gray-900">Create Depo</h1>
@@ -86,11 +86,11 @@
                     </div>
                 </div>
 
-            <div class="mt-4 flex justify-end">
-                <button type="button" class="btn-form">Create</button>
-                <button type="reset" class="btn-form-cancel">Cancel</button>
-            </div>
-            
+                <div class="mt-4 flex justify-end">
+                    <button type="button" class="btn-form">Create</button>
+                    <button type="reset" class="btn-form-cancel">Cancel</button>
+                </div>
+                
         </form>
     </div>
 

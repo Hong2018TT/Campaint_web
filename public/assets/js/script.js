@@ -148,12 +148,44 @@ phoneInput.addEventListener('input', (e) => {
   };
 }
 
-// This For style input description editor
-const quill = new Quill('#editor1', {
+const quill = new Quill('#editor', {
   modules: {
-    syntax: true,
-    toolbar: '#toolbar-container',
+      toolbar: [
+          [{ 'font': [] }],
+          [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+          [{ 'size': ['small', false, 'large', 'huge'] }],
+          ['bold', 'italic', 'underline', 'strike'],
+          [{ 'color': [] }, { 'background': [] }],
+          [{ 'script': 'sub'}, { 'script': 'super' }],
+          ['blockquote', 'code-block'],
+          [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+          [{ 'indent': '-1'}, { 'indent': '+1' }],
+          [{ 'align': [] }],
+          ['link', 'image', 'video', 'formula'],
+          ['clean']
+      ]
   },
-  placeholder: 'Compose an epic...',
   theme: 'snow',
+  placeholder: 'Compose your content here...'
+});
+
+const quill1 = new Quill('#editor1', {
+  modules: {
+      toolbar: [
+          [{ 'font': [] }],
+          [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+          [{ 'size': ['small', false, 'large', 'huge'] }],
+          ['bold', 'italic', 'underline', 'strike'],
+          [{ 'color': [] }, { 'background': [] }],
+          [{ 'script': 'sub'}, { 'script': 'super' }],
+          ['blockquote', 'code-block'],
+          [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+          [{ 'indent': '-1'}, { 'indent': '+1' }],
+          [{ 'align': [] }],
+          ['link', 'image', 'video', 'formula'],
+          ['clean']
+      ]
+  },
+  theme: 'snow',
+  placeholder: 'Compose your content here...'
 });

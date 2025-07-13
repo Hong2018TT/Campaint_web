@@ -2,10 +2,10 @@
 @section('content')
 
 {{-- content for display task --}}
-<div class="m-3 mb-6 shadow-lg rounded-md bg-white">
+<div class="shadow-lg rounded-md bg-white">
     <div class="header-main-tb">
         <div class="">
-            <h1 class="text-lg font-semibold text-gray-900">Task</h1>
+            <h1 class="text-xl font-semibold text-gray-900 py-1">Task</h1>
         </div>
     </div>
 

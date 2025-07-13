@@ -20,6 +20,10 @@
     {{-- Link node editor Quill styles --}}
     <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet" />
 
+    {{-- Link Datatable.net --}}
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.tailwindcss.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
+
     <title>Campaint</title>
 </head>
 <body class="relative bg-mint-gradient">
@@ -38,9 +42,10 @@
 
     {{-- Overflow Height--}}
     <div class="home-body overflow-auto p-1">
+      <div class="m-4">
         {{-- Main Content Dashboard --}}
         @yield('content')
-
+      </div>
     </script>
     </div>
 
@@ -51,60 +56,51 @@
       display: none !important;
     }
   </style>
-    <script>
-      // Check if the success message exists
-      // When Insert or Update data
-        @if (session('success'))
-            Swal.fire({
-                position: "center",
-                icon: "success",
-                title: "{{ session('success') }}",
-                showConfirmButton: false,
-                timer: 1500
-            });
-        @elseif (session('error'))
-            Swal.fire({
-                position: "center",
-                icon: "error",
-                title: "{{ session('error') }}",
-                showConfirmButton: false,
-                timer: 1500
-            });
-        @endif
-    </script>
-    {{-- Link javacript Sweetalert two --}}
-    {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
-    {{-- Link apline.js --}}
-    {{-- <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script> --}}
-    <!-- Link jQuery -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    
-    <!-- DataTables -->
-    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.tailwindcss.min.css" rel="stylesheet">
-    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 
-    <!-- Buttons extension -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
-    <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
-    
-    <!-- Include the Quill library -->
-    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
-    {{-- Link my javascript --}}
-    <script src="{{asset('assets/js/script.js')}}"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 
-    <script>
-      $(document).ready(function () {
+<script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+
+<script src="{{asset('assets/js/script.js')}}"></script>
+
+<script>
+    // SweetAlert notifications for session messages
+    @if (session('success'))
+        Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "{{ session('success') }}",
+            showConfirmButton: false,
+            timer: 1500
+        });
+    @elseif (session('error'))
+        Swal.fire({
+            position: "center",
+            icon: "error",
+            title: "{{ session('error') }}",
+            showConfirmButton: false,
+            timer: 1500
+        });
+    @endif
+
+    // Initialize plugins and event listeners after the DOM is fully loaded
+    $(document).ready(function () {
         initializeTailwindDataTable('.table-filter');
-      });
-      document.addEventListener('DOMContentLoaded', function () {
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
         highlightActiveNavLink();
-      });
-    </script>
+    });
+</script>
 </body>
 </html>
