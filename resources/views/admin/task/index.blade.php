@@ -4,8 +4,8 @@
 {{-- content for display task --}}
 <div class="shadow-lg rounded-md bg-white">
     <div class="header-main-tb">
-        <div class="">
-            <h1 class="text-xl font-semibold text-gray-900 py-1">Task</h1>
+        <div class="w-full bg-green-100 px-2 pt-2 pb-1 rounded-sm border-b-2 border-green-600">
+            <label for="edit-aboutuse" class="text-2xl font-bold pl-2 text-green-800">Task</label>
         </div>
     </div>
 

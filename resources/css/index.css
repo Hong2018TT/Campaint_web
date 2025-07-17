@@ -24,7 +24,7 @@
   /* Input style */
   .index-input{
     @apply border text-black text-sm rounded-sm border-none bg-white/60 
-    block w-full ps-10 p-2.5 outline-3 focus:outline-blue-700 outline-white;
+    block w-full ps-10 p-2.5 outline-2 focus:outline-blue-700 outline-white;
   }
   /* Icon style */
   .ri-mail-fill ,.ri-lock-2-fill{

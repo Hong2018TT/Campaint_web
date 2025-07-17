@@ -106,8 +106,8 @@ function initializeTailwindDataTable(tableSelector) {
         searchPlaceholder: "Search",
         lengthMenu: "Show _MENU_ entries",
         paginate: {
-          previous: '<button class="px-2 py-1 bg-blue-700 text-white rounded hover:bg-blue-800 transition cursor-pointer">&laquo;</button>',
-          next: '<button class="px-2 py-1 bg-blue-700 text-white rounded hover:bg-blue-800 transition cursor-pointer">&raquo;</button>'
+          previous: '<button class="px-2 py-1 bg-green-700 text-white rounded hover:bg-green-800 transition cursor-pointer">&laquo;</button>',
+          next: '<button class="px-2 py-1 bg-green-700 text-white rounded hover:bg-green-800 transition cursor-pointer">&raquo;</button>'
         }
       },
       initComplete: function () {
@@ -129,7 +129,7 @@ function initializeTailwindDataTable(tableSelector) {
         wrapper.prepend(customTopBar);
         wrapper.append(customBottomBar);
 
-        info.addClass('text-[13px] text-blue-800');
+        info.addClass('text-[13px] text-green-800');
       }
     });
 });

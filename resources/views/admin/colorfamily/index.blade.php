@@ -5,10 +5,10 @@
 <div class="shadow-lg rounded-md bg-white">
     <div class="header-main-tb">
         <div class="">
-        <h1 class="text-xl font-semibold text-gray-900">Color Family</h1>
+        <h1 class="text-xl font-semibold text-green-800">Color Family</h1>
         </div>
         <div x-data="{ open: false }" class="sm:mt-0 sm:flex-none bg">
-            <button @click="open = true" type="button" class="cursor-pointer block rounded-sm bg-blue-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-xs hover:bg-blue-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+            <button @click="open = true" type="button" class="cursor-pointer block rounded-sm bg-green-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-xs hover:bg-gren-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">
                 <i class='ri-add-line text-md'></i>
                 Color Family
             </button>
@@ -32,26 +32,26 @@
                             <div class="box-form">
                                 <label for="product-en" class="title-form">Name (English)</label>
                                 <div class="form-outline">
-                                    <input type="text" name="Name_EN" id="Name_EN" class="form-input" placeholder="Enter your color name en">
+                                    <input type="text" name="Name_en" id="Name_en" class="form-input" placeholder="Enter your color name en">
                                 </div>
                             </div>
                             <div class="box-form">
                                 <label for="product-en" class="title-form">Name (Khmer)</label>
                                 <div class="form-outline">
-                                    <input type="text" name="Name_KH" id="Name_KH" class="form-input" placeholder="Enter your color name kh">
+                                    <input type="text" name="Name_kh" id="Name_kh" class="form-input" placeholder="Enter your color name kh">
                                 </div>
                             </div>
 
                             <div class="box-form">
                                 <label for="product-en" class="title-form">Color</label>
                                 <div class="form-outline">
-                                    <input type="color" name="color" id="color" class="form-input" placeholder="Enter your color">
+                                    <input type="color" name="color_code" id="color_code" class="form-input" placeholder="Enter your color">
                                 </div>
                             </div>
                             <div class="box-form">
-                                <label for="parent_color" class="title-form">Parent Color</label>
+                                <label for="parent" class="title-form">Parent Color</label>
                                 <div class="grid grid-cols-1 focus-within:relative pt-2">
-                                    <select id="parent_color" name="parent_color" autocomplete="parent_color" aria-label="parent_color" class="form-select">
+                                    <select id="parent" name="parent" autocomplete="parent" aria-label="parent" class="form-select">
                                         <option value="" hidden selected>Select color families</option>
                                         <option value="0">Cateogry one</option>
                                         <option value="1">Cateogry two</option>
@@ -68,7 +68,7 @@
 
                 <div class="model-footer flex justify-end space-x-2 px-4 pt-4">
                     <button  @click="open = false" class="btn-close-model">Close</button>
-                    <button class="btn-save-model">Save</button>
+                    <button type="submit" class="btn-save-model" name="save_colorfamily" id="save_colorfamily">Save</a>
                 </div>
                 </div>
             </div>
@@ -82,7 +82,7 @@
             <div class="inline-block min-w-full pb-2 align-middle pt-2">
                 <table id="#" class="table-filter min-w-full divide-y divide-blue-300">
                 {{-- th table --}}
-                <thead class="bg-[#002398]">
+                <thead class="bg-[#008442]">
                     <tr>
                     <th scope="col" class="table-header rounded-tl-md">ID</th>
                     <th scope="col" class="table-header">Name (english)</th>
@@ -145,9 +145,9 @@
                                                 </div>
                                             </div>
                                             <div class="box-form">
-                                                <label for="parent_color" class="title-form">Parent Color</label>
+                                                <label for="parent" class="title-form">Parent Color</label>
                                                 <div class="grid grid-cols-1 focus-within:relative pt-2">
-                                                    <select id="parent_color" name="parent_color" autocomplete="parent_color" aria-label="parent_color" class="form-select">
+                                                    <select id="parent" name="parent" autocomplete="parent" aria-label="parent" class="form-select">
                                                         <option value="" hidden selected>Select color families</option>
                                                         <option value="0">Cateogry one</option>
                                                         <option value="1">Cateogry two</option>
@@ -164,7 +164,7 @@
 
                                 <div class="model-footer flex justify-end space-x-2 px-4 pt-4">
                                     <button  @click="open = false" class="btn-close-model">Close</button>
-                                    <button class="btn-save-model">Save</button>
+                                    <button class="btn-save-model">update</button>
                                 </div>
                                 </div>
                             </div>

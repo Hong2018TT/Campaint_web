@@ -101,6 +101,7 @@
     document.addEventListener('DOMContentLoaded', function () {
         highlightActiveNavLink();
     });
+
 </script>
 </body>
 </html>

@@ -48,9 +48,7 @@
                 <div class="py-1 text-nowrap" role="none">
                     <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
                     <a href="{{route('admin.users.profile')}}" class="text-gray-700 block px-3 py-1 text-sm hover:bg-gray-100" role="menuitem" tabindex="-1" id="menu-item-0">Your Profile</a>
-                    <form method="POST" action="#" role="none">
-                        <button type="#" class="text-red-600 block w-full px-3 py-1 text-left text-sm hover:bg-gray-100" role="menuitem" tabindex="-1" id="menu-item-3">Sign out</button>
-                    </form>
+                    <a href="{{route('logout')}}" type="button" class="text-red-600 block w-full px-3 py-1 text-left text-sm hover:bg-gray-100" role="menuitem" tabindex="-1" id="menu-item-3">Sign out</a>
                 </div>
             </div>
     </div>

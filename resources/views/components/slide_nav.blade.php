@@ -24,10 +24,10 @@
             {{-- Dropdown Menu --}}
             <ul class="dropdown-menu pl-10">
                 <li class="nav-item px-3">
-                    <a href="{{route('admin.product.index')}}" class="nav-link dropdown-title">Product</a>
+                    <a href="{{route('admin.product.index')}}" class="nav-link dropdown-title">Product Type</a>
                 </li>
                 <li class="nav-item px-3">
-                    <a href="{{route('admin.product.index')}}" class="nav-link dropdown-link">Product</a>
+                    <a href="{{route('admin.product.index')}}" class="nav-link dropdown-link">Product Type</a>
                 </li>
                 <li class="nav-item px-3">
                     <a href="#" class="nav-link dropdown-link">Sub Product</a>

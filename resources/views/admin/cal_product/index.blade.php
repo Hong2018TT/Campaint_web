@@ -5,10 +5,10 @@
 <div class="shadow-lg rounded-md bg-white">
     <div class="header-main-tb">
         <div class="">
-            <h1 class="text-xl font-semibold text-gray-900">Calculate product</h1>
+            <h1 class="text-xl font-semibold text-green-800">Calculate product</h1>
         </div>
         <div x-data="{ open: false }" class="sm:mt-0 sm:flex-none bg">
-            <button @click="open = true" type="button" class="cursor-pointer block rounded-sm bg-blue-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-xs hover:bg-blue-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+            <button @click="open = true" type="button" class="btn-add">
                 <i class='ri-add-line text-md'></i>
                 cal-product
             </button>
@@ -73,7 +73,7 @@
             <div class="inline-block min-w-full pb-2 align-middle pt-2">
                 <table id="#" class="table-filter min-w-full divide-y divide-blue-300">
                 {{-- th table --}}
-                <thead class="bg-[#002398]">
+                <thead class="bg-[#008442]">
                     <tr>
                     <th scope="col" class="table-header rounded-tl-md">ID</th>
                     <th scope="col" class="table-header">Brand name</th>

@@ -4,8 +4,8 @@
 {{-- content for display about --}}
 <div class="shadow-lg rounded-md bg-white">
     <div class="header-main-tb">
-        <div class="w-full bg-gray-100 px-2 pt-2 pb-1 rounded-sm border-b-2 border-gray-300">
-            <label for="edit-aboutuse" class="text-2xl font-bold pl-2 text-gray-700">Edit About Us</label>
+        <div class="w-full bg-green-100 px-2 pt-2 pb-1 rounded-sm border-b-2 border-green-600">
+            <label for="edit-aboutuse" class="text-2xl font-bold pl-2 text-green-800">Edit About Us</label>
         </div>
     </div>
 
@@ -16,7 +16,7 @@
             <div class="container-edit-aboutus">
                 <form action="#" method="post">
                     <fieldset class="border border-gray-300 px-4 pb-4 rounded mt-3">
-                        <legend class="description_khmer text-sm rounded-xs font-bold text-white px-2 bg-blue-800 pb-0.5">Description (Khmer)</legend>
+                        <legend class="description_khmer text-sm rounded-xs font-bold text-white px-2 bg-green-800 pb-0.5">Description (Khmer)</legend>
                         <div class="form-group">
                             <textarea id="des_about" rows="6" class="description-about sr-only" placeholder="Write your description here..."></textarea>
                             <div class="editor-container pt-2">
@@ -27,7 +27,7 @@
                     </fieldset>
 
                     <fieldset class="border border-gray-300 px-4 pb-4 rounded mt-3">
-                        <legend class="description_english text-sm rounded-xs font-bold text-white px-2 bg-blue-800 pb-0.5">Description (English)</legend>
+                        <legend class="description_english text-sm rounded-xs font-bold text-white px-2 bg-green-800 pb-0.5">Description (English)</legend>
                         
                         <textarea id="des_about" rows="6" class="description-about sr-only" placeholder="Write your description here..."></textarea>
                         <div class="editor-container pt-2">

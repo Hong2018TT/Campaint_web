@@ -14,13 +14,13 @@
 @layer components {
   /* Set backgroud dashboard */
   .bg-mint-gradient {
-   background-image: linear-gradient(80deg, #d6efff, #cce7f7, #eaf7ff, #e0f3ff, #d6efff);
+   background-image: linear-gradient(80deg, #d6ffe9, #ccf7e0, #eafff5, #e0f3ff, #d6efff);
   }
 
   /* Slide bar header */
   .sidebar{
     @apply
-      fixed top-0 left-0 w-[260px] bg-[#002398] transition-all duration-200 ease-in h-screen z-10;
+      fixed top-0 left-0 w-[260px] bg-[#1131af] transition-all duration-200 ease-in h-screen z-10;
   }
   .slide-header{
     @apply flex justify-between items-center p-3.5 relative;
@@ -66,8 +66,8 @@
   /* Bg-color dropdown top profile */
   .search-navbar{
   @apply w-auto h-9 pl-8 pr-3 text-sm text-[#0d0c22] placeholder-gray-400 bg-[#f3f3f4] rounded-md border-2 border-transparent outline-none transition-all duration-300
-                    focus:bg-white focus:border-blue-400/40 focus:ring-4 focus:ring-blue-400/10
-                    hover:bg-white hover:border-blue-400/40 hover:ring-4 hover:ring-blue-400/10;
+                    focus:bg-white focus:border-red-400/40 focus:ring-4 focus:ring-red-400/10
+                    hover:bg-white hover:border-red-400/40 hover:ring-4 hover:ring-red-400/10;
   }
 
   /* Main Content dashboard */
@@ -76,7 +76,7 @@
   }
   /* Home content navbar top */
   .home-content{
-    @apply p-2.5 sticky top-0 flex items-center justify-between h-16.5 bg-[#E7332A] w-full z-50;
+    @apply p-2.5 sticky top-0 flex items-center justify-between h-16.5 bg-[#e31b23] w-full z-50;
   }
   .profile-admin{
     @apply size-8 rounded-full bg-white shadow-2xl;
@@ -129,41 +129,41 @@
 
   /* Action links */
   .table-action-edit{
-    @apply text-white text-sm leading-none p-1 bg-blue-500 rounded-sm shadow-xs hover:bg-blue-800 transition cursor-pointer;
+    @apply text-white text-sm leading-none p-1 bg-green-600 rounded-sm shadow-xs hover:bg-green-800 transition cursor-pointer;
   }
 
   .table-action-delete {
-    @apply text-white text-sm leading-none p-1 bg-red-500 rounded-sm shadow-xs hover:bg-red-800 transition cursor-pointer;
+    @apply text-white text-sm leading-none p-1 bg-red-600 rounded-sm shadow-xs hover:bg-red-800 transition cursor-pointer;
   }
 
   /* Background color nth-child even */
   .td-bg-dash{
-    @apply even:bg-blue-50 hover:bg-blue-100;
+    @apply even:bg-green-50 hover:bg-green-100;
   }
 
   .btn-showall{
     @apply cursor-pointer block rounded-sm px-2 py-2 text-center text-sm font-semibold underline
-    text-blue-600 shadow-xs hover:text-blue-500;
+    text-green-700 shadow-xs hover:text-green-600;
   }
   /* Optional custom styles if needed */
   .dataTables_filter input {
-    @apply bg-blue-100 text-sm px-3 py-1 rounded-xs border border-blue-300 focus:outline-none focus:ring focus:ring-blue-400 mr-1;
+    @apply bg-green-100 text-sm px-3 py-1 rounded-xs border border-green-300 focus:outline-none focus:ring focus:ring-green-400 mr-1;
   }
   .dataTables_length label{
-    @apply text-blue-800 text-sm;
+    @apply text-green-800 text-sm;
   }
   .dataTables_length select{
-    @apply p-0.5 bg-blue-200;
+    @apply p-0.5 bg-green-100;
   }
   .dataTables_empty {
-    @apply text-center text-gray-600 py-4 bg-blue-100;
+    @apply text-center text-green-800 py-4 bg-green-100;
   }
   .dataTables_wrapper .dataTables_paginate .paginate_button {
-    @apply px-2 py-1 mx-0.5 text-xs text-white bg-blue-700 rounded hover:bg-blue-800 transition;
+    @apply px-2 py-1 mx-0.5 text-xs text-white bg-green-700 rounded hover:bg-green-800 transition;
   }
 
   .dataTables_wrapper .dataTables_paginate .paginate_button.current {
-    @apply bg-blue-900 font-bold;
+    @apply bg-green-900 font-bold;
   }
 }
 
@@ -173,9 +173,12 @@
   .box-form{
     @apply w-full;
   }
+  .btn-add{
+    @apply cursor-pointer block rounded-sm bg-green-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-xs hover:bg-green-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600;
+  }
   .form-outline{
     @apply flex items-center rounded-sm bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 
-    focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600 mb-4 mt-2;
+    focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-green-600 mb-4 mt-2;
   }
   .form-input{
     @apply block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6;
@@ -183,7 +186,7 @@
   .form-select{
     @apply col-start-1 row-start-1 w-full appearance-none rounded-sm 
            bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1
-          outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6;
+          outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-green-600 sm:text-sm/6;
   }
 }
 
@@ -193,17 +196,17 @@
     @apply mt-2 flex justify-center rounded-sm border-2 border-dashed border-black/15 px-6 py-10;
   }
   .text-upload-img{
-    @apply relative cursor-pointer rounded-sm px-2 bg-blue-500 text-white font-semibold hover:text-indigo-100;
+    @apply relative cursor-pointer rounded-sm px-2 bg-green-600 text-white font-semibold hover:text-indigo-100;
   }
   .btn-form{
-    @apply cursor-pointer text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-full text-sm px-4 py-2 me-2 mb-2;
+    @apply cursor-pointer text-white bg-green-700 hover:bg-green-800 font-medium rounded-full text-sm px-4 py-2 me-2 mb-2;
   }
   .btn-form-cancel{
     @apply cursor-pointer text-white bg-gray-500 hover:bg-gray-700 font-medium rounded-full text-sm px-4 py-2 me-2 mb-2;
   }
   .description-write{
     @apply p-2.5 w-full text-sm text-gray-900 bg-white rounded-sm mt-3
-                    border-1 border-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600;
+                    border-1 border-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-green-600;
   }
 }
 
@@ -214,7 +217,7 @@
     @apply text-xl font-bold text-left p-4 text-white bg-red-500 rounded-tl-sm rounded-tr-sm;
   }
   .modal-header-add{
-    @apply text-xl font-bold text-left p-4 text-white bg-blue-800 rounded-tl-sm rounded-tr-sm;
+    @apply text-xl font-bold text-left p-4 text-white bg-green-800 rounded-tl-sm rounded-tr-sm;
   }
 
   .btn-close-model{
@@ -224,7 +227,7 @@
     @apply px-4 py-2 text-sm font-medium text-white bg-red-500 hover:bg-red-600 rounded-full;
   }
   .btn-save-model{
-    @apply px-4 py-2 text-sm font-medium text-white bg-blue-500 hover:bg-blue-600 rounded-full;
+    @apply px-4 py-2 text-sm font-medium text-white bg-green-600 hover:bg-green-700 rounded-full cursor-pointer;
   }
 
   /* Layout for model */
@@ -252,7 +255,7 @@
 @layer components{
   .editor-wrapper{
     @apply h-40 overflow-hidden resize-y rounded-br-sm rounded-bl-sm 
-           focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600;
+           focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-green-600;
   }
 }
 
@@ -273,7 +276,7 @@
   }
 
   .btn-edit-profile{
-    @apply px-4 py-2 bg-indigo-500 text-white rounded-md hover:bg-indigo-600 cursor-pointer
+    @apply px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 cursor-pointer
                         focus:outline-none focus:ring-2 focus:ring-indigo-400 transition duration-200;
   }
 }

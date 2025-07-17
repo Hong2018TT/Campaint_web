@@ -4,11 +4,11 @@
 <div class="shadow-lg rounded-md bg-white">
     <div class="header-main-tb">
         <div class="">
-            <h1 class="text-xl font-semibold text-gray-900">Edit Color</h1>
+            <h1 class="text-xl font-semibold text-green-800">Edit Color</h1>
         </div>
         <div class="sm:mt-0 sm:flex-none bg">
             <a href="{{route('admin.color.index')}}">
-                <button type="button" class="cursor-pointer block rounded-sm bg-blue-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-xs hover:bg-blue-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
+                <button type="button" class="btn-add">
                     <i class="ri-arrow-left-line"></i>
                 </button>
             </a>
@@ -34,34 +34,33 @@
                 </div>
             </div>
 
-            <div class="Title-rgb">
-                <label for="rgb-value">RGB Values</label>
-            </div>
-
-            {{-- section RGB value --}}
-            <div class="grid grid-cols-3 gap-2 sm:gap-2 md:gap-4 lg:gap-4">
-                <div class="box-form">
-                    <div class="form-outline">
-                        <div class="shrink-0 text-base text-gray-500 select-none sm:text-sm/6">R:</div>
-                        <input type="number" name="r" id="r" class="form-input" placeholder="number"
-                        pattern="\d{1,3}" maxlength="3" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 3);">
+             <fieldset class="border border-gray-300 px-4 py-2 rounded mt-3">
+                <legend class="text-sm rounded-xs font-bold text-white px-2 bg-green-700 pb-0.5">RGB:</legend>
+                    {{-- section RGB value --}}
+                    <div class="grid grid-cols-3 gap-2 sm:gap-2 md:gap-4 lg:gap-4">
+                        <div class="box-form">
+                            <div class="form-outline">
+                                <div class="shrink-0 text-base text-gray-500 select-none sm:text-sm/6">R:</div>
+                                <input type="number" name="r" id="r" class="form-input" placeholder="number"
+                                pattern="\d{1,3}" maxlength="3" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 3);">
+                            </div>
+                        </div>
+                        <div class="box-form">
+                            <div class="form-outline">
+                                <div class="shrink-0 text-base text-gray-500 select-none sm:text-sm/6">G:</div>
+                                <input type="number" name="g" id="g" class="form-input" placeholder="number"
+                                pattern="\d{1,3}" maxlength="3" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 3);">
+                            </div>
+                        </div>
+                        <div class="box-form">
+                            <div class="form-outline">
+                                <div class="shrink-0 text-base text-gray-500 select-none sm:text-sm/6">B:</div>
+                                <input type="number" name="b" id="b" class="form-input" placeholder="number"
+                                pattern="\d{1,3}" maxlength="3" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 3);">
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="box-form">
-                    <div class="form-outline">
-                        <div class="shrink-0 text-base text-gray-500 select-none sm:text-sm/6">G:</div>
-                        <input type="number" name="g" id="g" class="form-input" placeholder="number"
-                        pattern="\d{1,3}" maxlength="3" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 3);">
-                    </div>
-                </div>
-                <div class="box-form">
-                    <div class="form-outline">
-                        <div class="shrink-0 text-base text-gray-500 select-none sm:text-sm/6">B:</div>
-                        <input type="number" name="b" id="b" class="form-input" placeholder="number"
-                        pattern="\d{1,3}" maxlength="3" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 3);">
-                    </div>
-                </div>
-            </div>
+            </fieldset>
 
             <div class="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 sm:gap-2 md:gap-4">
                 <div class="box-form">
@@ -87,7 +86,7 @@
             </div>
 
             <div class="mt-4 flex justify-end">
-                <button type="button" class="btn-form">Create</button>
+                <button type="submit" class="btn-form">Save</button>
                 <button type="reset" class="btn-form-cancel">Cancel</button>
             </div>
         </form>

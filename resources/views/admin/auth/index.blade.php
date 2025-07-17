@@ -12,7 +12,7 @@
   <!-- Remixicon CSS -->
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
   
-  <title>Cam-aint-test</title>
+  <title>Campaint</title>
 </head>
 <body class="flex justify-center items-center h-screen">
   {{-- This section for reload spinnering --}}
@@ -26,20 +26,37 @@
 
   <!-- Simple CSS Waves -->
   <div class="layout-box-index">
-    <div class="flex justify-center items-center">
+    <div class="flex justify-center items-center mb-2">
       <img src="{{asset('assets/img/logo/Logo Cam-Panit.png')}}" alt="" class="h-60 w-auto" loading="lazy">
     </div>
-    
-    <form class="max-w-sm mx-auto" id="form-login" action="" method="POST">
-      <div class="mt-8">
-        {{-- <label for="email-address-icon" class="block mb-1 text-sm text-green-700 font-bold">Your Email</label> --}}
-        <div class="relative">
+    {{-- Success/Error Messages --}}
+    @if (session()->has('success'))
+        <div class="rounded-md bg-green-100 border border-green-400 text-green-700 px-2 py-1 my-2">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    @if (session()->has('error'))
+        <div class="rounded-md bg-red-100 border border-red-400 text-red-700 px-2 py-1 my-2">
+            {{ session('error') }}
+        </div>
+    @endif
+
+    <form class="max-w-sm mx-auto" id="form-login" action="{{ route('savelogin') }}" method="POST">
+      @csrf
+      
+      <div class="mt-4">
+        @error('email')
+          <div class="rounded-md bg-red-100 text-sm border border-red-400 text-red-700 px-2 py-1 my-2">
+            {{ $message }}
+          </div>
+        @enderror
+        <div class="relative shadow-md">
           <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
             <i class="ri-mail-fill"></i>
           </div>
-          
           {{-- Set components input text --}}
-          <input type="email" id="email-address-icon" class="index-input" placeholder="Enter your email.com" required>
+          <input type="email" id="email" name="email" class="index-input" placeholder="Enter your email.com" required value="{{old('email', Cookie::get('email'))?? '' }}" >
         </div>
         
         {{-- =============== This section checks for authentication --}}
@@ -47,13 +64,22 @@
         <p class="text-sm text-red-600 text-left sr-only"><span class="font-medium"></span> Password available!</p>
       </div>
       
-      <div class="mt-6">
-        {{-- <label for="email-address-icon" class="block mb-1 text-sm text-green-700 font-bold">Your Passsword</label> --}}
-        <div class="relative">
-          <div class="absolute inset-y-0 start-0 flex items-center ps-3 cursor-pointer">
-            <i class="ri-lock-2-fill"></i>
+      <div class="mt-4">
+        @error('password')
+          <div class="rounded-md bg-red-100 text-sm border border-red-400 text-red-700 px-2 py-1 my-2">
+              {{ $message }}
           </div>
-          <input type="password" id="password-address-icon" class="index-input" placeholder="Enter your password" required>
+        @enderror
+
+        <div class="relative shadow-md">
+          <div class="absolute inset-y-0 start-0 flex items-center ps-3">
+              <i class="ri-lock-2-fill"></i>
+          </div>
+          <input type="password" id="password" name="password" class="index-input" placeholder="Enter your password" required value="{{old('password', Cookie::get('password'))?? '' }}" >
+          
+          <div class="absolute inset-y-0 end-0 flex items-center pe-3 cursor-pointer">
+              <i id="togglePassword" class="ri-eye-off-fill text-blue-900"></i>
+          </div>
         </div>
         
         {{-- =============== This section checks for authentication --}}
@@ -63,14 +89,14 @@
       
       <div class="flex items-center justify-between mb-3 mt-3">
         <label class="inline-flex items-center">
-          <input type="checkbox" class="form-checkbok accent-blue-500 h-3.5 w-3.5">
+          <input type="checkbox" id="remember" name="remember" class="form-checkbok accent-blue-500 h-3.5 w-3.5" {{ old('remember') || Cookie::get('email') ? 'checked' : '' }}>
           <span class="ml-2 text-sm text-blue-900">Remember me</span>
         </label>
         <a href="#" class="text-sm text-blue-900 hover:underline">Forgot password?</a>
       </div>
       
       {{-- Style button animation --}}
-      <button class="w-full cursor-pointer relative flex items-center px-6 py-3 overflow-hidden font-medium transition-all bg-indigo-600 rounded-md group">
+      <button type="submit" class="w-full cursor-pointer relative flex items-center px-6 py-3 overflow-hidden font-medium transition-all bg-indigo-600 rounded-md group">
         <span class="absolute top-0 right-0 inline-block w-4 h-4 transition-all duration-500 ease-in-out bg-indigo-800 rounded group-hover:-mr-4 group-hover:-mt-4">
           <span class="absolute top-0 right-0 w-5 h-5 rotate-45 translate-x-1/2 -translate-y-1/2 bg-white"></span>
         </span>
@@ -121,6 +147,26 @@
           }, 200);
         };
       spinner();
+
+      // The function to initialize the password toggle functionality
+      function initializePasswordToggle() {
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('password');
+
+        // Check if both elements exist on the page
+        if (togglePassword && passwordInput) {
+          togglePassword.addEventListener('click', function () {
+            // Toggle the input type between 'password' and 'text'
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+
+            // Change the icon class to reflect the state
+            this.classList.toggle('ri-eye-fill');
+            this.classList.toggle('ri-eye-off-fill');
+          });
+        }
+      }
+      initializePasswordToggle();
     });
   </script>
 </body>

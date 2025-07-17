@@ -5,11 +5,11 @@
 <div class="shadow-lg rounded-md bg-white">
     <div class="header-main-tb">
         <div class="">
-            <h1 class="text-xl font-semibold text-gray-900">Add Product</h1>
+            <h1 class="text-xl font-semibold text-green-800">Add Product</h1>
         </div>
         <div class="sm:mt-0 sm:flex-none bg">
             <a href="{{route('admin.product.index')}}">
-                <button type="button" class="cursor-pointer block rounded-sm bg-blue-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-xs">
+                <button type="button" class="btn-add">
                     <i class="ri-arrow-left-line"></i>
                 </button>
             </a>
@@ -46,6 +46,13 @@
                     <label for="original-price" class="title-form">Original Price</label>
                     <div class="form-outline">
                         <input type="number" step="0.01" name="original_price" id="original_price" class="form-input" placeholder="Enter your price" value>
+                    </div>
+                </div>
+
+                <div class="box-form">
+                    <label for="discount_percent" class="title-form">Discount (%)</label>
+                    <div class="form-outline">
+                        <input type="number" name="discount_percent" id="discount_percent" class="form-input" placeholder="Price after discount" value min="0" max="100">
                     </div>
                 </div>
 
@@ -114,7 +121,7 @@
                     <label for="description" class="title-form">Description</label>
                     <textarea id="message" rows="6" class="description-write sr-only" placeholder="Write your description here..."></textarea>
                     <!-- Create the editor container -->
-                    <div class="editor-container">
+                    <div class="editor-container mt-2">
                         <!-- Create the first editor container -->
                         <div id="editor" class="editor-wrapper" name="product-create"></div>
                     </div>
@@ -122,7 +129,7 @@
             </div>
 
             <fieldset class="border border-gray-300 px-4 pb-2 rounded mt-3">
-                <legend class="text-sm rounded-xs font-bold text-white px-2 bg-blue-800 pb-0.5">Image:</legend>
+                <legend class="text-sm rounded-xs font-bold text-white px-2 bg-green-700 pb-0.5">Image:</legend>
                     <div class="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 sm:gap-2 md:gap-4 mt-3">
                         {{-- Section main image product --}}
                         <div class="box-form-img">
@@ -218,7 +225,7 @@
             </fieldset>
 
             <div class="mt-4 flex justify-end">
-                <button type="submit" class="btn-form">Save</button>
+                <button type="submit" class="btn-form" name="save_product" id="save_product">Save</button>
                 <button type="reset" class="btn-form-cancel">Cancel</button>
             </div>
         </form>

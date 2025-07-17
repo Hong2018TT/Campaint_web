@@ -5,11 +5,11 @@
 <div class="shadow-lg rounded-md bg-white">
     <div class="header-main-tb">
         <div class="">
-            <h1 class="text-xl font-semibold text-gray-900">Depo</h1>
+            <h1 class="text-xl font-semibold text-green-800">Depo</h1>
         </div>
         <div class="sm:mt-0 sm:flex-none bg">
             <a href="{{route('admin.depo.create')}}">
-                <button type="button" class="cursor-pointer block rounded-sm bg-blue-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-xs hover:bg-blue-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                <button type="button" class="btn-add">
                     <i class='ri-add-line text-md'></i>
                 Depo</button>
             </a>
@@ -21,17 +21,18 @@
     <div class="mt-3 flow-root pb-2 px-3">
         <div class="tb-overflow">
             <div class="max-w-xs">
-                <label for="provinceFilter" class="block text-md font-bold leading-6 text-blue-900">Filter by Province (EN)</label>
+                <label for="provinceFilter" class="block text-md font-bold leading-6 text-green-800">Filter by Province (EN)</label>
                 <div class="relative mt-1">
                     <!-- The select input with an underline style -->
                     <select id="provinceFilter" name="provinceFilter" 
-                            class="w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-1 pl-2 pr-10 text-gray-900 focus:border-indigo-600 focus:outline-none focus:ring-0 sm:text-sm sm:leading-6 transition-colors duration-200 ease-in-out">
+                            class="w-full appearance-none border-0 border-b-2 border-l-2 border-gray-300 bg-transparent py-1 pl-2 pr-10 text-green-800 focus:border-green-600 focus:outline-none focus:ring-0 sm:text-sm sm:leading-6 transition-colors duration-200 ease-in-out">
                         <option selected value="">Show All Province</option>
                         <option value="">Battanbang</option>
                         <option value="">Banteay Meanchey</option>
                         <option value="">Battambang</option>
                         <option value="">Kampong</option>
                     </select>
+
                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                         <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                             <path fill-rule="evenodd" d="M10 3a.75.75 0 01.53.22l3.5 3.5a.75.75 0 01-1.06 1.06L10 4.81 6.53 8.28a.75.75 0 01-1.06-1.06l3.5-3.5A.75.75 0 0110 3zm-3.72 9.28a.75.75 0 011.06 0L10 15.19l3.47-3.47a.75.75 0 111.06 1.06l-4 4a.75.75 0 01-1.06 0l-4-4a.75.75 0 010-1.06z" clip-rule="evenodd" />
@@ -39,10 +40,10 @@
                     </div>
                 </div>
             </div>
-            <div class="inline-block min-w-full pb-2 align-middle pt-2">
-                <table id="#" class="table-filter min-w-full divide-y divide-blue-300">
+            <div class="inline-block min-w-full pb-2 align-middle pt-3">
+                <table id="#" class="table-filter min-w-full divide-y divide-green-300">
                 {{-- th table --}}
-                <thead class="bg-[#002398]">
+                <thead class="bg-[#008442]">
                     <tr>
                         <th scope="col" class="table-header rounded-tl-md">ID</th>
                         <th scope="col" class="table-header">Name (en)</th>

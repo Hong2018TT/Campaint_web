@@ -116,6 +116,7 @@ body{
     min-height: 18rem; /* You can change this value */
 }
 
+
 /* ============================= Responsive Dashboard ============================= */
 @media (max-width: 768px) {
     .sidebar.collapsed{
