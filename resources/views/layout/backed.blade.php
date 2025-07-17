@@ -100,6 +100,8 @@
 
     document.addEventListener('DOMContentLoaded', function () {
         highlightActiveNavLink();
+        // Display Uplaod iamge profile user account
+        setupImagePreview('profileImageInput', 'profileImagePreview');
     });
 
 </script>

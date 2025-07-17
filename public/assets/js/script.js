@@ -189,3 +189,27 @@ const quill1 = new Quill('#editor1', {
   theme: 'snow',
   placeholder: 'Compose your content here...'
 });
+
+/**
+ * Sets up a preview for a user's profile image upload.
+ * @param {string} inputId - The ID of the file input.
+ * @param {string} previewId - The ID of the image element for the preview.
+ */
+function setupImagePreview(inputId, previewId) {
+    const fileInput = document.getElementById(inputId);
+    const previewImage = document.getElementById(previewId);
+
+    if (fileInput && previewImage) {
+        fileInput.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    previewImage.src = e.target.result;
+                    previewImage.classList.remove('empty-image');
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    }
+}

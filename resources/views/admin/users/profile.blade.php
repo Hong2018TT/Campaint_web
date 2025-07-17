@@ -6,21 +6,26 @@
     <!-- Profile Header -->
         <div class="container-bg-profile">
             <div class="h-32 sm:h-88 md:h-88 bg-cover bg-center object-cover" style="background-image: url({{asset('assets/img/admin/bg-campaint.jpg')}})" loading="lazy"></div>
-            <div class="p-6 md:p-8 relative">
+            <div class="p-6 md:p-6 relative">
                 <div class="absolute -top-16 left-8">
                     <picture>
-                        <img class="box-img-profile" 
-                                src="{{asset('assets/img/admin/icon-user.jpg')}}"
-                                alt="Admin Avatar" loading="lazy"
-                                onerror="this.onerror=null;this.src='https://placehold.co/128x128/E2E8F0/4A5568?text=Admin';"/>
+                        <label for="profileImageInput">
+                            <div class="box-img-profile relative overflow-hidden">
+                                <img class="" id="profileImagePreview"  src="{{asset('assets/img/admin/icon-user.jpg')}}" 
+                                    alt="Admin Avatar" loading="lazy"
+                                    onerror="this.onerror=null;this.src='https://placehold.co/128x128/E2E8F0/4A5568?text=Admin';"/>
+                                    <div class="upload-profile">
+                                            <i class="ri-upload-2-fill text-lg"></i>
+                                        <input type="file" name="profile_image" id="profileImageInput" class="hidden" accept="image/*">
+                                    </div>
+                            </div>
+                        </label>
                     </picture>
                 </div>
                 <div class="mt-10 md:mt-0 md:ml-40">
-                    <h2 id="user-name" class="text-2xl md:text-3xl font-bold">----</h2>
+                    <h2 id="user-name" class="text-2xl font-bold">Adminstrator</h2>
                     {{-- <p class="text-sm text-gray-600 dark:text-gray-400">@catherinew</p> --}}
-                    <div class=" mt-4 flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-4">
-                        <button class="btn-edit-profile">Edit Profile</button>
-                    </div>
+                    <button type="button" class="mt-2 rounded-sm bg-green-700 px-2 py-1 text-sm font-semibold text-white shadow-xs hover:bg-green-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Edit Profile</button>
                 </div>
             </div>
         </div>
