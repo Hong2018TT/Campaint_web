@@ -17,4 +17,8 @@ class ColorController extends Controller
     public function edit(){
         return view('admin.color.edit'); // Pass colors to the edit database
     }
+
+    public function delete(){
+        
+    }
 }

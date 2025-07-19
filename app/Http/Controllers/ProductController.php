@@ -17,4 +17,8 @@ class ProductController extends Controller
     public function edit(){
         return view('admin.product.edit');
     }
+
+    public function delete(){
+        
+    }
 }

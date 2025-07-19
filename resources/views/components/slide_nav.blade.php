@@ -83,7 +83,7 @@
             </ul>
         </li>
 
-        {{-- <li class="nav-item">
+        <li class="nav-item">
             <a href="{{route('admin.users.index')}}" class="nav-link">
                 <i class="ri-user-3-fill text-xl transition-transform duration-300"></i>
                 <span class="nav-label">User</span>
@@ -93,7 +93,7 @@
                     <a href="{{route('admin.users.index')}}" class="nav-link dropdown-link">User</a>
                 </li>
             </ul>
-        </li> --}}
+        </li>
 
         <li class="nav-item">
             <a href="{{route('admin.about.index')}}" class="nav-link">

@@ -1,13 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Depo;
 use Illuminate\Http\Request;
 
 class DepoController extends Controller
 {
-     public function index(){
-        return view('admin.depo.index');
+    public function index(){
+        $depos = Depo::All();
+        return view('admin.depo.index', compact('depos'));
     }
 
     public function create(){
@@ -16,5 +17,9 @@ class DepoController extends Controller
 
     public function edit(){
         return view('admin.depo.edit');
+    }
+
+    public function delete(){
+        
     }
 }

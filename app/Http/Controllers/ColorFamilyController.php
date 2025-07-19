@@ -10,4 +10,8 @@ class ColorFamilyController extends Controller
         $colorfamilys = DB::table('color_families')->select('id','name')->get();
         return view('admin.colorfamily.index',compact('colorfamilys'));
     }
+
+    public function delete(){
+
+    }
 }

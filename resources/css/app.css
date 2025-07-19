@@ -20,7 +20,7 @@
   /* Slide bar header */
   .sidebar{
     @apply
-      fixed top-0 left-0 w-[260px] bg-[#1131af] transition-all duration-200 ease-in h-screen z-10;
+      fixed top-0 left-0 w-[240px] bg-[#1131af] transition-all duration-200 ease-in h-screen z-10;
   }
   .slide-header{
     @apply flex justify-between items-center p-3.5 relative;
@@ -72,7 +72,7 @@
 
   /* Main Content dashboard */
   .home-section{
-    @apply relative transition-all duration-200 w-[calc(100%-260px)] ease-in left-[260px] overflow-y-auto h-screen;
+    @apply relative transition-all duration-200 w-[calc(100%-240px)] ease-in left-[240px] overflow-y-auto h-screen;
   }
   /* Home content navbar top */
   .home-content{
@@ -95,6 +95,13 @@
   }
 }
 
+/* Customize Dashboard User*/
+@layer components{
+  .table-cell .tb-img-user{
+    @apply w-12 rounded-sm border-3 border-b-green-700 border-r-blue-700 border-l-yellow-500 border-t-red-500;
+  }
+}
+
 /* Customize Datatable */
 @layer components{
   /* Main Header tb */
@@ -106,20 +113,20 @@
   }
   /* Table Header */
   .table-header {
-    @apply p-3.5 text-left text-[16px] font-semibold text-white;
+    @apply p-2 text-left text-[14px] font-semibold text-white;
   }
 
   .table-header-action {
-    @apply relative py-3.5 pr-4 pl-3 sm:pr-6 text-white;
+    @apply relative py-2 pr-4 pl-3 sm:pr-6 text-white;
   }
   /* First column cell (Name, bold text) */
   .table-cell-primary {
-    @apply py-2 text-sm font-medium whitespace-nowrap text-gray-900 pl-3;
+    @apply py-2 text-sm font-medium whitespace-nowrap text-gray-900 pl-2 text-[12px];
   }
 
   /* Common table cell */
   .table-cell {
-    @apply p-3 text-sm whitespace-nowrap text-gray-500;
+    @apply p-2 text-sm whitespace-nowrap text-gray-500 text-[12px];
   }
 
   /* Action cell */
@@ -156,7 +163,7 @@
     @apply p-0.5 bg-green-100;
   }
   .dataTables_empty {
-    @apply text-center text-green-800 py-4 bg-green-100;
+    @apply text-center text-green-800 py-3 bg-green-100;
   }
   .dataTables_wrapper .dataTables_paginate .paginate_button {
     @apply px-2 py-1 mx-0.5 text-xs text-white bg-green-700 rounded hover:bg-green-800 transition;

@@ -27,11 +27,11 @@ class AdminMiddleware
             }
 
             // Different user type - logout and redirect
-            Auth::guard('web')->logout();
+            Auth::logout();
             return redirect()->route('admin.auth.index')->with('error', 'Access Denied');
         }else{
             // Unauthenticated user - logout and redirect
-            Auth::guard('web')->logout();
+            Auth::logout();
             return redirect()->route('admin.auth.index')->with('error', 'Please login to access this page');
         } 
     }

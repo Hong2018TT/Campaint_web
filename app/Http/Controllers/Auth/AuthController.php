@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Session; // For flash messages, if not already using 'with()'
+use Illuminate\Validation\ValidationException; // For specific validation error handling
 
 class AuthController extends Controller
 {
@@ -18,58 +20,85 @@ class AuthController extends Controller
     }
 
     public function login(Request $request){
-        // Step 1: Validate user input
-        $validation = $request->validate([
-        'email' => 'required|email', // Ensure the email is valid
-        'password' => 'required|min:9', // Ensure the password is at least 9 characters
-        ], [
-            'email.required' => 'The email field is required. Please try again.', 
-            'password.required' => 'The password field is required.',
-            'password.min' => 'Your password must be at least 9 characters long.',
-        ]);
+        // Step 1: Validate user input with strong rules
+        try {
+            $request->validate([
+                'email' => ['required', 'string', 'email', 'max:255'], // More robust email validation
+                'password' => ['required', 'string', 'min:9'], // Passwords should be hashed, so min length for input is fine
+            ], [
+                'email.required' => 'The email field is required. Please try again.',
+                'email.email' => 'Please enter a valid email address.',
+                'password.required' => 'The password field is required.',
+                'password.min' => 'Your password must be at least 9 characters long.',
+            ]);
+        } catch (ValidationException $e) {
+            // Return validation errors with input
+            return redirect(route('admin.auth.index'))
+                ->withErrors($e->errors())
+                ->withInput($request->only('email', 'remember'));
+        }
 
         // Step 2: Prepare credentials and check "Remember Me"
-        $credentials = ['email' => $request->email, 'password' => $request->password];
-        $remember = $request->has('remember');
+        $credentials = [
+            'email' => $request->email,
+            'password' => $request->password,
+        ];
+        $remember = $request->boolean('remember'); // Use boolean to ensure true/false
 
-        // Step 3: Attempt authentication
+        // Step 3: Attempt authentication with throttling (Laravel's default for login attempts)
+        // Laravel's built-in Auth::attempt handles hashing, so don't hash the input password here.
         if (Auth::attempt($credentials, $remember)) {
-
-            // Step 4: Handle "Remember Me" functionality with cookies
+            // Regeneration of session ID to prevent session fixation attacks
+            $request->session()->regenerate();
             if ($remember) {
-                Cookie::queue('email', $request->email, 30); // Store email for 1 minute
-                Cookie::queue('password', $request->password, 30); // Store password for 1 minute
-                // , 0.5 & , time() + 30, '/'
+                 // You could set a non-sensitive cookie if strictly necessary for UX,
+                 // but typically not needed for 'remember me' logic itself.
+                //  Cookie::queue('password', $request->password, 60 * 24 *30);
+                 Cookie::queue('email', $request->email, 60 * 24 * 30); // Remember email for 30 days, for example
             } else {
+                 // If 'remember me' is not checked, clear any 'remember_email' cookie if it exists.
                 Cookie::queue(Cookie::forget('email'));
-                Cookie::queue(Cookie::forget('password'));
             }
 
-            $usershow = Auth::user(); // Fetch the logged-in user
-            $userRole = $roles[$usershow->role] ?? 'Unknown Role'; // Assign role or default to 'Unknown Role'
-            
-            // Step 5: Redirect based on user type
-            if (Auth::check() && Auth::user()->role == 'Administrator') { 
-                return redirect(route('admin.dashboard.home'))->with('success' , 'Signed in successfully!');
-            }else{
-                return redirect(route('admin.dashboard.home'))->width('error', 'Signed is not successfully!');
+            $user = Auth::user(); // Fetch the logged-in user
+
+            if ($user->role === 'Administrator') { // Use strict comparison
+                // Use a proper success message with `session()->flash()` or `with()` helper
+                return redirect()->intended(route('admin.dashboard.home'))->with('success', 'Welcome back, Administrator!');
+            } else {
+                // If the user logs in but isn't an administrator, perhaps redirect to a regular user dashboard
+                // or log them out if they are not supposed to be able to login here.
+                Auth::logout(); // Log out non-admin users if this is strictly an admin login
+                $request->session()->invalidate();
+                $request->session()->regenerateToken();
+                return redirect(route('admin.auth.index'))
+                    ->withErrors(['email' => 'You do not have administrative access.'])
+                    ->withInput($request->only('email'));
             }
-        }
-        else{
+        } else {
             // Step 6: Authentication failed
-            return redirect(route('admin.auth.index'))->withErrors(['email' => 'Invalid email or password.'])
-            ->withInput($request->only('email', 'remember')); // Retain email and "Remember Me" status
+            // Use specific error messages to avoid providing hints to attackers (e.g., "Email not found" vs "Invalid credentials")
+            return redirect(route('admin.auth.index'))
+                ->withErrors(['email' => 'These credentials do not match our records.']) // Generic error message
+                ->withInput($request->only('email', 'remember')); // Retain email and "Remember Me" status
         }
     }
 
-    public function logout(Request $request){
+
+    /**
+     * Log the user out of the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function logout(Request $request)
+    {
         // Step 1: Log the user out using the Auth facade.
-        Auth::guard('web')->logout();
-        // Step 2: Invalidate the user's session to prevent reuse.
+        // Auth::logout() will log out the default guard (usually 'web').
+        // Explicitly calling Auth::guard('web')->logout() is fine, but Auth::logout() is often sufficient.
+        Auth::logout();
         $request->session()->invalidate();
-        // Step 3: Regenerate the CSRF token to prevent token-related attacks.
         $request->session()->regenerateToken();
-        // Step 4: Redirect the user to the login page with a success message (optional but good practice).
         return redirect()->route('admin.auth.index')->with('success', 'You have been logged out successfully.');
     }
 }

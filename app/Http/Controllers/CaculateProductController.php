@@ -21,4 +21,8 @@ class CaculateProductController extends Controller
     public function create(){
         
     }
+
+    public function delete(){
+        
+    }
 }

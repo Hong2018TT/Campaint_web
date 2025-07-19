@@ -3,7 +3,7 @@
 :root{/* For set Variable Style Css */}
 
 body{
-    font-family: "Roboto", sans-serif;
+    font-family: "Roboto" , 'Kh Battambang', sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
     font-variation-settings:
@@ -17,7 +17,7 @@ body{
     height:6px; border-radius: 50%;
 }
 .tb-overflow::-webkit-scrollbar-thumb {
-    background: #002398; /* Tailwind 'green-500' */
+    background: #007a04; /* Tailwind 'green-500' */
     border-radius: 5px;
 }
 
@@ -133,8 +133,8 @@ input[type="color"] {
 /* ============================= Responsive Dashboard ============================= */
 @media (max-width: 768px) {
     .sidebar.collapsed{
-        width: 260px;
-        left: -260px;
+        width: 240px;
+        left: -240px;
     }
     .sidebar.collapsed .slide-nav .primary-nav {
         transform: translateY(15px);
@@ -161,8 +161,8 @@ input[type="color"] {
 
 @media (max-width: 915px) {
     .sidebar.collapsed{
-        width: 260px;
-        left: -260px;
+        width: 240px;
+        left: -240px;
     }
     /* Move this inside the media query */
     .sidebar.collapsed ~ .home-section {
