@@ -30,7 +30,7 @@
             <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 bg-red-100">
                 <i class='ri-store-fill text-3xl w-8 h-8 text-red-500'></i>
             </div>
-                <p class="text-2xl font-extrabold text-slate-800">----</p>
+                <p class="text-2xl font-extrabold text-red-500">{{ $depocount }}</p>
                 <p class="text-sm text-slate-500 mt-1">Depo</p>
         </div>
 
@@ -38,7 +38,7 @@
             <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 bg-sky-100">
             <i class='ri-archive-fill w-8 h-8 text-sky-500 text-3xl'></i>
             </div>
-            <p class="text-2xl font-extrabold text-slate-800">----</p>
+            <p class="text-2xl font-extrabold text-sky-500">{{ $product_typecount }}</p>
             <p class="text-sm text-slate-500 mt-1">Total Product Type</p>
         </div>
 
@@ -46,7 +46,7 @@
             <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 bg-purple-100">
             <i class='ri-palette-fill text-3xl w-8 h-8 text-purple-500'></i>
             </div>
-            <p class="text-2xl font-extrabold text-slate-800">----</p>
+            <p class="text-2xl font-extrabold text-purple-500">{{ $colorcount }}</p>
             <p class="text-sm text-slate-500 mt-1">Total Colors</p>
         </div>
 
@@ -54,7 +54,7 @@
             <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 bg-green-100">
             <i class='ri-color-filter-fill text-3xl w-8 h-8 text-green-500'></i>
             </div>
-            <p class="text-2xl font-extrabold text-slate-800">----</p>
+            <p class="text-2xl font-extrabold text-green-500">{{ $color_familycount }}</p>
             <p class="text-sm text-slate-500 mt-1">Total Color family</p>
         </div>
     </div>
@@ -189,20 +189,24 @@
                             <button @click="open = true" class="table-action-delete">
                                 <i class="ri-delete-bin-6-fill"></i>
                             </button>
-                            <!-- Backdrop -->
+
+                            <!-- The for display model tailwind & alpine.js -->
                             <div x-show="open" x-cloak
                                 @include('components.modal.model-transition')>
                                 <div x-show="open" @include('components.modal.model-fade')
-                                    class="modal-box-md"
-                                    @click.outside="open = true">
-                                <div class="modal-header-del">Delete</div>
-                                <div class="modal-body text-left px-4 py-2 whitespace-normal">
-                                    <p class="text-lg text-red-500">Are you sure you want to delete this item?</p>
-                                </div>
-                                <div class="model-footer flex justify-end space-x-2 px-4 pt-4">
-                                    <a @click="open = false" class="btn-close-model">Close</a>
-                                    <a href="#" class="btn-del-model">Delete</a>
-                                </div>
+                                        class="modal-box-md"
+                                        @click.outside="open = true">
+                                    <div class="modal-header-del">Delete</div>
+                                    <div class="modal-body text-left px-4 py-2 whitespace-normal">
+                                        <p class="text-lg text-red-500">Are you sure you want to delete this item?</p>
+                                    </div>
+
+                                    <form action="" id="" name="" method="POST">
+                                        <div class="model-footer flex justify-end space-x-2 px-4 pt-4">
+                                            <a @click="open = false" class="btn-close-model">Close</a>
+                                            <button type="submit" class="btn-del-model">Delete</button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -239,7 +243,7 @@
                                 </div>
                                 <div class="model-footer flex justify-end space-x-2 px-4 pt-4">
                                     <a @click="open = false" class="btn-close-model">Close</a>
-                                    <a href="#" class="btn-del-model">Delete</a>
+                                    <button type="submit" class="btn-del-model">Delete</button>
                                 </div>
                                 </div>
                             </div>

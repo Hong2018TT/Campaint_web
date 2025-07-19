@@ -28,33 +28,36 @@
                 <hr class="border-1 border-gray-400">
                 <div class="modal-body p-4">
                     <form id="" name="" action="#" method="POST">
-                        <div class="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 sm:gap-2 md:gap-4 text-left">
+                        <div class="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 sm:gap-2 md:gap-x-4 text-left">
                             <div class="box-form">
                                 <label for="product-en" class="title-form">Name (English)</label>
                                 <div class="form-outline">
-                                    <input type="text" name="Name_en" id="Name_en" class="form-input" placeholder="Enter your color name en">
+                                    <input type="text" name="Name_en" id="Name_en" class="form-input" placeholder="Enter your color name en" required>
                                 </div>
                             </div>
                             <div class="box-form">
                                 <label for="product-en" class="title-form">Name (Khmer)</label>
                                 <div class="form-outline">
-                                    <input type="text" name="Name_kh" id="Name_kh" class="form-input" placeholder="Enter your color name kh">
+                                    <input type="text" name="Name_kh" id="Name_kh" class="form-input" placeholder="Enter your color name kh" required>
                                 </div>
                             </div>
 
                             <div class="box-form">
-                                <label for="product-en" class="title-form">Color</label>
-                                <div class="form-outline">
-                                    <input type="color" name="color_code" id="color_code" class="form-input" placeholder="Enter your color">
+                                <label for="color" class="title-form">Color</label>
+                                <div class="flex items-center rounded-sm bg-white outline-1 -outline-offset-1 outline-gray-300 
+    focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-green-600 mb-1 mt-1">
+                                    <input type="color" name="color_code" id="color_code" class="form-input" placeholder="Enter your color" required>
                                 </div>
                             </div>
+                            
                             <div class="box-form">
                                 <label for="parent" class="title-form">Parent Color</label>
                                 <div class="grid grid-cols-1 focus-within:relative pt-2">
-                                    <select id="parent" name="parent" autocomplete="parent" aria-label="parent" class="form-select">
+                                    <select id="parent" name="parent" autocomplete="parent" aria-label="parent" class="form-select" required>
                                         <option value="" hidden selected>Select color families</option>
-                                        <option value="0">Cateogry one</option>
-                                        <option value="1">Cateogry two</option>
+                                        @foreach ($colorfamilys as $colorfamily)
+                                            <option value="{{ $colorfamily->id }}">{{ $colorfamily->name }}</option>
+                                        @endforeach
                                     </select>
 
                                     <svg class="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-500 sm:size-4" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-slot="icon">
@@ -63,13 +66,13 @@
                                 </div>
                             </div>
                         </div>
-                    </form>
-                </div>
+                    </div>
 
-                <div class="model-footer flex justify-end space-x-2 px-4 pt-4">
-                    <button  @click="open = false" class="btn-close-model">Close</button>
-                    <button type="submit" class="btn-save-model" name="save_colorfamily" id="save_colorfamily">Save</a>
+                    <div class="model-footer flex justify-end space-x-2 px-4 pt-4">
+                        <button  @click="open = false" class="btn-close-model">Close</button>
+                        <button type="submit" class="btn-save-model" name="save_colorfamily" id="save_colorfamily">Save</a>
                 </div>
+                </form>
                 </div>
             </div>
         </div>
@@ -124,7 +127,7 @@
                                 <hr class="border-1 border-gray-400">
                                 <div class="modal-body p-4">
                                     <form id="" name="" action="#" method="POST">
-                                        <div class="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 sm:gap-2 md:gap-4 text-left">
+                                        <div class="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 sm:gap-2 md:gap-x-4 text-left">
                                             <div class="box-form">
                                                 <label for="product-en" class="title-form">Name (English)</label>
                                                 <div class="form-outline">
@@ -140,7 +143,8 @@
 
                                             <div class="box-form">
                                                 <label for="product-en" class="title-form">Color</label>
-                                                <div class="form-outline">
+                                                <div class="flex items-center rounded-sm bg-white outline-1 -outline-offset-1 outline-gray-300 
+    focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-green-600 mb-1 mt-1">
                                                     <input type="color" name="color" id="color" class="form-input" placeholder="Enter your color">
                                                 </div>
                                             </div>

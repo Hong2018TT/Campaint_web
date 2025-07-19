@@ -15,7 +15,14 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\TaskController;
 
-Route::get('/', [AuthController::class, 'index'])->name('admin.auth.index');
+Route::get('/', function () {
+    if (Auth::check() && Auth::user()->role === 'Administrator') {
+        return redirect()->route('admin.dashboard.home');
+    }
+
+    return app(\App\Http\Controllers\Auth\AuthController::class)->index();
+})->name('admin.auth.index');
+
 Route::post('/login', [AuthController::class, 'login'])->name('savelogin');
 
 Route::middleware(['admin'])->group(function () {

@@ -31,21 +31,31 @@
                         <div class="grid grid-cols-1 text-left">
                             <div class="box-form">
                                 <label for="brand" class="title-form">Brand Name:</label>
-                                <div class="form-outline">
-                                    <input type="text" name="brand" id="brand" class="form-input" placeholder="Enter your brand">
+                                <div class="grid grid-cols-1 focus-within:relative pt-1">
+                                    <select name="create_brand" id="create_brand" autocomplete="create_brand" aria-label="create_brand" class="form-select" required>
+                                        <option value="0" hidden selected>Select category</option>
+                                        @foreach ($products as $product)
+                                            <option value="{{ $product->product_id }}">{{ $product->Name_EN }}</option>
+                                        @endforeach
+                                    </select>
+
+                                    <svg class="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-500 sm:size-4" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-slot="icon">
+                                        <path fill-rule="evenodd" d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                                    </svg>
                                 </div>
                             </div>
-                            <div class="box-form">
+
+                            <div class="box-form mt-1">
                                 <label for="net_weight" class="title-form">Net/Weight</label>
                                 <div class="form-outline">
-                                    <input type="text" name="net_weight" id="net_weight" class="form-input" placeholder="Enter your net/weight">
+                                    <input type="text" name="net_weight" id="net_weight" class="form-input" placeholder="Enter your net/weight" required>
                                 </div>
                             </div>
 
                             <div class="box-form">
                                 <label for="coverage_area" class="title-form">Coverage Area:</label>
                                 <div class="form-outline">
-                                    <input type="text" name="coverage_area" id="coverage_area" class="form-input" placeholder="Enter your coverage area">
+                                    <input type="text" name="coverage_area" id="coverage_area" class="form-input" placeholder="Enter your coverage area" required>
                                 </div>
                             </div>
 
@@ -54,13 +64,13 @@
                                 <span class="">111</span>
                             </div>
                         </div>
-                    </form>
-                </div>
+                    </div>
 
-                <div class="model-footer flex justify-end space-x-2 px-4 pt-4">
-                    <button  @click="open = false" class="btn-close-model">Close</button>
-                    <button class="btn-save-model">Save</button>
-                </div>
+                    <div class="model-footer flex justify-end space-x-2 px-4 pt-4">
+                        <button  @click="open = false" class="btn-close-model">Close</button>
+                        <button class="btn-save-model" type="submit">Save</button>
+                    </div>
+                </form>
                 </div>
             </div>
         </div>
@@ -116,21 +126,31 @@
                                             <div class="grid grid-cols-1 text-left">
                                                 <div class="box-form">
                                                     <label for="brand" class="title-form">Brand Name:</label>
-                                                    <div class="form-outline">
-                                                        <input type="text" name="brand" id="brand" class="form-input" placeholder="Enter your brand">
+                                                    <div class="grid grid-cols-1 focus-within:relative pt-1">
+                                                        <select name="edit_brand" id="edit_brand" autocomplete="edit_brand" aria-label="edit_brand" class="form-select" required>
+                                                            <option value="0" hidden selected>Select category</option>
+                                                            @foreach ($products as $product)
+                                                                <option value="{{ $product->product_id }}">{{ $product->Name_EN }}</option>
+                                                            @endforeach
+                                                        </select>
+
+                                                        <svg class="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-500 sm:size-4" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-slot="icon">
+                                                            <path fill-rule="evenodd" d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                                                        </svg>
                                                     </div>
                                                 </div>
-                                                <div class="box-form">
+
+                                                <div class="box-form mt-1">
                                                     <label for="net_weight" class="title-form">Net/Weight</label>
                                                     <div class="form-outline">
-                                                        <input type="text" name="net_weight" id="net_weight" class="form-input" placeholder="Enter your net/weight">
+                                                        <input type="text" name="net_weight" id="net_weight" class="form-input" placeholder="Enter your net/weight" required>
                                                     </div>
                                                 </div>
 
                                                 <div class="box-form">
                                                     <label for="coverage_area" class="title-form">Coverage Area:</label>
                                                     <div class="form-outline">
-                                                        <input type="text" name="coverage_area" id="coverage_area" class="form-input" placeholder="Enter your coverage area">
+                                                        <input type="text" name="coverage_area" id="coverage_area" class="form-input" placeholder="Enter your coverage area" required>
                                                     </div>
                                                 </div>
 
@@ -139,13 +159,13 @@
                                                     <span class="">111</span>
                                                 </div>
                                             </div>
-                                        </form>
-                                    </div>
+                                        </div>
 
-                                    <div class="model-footer flex justify-end space-x-2 px-4 pt-4">
-                                        <button  @click="open = false" class="btn-close-model">Close</button>
-                                        <button class="btn-save-model">Save</button>
-                                    </div>
+                                        <div class="model-footer flex justify-end space-x-2 px-4 pt-4">
+                                            <button  @click="open = false" class="btn-close-model">Close</button>
+                                            <button class="btn-save-model">Save</button>
+                                        </div>
+                                    </form>
                                     </div>
                                 </div>
                             </div>

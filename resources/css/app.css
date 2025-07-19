@@ -14,7 +14,7 @@
 @layer components {
   /* Set backgroud dashboard */
   .bg-mint-gradient {
-   background-image: linear-gradient(80deg, #d6ffe9, #ccf7e0, #eafff5, #e0f3ff, #d6efff);
+   background-image: linear-gradient(250deg, #d6ffe9, #ccf7e0, #eafff5, #e0f3ff, #d6efff);
   }
 
   /* Slide bar header */
@@ -177,8 +177,8 @@
     @apply cursor-pointer block rounded-sm bg-green-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-xs hover:bg-green-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600;
   }
   .form-outline{
-    @apply flex items-center rounded-sm bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 
-    focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-green-600 mb-4 mt-2;
+    @apply flex items-center rounded-sm bg-white pl-2 outline-1 -outline-offset-1 outline-gray-300 
+    focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-green-600 mb-1 mt-1;
   }
   .form-input{
     @apply block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6;
@@ -188,12 +188,16 @@
            bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1
           outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-green-600 sm:text-sm/6;
   }
+  .filter-product{
+    @apply w-full appearance-none border-0 border-b-2 border-l-2 border-gray-300 bg-green-100 py-1 pl-2 pr-10 text-green-800
+     focus:border-green-600 focus:outline-none focus:ring-0 sm:text-sm sm:leading-6 transition-colors duration-200 ease-in-out;
+  }
 }
 
 /* Style Form upload image */
 @layer components{
   .box-upload-image{
-    @apply mt-2 flex justify-center rounded-sm border-2 border-dashed border-black/15 px-6 py-10;
+    @apply mt-2 flex justify-center rounded-sm border-2 border-dashed border-black/15 px-2 py-2;
   }
   .text-upload-img{
     @apply relative cursor-pointer rounded-sm px-2 bg-green-600 text-white font-semibold hover:text-indigo-100;
@@ -224,7 +228,7 @@
     @apply px-4 py-2 text-sm font-medium text-white rounded-full bg-gray-500 hover:bg-gray-600 cursor-pointer;
   }
   .btn-del-model{
-    @apply px-4 py-2 text-sm font-medium text-white bg-red-500 hover:bg-red-600 rounded-full;
+    @apply px-4 py-2 text-sm font-medium text-white bg-red-500 hover:bg-red-600 rounded-full cursor-pointer;
   }
   .btn-save-model{
     @apply px-4 py-2 text-sm font-medium text-white bg-green-600 hover:bg-green-700 rounded-full cursor-pointer;
@@ -256,12 +260,6 @@
   .editor-wrapper{
     @apply h-40 overflow-hidden resize-y rounded-br-sm rounded-bl-sm 
            focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-green-600;
-  }
-}
-
-@layer utilities{
-  .box-form-img{
-    @apply mb-2;
   }
 }
 

@@ -34,7 +34,7 @@
                 </div>
             </div>
 
-             <fieldset class="border border-gray-300 px-4 py-2 rounded mt-3">
+            <fieldset class="border border-gray-300 px-4 py-2 rounded mt-3">
                 <legend class="text-sm rounded-xs font-bold text-white px-2 bg-green-700 pb-0.5">RGB:</legend>
                     {{-- section RGB value --}}
                     <div class="grid grid-cols-3 gap-2 sm:gap-2 md:gap-4 lg:gap-4">
@@ -62,7 +62,7 @@
                     </div>
             </fieldset>
 
-            <div class="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 sm:gap-2 md:gap-4">
+            <div class="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 sm:gap-2 md:gap-4 mt-3">
                 <div class="box-form">
                     <label for="product_type" class="title-form">Product Type <span class="text-gray-500">(Optional)</span></label>
                     <div class="form-outline">

@@ -116,6 +116,19 @@ body{
     min-height: 18rem; /* You can change this value */
 }
 
+/* Set size range color */
+input[type="color"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    height: 40px; /* Adjust height as needed */
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    overflow: hidden; /* Hide default border/shadow */
+}
+
 
 /* ============================= Responsive Dashboard ============================= */
 @media (max-width: 768px) {

@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Cookie;
 
 class AuthController extends Controller
 {
+
     public function index(){
         // Use for test Error 500
         // abort(500);
@@ -18,7 +19,7 @@ class AuthController extends Controller
 
     public function login(Request $request){
         // Step 1: Validate user input
-         $validation = $request->validate([
+        $validation = $request->validate([
         'email' => 'required|email', // Ensure the email is valid
         'password' => 'required|min:9', // Ensure the password is at least 9 characters
         ], [

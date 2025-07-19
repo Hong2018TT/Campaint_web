@@ -148,6 +148,7 @@ phoneInput.addEventListener('input', (e) => {
   };
 }
 
+// Javascript for Editor Quill
 const quill = new Quill('#editor', {
   modules: {
       toolbar: [
@@ -169,6 +170,7 @@ const quill = new Quill('#editor', {
   placeholder: 'Compose your content here...'
 });
 
+// Javascript for Editor Quill 1
 const quill1 = new Quill('#editor1', {
   modules: {
       toolbar: [
@@ -212,4 +214,108 @@ function setupImagePreview(inputId, previewId) {
             }
         });
     }
+}
+
+function Uploadproductcreate(inputId, previewId, iconId, errorId) {
+  const imgInput = document.getElementById(inputId);
+  const imgPreview = document.getElementById(previewId);
+  const uploadIcon = document.getElementById(iconId);
+  const errorMsg = document.getElementById(errorId);
+
+  const MAX_SIZE_MB = 10;
+  const MAX_SIZE_BYTES = MAX_SIZE_MB * 1024 * 1024; // 10MB in bytes
+
+  // Helper to reset the UI state for this specific image section
+  const resetUI = () => {
+      imgPreview.src = '#';
+      imgPreview.classList.add('hidden');
+      uploadIcon.classList.remove('hidden');
+      errorMsg && errorMsg.classList.add('hidden'); // Hide error if it exists
+  };
+
+  if (imgInput) { // Ensure the input element exists before attaching event listener
+      imgInput.addEventListener('change', (e) => {
+          const file = e.target.files[0];
+
+          if (!file) { // No file selected (e.g., user canceled)
+              resetUI();
+              return;
+          }
+
+          // Validate file size
+          if (file.size > MAX_SIZE_BYTES) {
+              e.target.value = ''; // Clear the input field to allow re-selection of the same file
+              resetUI();
+              if (errorMsg) {
+                  errorMsg.textContent = `File size exceeds ${MAX_SIZE_MB}MB.`;
+                  errorMsg.classList.remove('hidden');
+              }
+              return; // Stop processing
+          }
+
+          // If size is valid, hide any previous error
+          errorMsg && errorMsg.classList.add('hidden');
+
+          // Read and display the image
+          const reader = new FileReader();
+          reader.onload = (event) => {
+              imgPreview.src = event.target.result;
+              imgPreview.classList.remove('hidden');
+              uploadIcon.classList.add('hidden');
+          };
+          reader.readAsDataURL(file);
+      });
+  }
+}
+
+function EditImageProductCreate(inputId, previewId, iconId, errorId) {
+  const imgInput = document.getElementById(inputId);
+  const imgPreview = document.getElementById(previewId);
+  const uploadIcon = document.getElementById(iconId);
+  const errorMsg = document.getElementById(errorId);
+
+  const MAX_SIZE_MB = 10;
+  const MAX_SIZE_BYTES = MAX_SIZE_MB * 1024 * 1024; // 10MB in bytes
+
+  // Helper to reset the UI state for this specific image section
+  const resetUI = () => {
+      imgPreview.src = '#';
+      imgPreview.classList.add('hidden');
+      uploadIcon.classList.remove('hidden');
+      errorMsg && errorMsg.classList.add('hidden'); // Hide error if it exists
+  };
+
+  if (imgInput) { // Ensure the input element exists before attaching event listener
+      imgInput.addEventListener('change', (e) => {
+          const file = e.target.files[0];
+
+          if (!file) { // No file selected (e.g., user canceled)
+              resetUI();
+              return;
+          }
+
+          // Validate file size
+          if (file.size > MAX_SIZE_BYTES) {
+              e.target.value = ''; // Clear the input field to allow re-selection of the same file
+              resetUI();
+              if (errorMsg) {
+                  errorMsg.textContent = `File size exceeds ${MAX_SIZE_MB}MB.`;
+                  errorMsg.classList.remove('hidden');
+              }
+              return; // Stop processing
+          }
+
+          // If size is valid, hide any previous error
+          errorMsg && errorMsg.classList.add('hidden');
+
+          // Read and display the image
+          const reader = new FileReader();
+          reader.onload = (event) => {
+              imgPreview.src = event.target.result;
+              imgPreview.classList.remove('hidden');
+              uploadIcon.classList.add('hidden');
+          };
+          reader.readAsDataURL(file);
+      });
+  }
 }

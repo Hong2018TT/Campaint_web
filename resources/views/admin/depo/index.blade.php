@@ -25,7 +25,7 @@
                 <div class="relative mt-1">
                     <!-- The select input with an underline style -->
                     <select id="provinceFilter" name="provinceFilter" 
-                            class="w-full appearance-none border-0 border-b-2 border-l-2 border-gray-300 bg-transparent py-1 pl-2 pr-10 text-green-800 focus:border-green-600 focus:outline-none focus:ring-0 sm:text-sm sm:leading-6 transition-colors duration-200 ease-in-out">
+                            class="filter-product">
                         <option selected value="">Show All Province</option>
                         <option value="">Battanbang</option>
                         <option value="">Banteay Meanchey</option>

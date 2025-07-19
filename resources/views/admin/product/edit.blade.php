@@ -19,7 +19,7 @@
 
     <div class="flow-root pb-1 mx-3 pt-3">
         <form id="#" name="#" calss="max-w-md mx-auto" action="#" method="post" enctype="multipart/form-data">
-            <div class="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 sm:gap-2 md:gap-4">
+            <div class="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 sm:gap-2 md:gap-x-4">
                 <div class="box-form">
                     <label for="product-en" class="title-form">Product Name (English)</label>
                     <div class="form-outline">
@@ -131,96 +131,136 @@
             <fieldset class="border border-gray-300 px-4 pb-2 rounded mt-3">
                 <legend class="text-sm rounded-xs font-bold text-white px-2 bg-green-700 pb-0.5">Image:</legend>
                     <div class="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 sm:gap-2 md:gap-4 mt-3">
+
                         {{-- Section main image product --}}
                         <div class="box-form-img">
-                            <label for="main-image-title text-sm/6 font-medium">Main Image</label>
+                            <label for="edit_img_url_main" class="main-image-title text-sm/6 font-medium">Main Image</label>
                             <div class="box-upload-image">
                                 <div class="text-center">
-                                    {{-- Icon Upload Image --}}
-                                    <i class="ri-upload-2-fill mx-auto text-5xl text-gray-500"></i>
-                                    <div class="mt-4 flex text-sm/6 text-gray-400">
-                                        <label for="img_url" class="text-upload-img">
+                                    <div class="min-h-48 flex justify-center items-center">
+                                        {{-- This icon can be hidden or replaced once an image is loaded --}}
+                                        <i class="ri-image-add-line mx-auto text-9xl text-black/25" id="edit-upload-icon"></i>
+                                        {{-- This for upload display image product --}}
+                                        <img id="edit-preview-image-product" src="#" alt="Image Preview" class="edit-preview-image-product hidden max-w-full mx-auto rounded-sm"/> 
+                                    </div>
+                                    <div class="flex justify-center text-sm/6 text-gray-400 mt-2">
+                                        <label for="edit_img_url_main" class="text-upload-img">
                                             <span>Upload a file</span>
-                                            <input id="img_url" name="img_url" type="file" class="sr-only" accept="image/*">
+                                            <input id="edit_img_url_main" name="img_url" type="file" class="sr-only" accept="image/*">
                                         </label>
                                         <p class="pl-1">or drag and drop</p>
                                     </div>
                                     <p class="text-xs/5 text-gray-400">PNG, JPG, GIF up to 10MB</p>
+                                    {{-- Error message display for file size --}}
+                                    <p id="file-size-error" class="text-red-500 text-sm mt-1 hidden"></p>
                                 </div>
                             </div>
                         </div>
+
                         {{-- Section addtional one --}}
                         <div class="box-form-img">
-                            <label for="main-image-title text-sm/6 font-medium">Additional Image 1</label>
+                            <label class="edit_img_url_1" for="main-image-title text-sm/6 font-medium">Additional Image 1</label>
                             <div class="box-upload-image">
                                 <div class="text-center">
-                                    {{-- Icon Upload Image --}}
-                                    <i class="ri-upload-2-fill mx-auto text-5xl text-gray-500"></i>
-                                    <div class="mt-4 flex text-sm/6 text-gray-400">
-                                        <label for="image_slide1" class="text-upload-img">
+                                    <div class="min-h-48 flex justify-center items-center">
+                                        {{-- This icon can be hidden or replaced once an image is loaded --}}
+                                        <i class="ri-image-add-line mx-auto text-9xl text-black/25" id="edit-upload-icon-1"></i>
+                                        {{-- This for upload display image product --}}
+                                        <img id="edit-preview-image-1" src="#" alt="Image Preview" class="edit-preview-image-1 hidden max-w-full mx-auto rounded-sm"/> 
+                                    </div>
+
+                                    <div class="flex justify-center text-sm/6 text-gray-400 mt-2">
+                                        <label for="edit_img_url_1" class="text-upload-img">
                                             <span>Upload a file</span>
-                                            <input id="image_slide1" name="image_slide1" type="file" class="sr-only" accept="image/*">
+                                            <input id="edit_img_url_1" name="image_url1" type="file" class="sr-only" accept="image/*">
                                         </label>
                                         <p class="pl-1">or drag and drop</p>
                                     </div>
                                     <p class="text-xs/5 text-gray-400">PNG, JPG, GIF up to 10MB</p>
+                                    {{-- Error message display for file size --}}
+                                    <p id="edit-file-size-error-1" class="text-red-500 text-sm mt-1 hidden"></p>
                                 </div>
                             </div>
                         </div>
-                        {{-- Section addtional two --}}
+
+                        {{-- Section addtional two--}}
                         <div class="box-form-img">
-                            <label for="main-image-title text-sm/6 font-medium">Additional Image 2</label>
+                            <label class="edit_img_url_2" for="main-image-title text-sm/6 font-medium">Additional Image 1</label>
                             <div class="box-upload-image">
                                 <div class="text-center">
-                                    {{-- Icon Upload Image --}}
-                                    <i class="ri-upload-2-fill mx-auto text-5xl text-gray-500"></i>
-                                    <div class="mt-4 flex text-sm/6 text-gray-400">
-                                        <label for="image_slide2" class="text-upload-img">
+                                    <div class="min-h-48 flex justify-center items-center">
+                                        {{-- This icon can be hidden or replaced once an image is loaded --}}
+                                        <i class="ri-image-add-line mx-auto text-9xl text-black/25" id="edit-upload-icon-2"></i>
+                                        {{-- This for upload display image product --}}
+                                        <img id="edit-preview-image-2" src="#" alt="Image Preview" class="edit-preview-image-2 hidden max-w-full mx-auto rounded-sm"/> 
+                                    </div>
+
+                                    <div class="flex justify-center text-sm/6 text-gray-400 mt-2">
+                                        <label for="edit_img_url_2" class="text-upload-img">
                                             <span>Upload a file</span>
-                                            <input id="image_slide2" name="image_slide2" type="file" class="sr-only" accept="image/*">
+                                            <input id="edit_img_url_2" name="image_url2" type="file" class="sr-only" accept="image/*">
                                         </label>
                                         <p class="pl-1">or drag and drop</p>
                                     </div>
                                     <p class="text-xs/5 text-gray-400">PNG, JPG, GIF up to 10MB</p>
+                                    {{-- Error message display for file size --}}
+                                    <p id="edit-file-size-error-2" class="text-red-500 text-sm mt-1 hidden"></p>
                                 </div>
                             </div>
                         </div>
-                        {{-- Section addtional three --}}
+
+                        {{-- Section addtional three--}}
                         <div class="box-form-img">
-                            <label for="main-image-title text-sm/6 font-medium">Additional Image 3</label>
+                            <label class="edit_img_url_3" for="main-image-title text-sm/6 font-medium">Additional Image 1</label>
                             <div class="box-upload-image">
                                 <div class="text-center">
-                                    {{-- Icon Upload Image --}}
-                                    <i class="ri-upload-2-fill mx-auto text-5xl text-gray-500"></i>
-                                    <div class="mt-4 flex text-sm/6 text-gray-400">
-                                        <label for="image_slide3" class="text-upload-img">
+                                    <div class="min-h-48 flex justify-center items-center">
+                                        {{-- This icon can be hidden or replaced once an image is loaded --}}
+                                        <i class="ri-image-add-line mx-auto text-9xl text-black/25" id="edit-upload-icon-3"></i>
+                                        {{-- This for upload display image product --}}
+                                        <img id="edit-preview-image-3" src="#" alt="Image Preview" class="edit-preview-image-3 hidden max-w-full mx-auto rounded-sm"/> 
+                                    </div>
+
+                                    <div class="flex justify-center text-sm/6 text-gray-400 mt-2">
+                                        <label for="edit_img_url_3" class="text-upload-img">
                                             <span>Upload a file</span>
-                                            <input id="image_slide3" name="image_slide3" type="file" class="sr-only" accept="image/*">
+                                            <input id="edit_img_url_3" name="image_url3" type="file" class="sr-only" accept="image/*">
                                         </label>
                                         <p class="pl-1">or drag and drop</p>
                                     </div>
                                     <p class="text-xs/5 text-gray-400">PNG, JPG, GIF up to 10MB</p>
+                                    {{-- Error message display for file size --}}
+                                    <p id="edit-file-size-error-3" class="text-red-500 text-sm mt-1 hidden"></p>
                                 </div>
                             </div>
                         </div>
-                        {{-- Section addtional four --}}
+
+                        {{-- Section addtional three--}}
                         <div class="box-form-img">
-                            <label for="main-image-title text-sm/6 font-medium">Additional Image 4</label>
+                            <label class="edit_img_url_4" for="main-image-title text-sm/6 font-medium">Additional Image 1</label>
                             <div class="box-upload-image">
                                 <div class="text-center">
-                                    {{-- Icon Upload Image --}}
-                                    <i class="ri-upload-2-fill mx-auto text-5xl text-gray-500"></i>
-                                    <div class="mt-4 flex text-sm/6 text-gray-400">
-                                        <label for="image_slide4" class="text-upload-img">
+                                    <div class="min-h-48 flex justify-center items-center">
+                                        {{-- This icon can be hidden or replaced once an image is loaded --}}
+                                        <i class="ri-image-add-line mx-auto text-9xl text-black/25" id="edit-upload-icon-4"></i>
+                                        {{-- This for upload display image product --}}
+                                        <img id="edit-preview-image-4" src="#" alt="Image Preview" class="edit-preview-image-4 hidden max-w-full mx-auto rounded-sm"/> 
+                                    </div>
+
+                                    <div class="flex justify-center text-sm/6 text-gray-400 mt-2">
+                                        <label for="edit_img_url_4" class="text-upload-img">
                                             <span>Upload a file</span>
-                                            <input id="image_slide4" name="image_slide4" type="file" class="sr-only" accept="image/*">
+                                            <input id="edit_img_url_4" name="image_url4" type="file" class="sr-only" accept="image/*">
                                         </label>
                                         <p class="pl-1">or drag and drop</p>
                                     </div>
                                     <p class="text-xs/5 text-gray-400">PNG, JPG, GIF up to 10MB</p>
+                                    {{-- Error message display for file size --}}
+                                    <p id="edit-file-size-error-4" class="text-red-500 text-sm mt-1 hidden"></p>
                                 </div>
                             </div>
                         </div>
+
                     </div>
             </fieldset>
 
