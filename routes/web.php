@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Password;
 
 // All Controllers
 use App\Http\Controllers\Auth\AuthController;
@@ -22,7 +21,7 @@ use App\Http\Controllers\TaskController;
 |--------------------------------------------------------------------------
 */
 Route::get('/forgot-password', function () {
-    return view('auth.forgot-password'); // Create this view if needed
+    return view('auth.forgot-password'); // Optional view
 })->middleware('guest')->name('password.request');
 
 /*
@@ -36,7 +35,7 @@ Route::get('/', [AuthController::class, 'index'])->name('login');
 // Login Submit
 Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
 
-// Logout (POST method required for security)
+// Logout (POST)
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 /*
@@ -66,6 +65,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/depo', [DepoController::class, 'index'])->name('admin.depo.index');
     Route::get('/depo-create', [DepoController::class, 'create'])->name('admin.depo.create');
     Route::get('/depo-edit', [DepoController::class, 'edit'])->name('admin.depo.edit');
+    Route::get('/depos/ajax', [DepoController::class, 'ajaxTable'])->name('admin.depo.ajax'); // ✅ AJAX DataTable route
 
     // Product Calculation
     Route::get('/calculate-product', [CaculateProductController::class, 'index'])->name('admin.cal_product.index');
@@ -77,4 +77,8 @@ Route::middleware(['auth'])->group(function () {
     // Misc Pages
     Route::get('/about', [AboutController::class, 'index'])->name('admin.about.index');
     Route::get('/task', [TaskController::class, 'index'])->name('admin.task.index');
+
+
+    Route::delete('/depo/{id}', [DepoController::class, 'destroy'])->name('admin.depo.destroy');
+
 });
