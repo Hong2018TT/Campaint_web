@@ -131,27 +131,26 @@
                                             <div class="box-form">
                                                 <label for="product-en" class="title-form">Name (English)</label>
                                                 <div class="form-outline">
-                                                    <input type="text" name="Name_EN" id="Name_EN" class="form-input" placeholder="Enter your color name en">
+                                                    <input type="text" name="Name_EN" id="Name_EN" class="form-input" placeholder="Enter your color name en" required>
                                                 </div>
                                             </div>
                                             <div class="box-form">
                                                 <label for="product-en" class="title-form">Name (Khmer)</label>
                                                 <div class="form-outline">
-                                                    <input type="text" name="Name_KH" id="Name_KH" class="form-input" placeholder="Enter your color name kh">
+                                                    <input type="text" name="Name_KH" id="Name_KH" class="form-input" placeholder="Enter your color name kh" required>
                                                 </div>
                                             </div>
 
                                             <div class="box-form">
                                                 <label for="product-en" class="title-form">Color</label>
-                                                <div class="flex items-center rounded-sm bg-white outline-1 -outline-offset-1 outline-gray-300 
-    focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-green-600 mb-1 mt-1">
+                                                <div class="flex items-center rounded-sm bg-white outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-green-600 mb-1 mt-1">
                                                     <input type="color" name="color" id="color" class="form-input" placeholder="Enter your color">
                                                 </div>
                                             </div>
                                             <div class="box-form">
                                                 <label for="parent" class="title-form">Parent Color</label>
                                                 <div class="grid grid-cols-1 focus-within:relative pt-2">
-                                                    <select id="parent" name="parent" autocomplete="parent" aria-label="parent" class="form-select">
+                                                    <select id="parent" name="parent" autocomplete="parent" aria-label="parent" class="form-select" required>
                                                         <option value="" hidden selected>Select color families</option>
                                                         <option value="0">Cateogry one</option>
                                                         <option value="1">Cateogry two</option>
@@ -163,13 +162,14 @@
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
+                                        
+                                        <div class="model-footer flex justify-end space-x-2 px-4 pt-4">
+                                            <button  @click="open = false" class="btn-close-model">Close</button>
+                                            <button type="submit" class="btn-save-model">update</button>
+                                        </div>
                                     </form>
-                                </div>
-
-                                <div class="model-footer flex justify-end space-x-2 px-4 pt-4">
-                                    <button  @click="open = false" class="btn-close-model">Close</button>
-                                    <button class="btn-save-model">update</button>
-                                </div>
+                                
                                 </div>
                             </div>
                         </div>
@@ -196,10 +196,12 @@
                                     <p class="text-lg text-red-500">Are you sure you want to delete this item?</p>
                                 </div>
 
-                                <div class="model-footer flex justify-end space-x-2 px-4 pt-4">
-                                    <a @click="open = false" class="btn-close-model">Close</a>
-                                    <a href="#" class="btn-del-model">Delete</a>
-                                </div>
+                                <form id="" name="" action="" method="POST">
+                                    <div class="model-footer flex justify-end space-x-2 px-4 pt-4">
+                                        <a @click="open = false" class="btn-close-model">Close</a>
+                                        <button type="submit" class="btn-del-model">Delete</button>
+                                    </div>
+                                </form>
                                 </div>
                             </div>
                         </div>

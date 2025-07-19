@@ -23,13 +23,13 @@
                 <div class="box-form">
                     <label for="color_code" class="title-form">Color Code</label>
                     <div class="form-outline">
-                        <input type="text" name="color_code" id="color_code" class="form-input" placeholder="Enter your product name en">
+                        <input type="text" name="color_code" id="color_code" class="form-input" placeholder="Enter your product name en" required>
                     </div>
                 </div>
                 <div class="box-form">
                     <label for="color_name" class="title-form">Color Name</label>
                     <div class="form-outline">
-                        <input type="text" name="color_name" id="color_name" class="form-input" placeholder="Enter your product name en">
+                        <input type="text" name="color_name" id="color_name" class="form-input" placeholder="Enter your product name en" required>
                     </div>
                 </div>
             </div>
@@ -41,21 +41,21 @@
                         <div class="box-form">
                             <div class="form-outline">
                                 <div class="shrink-0 text-base text-gray-500 select-none sm:text-sm/6">R:</div>
-                                <input type="number" name="r" id="r" class="form-input" placeholder="number"
+                                <input type="number" name="r" id="r" class="form-input" placeholder="number" required
                                 pattern="\d{1,3}" maxlength="3" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 3);">
                             </div>
                         </div>
                         <div class="box-form">
                             <div class="form-outline">
                                 <div class="shrink-0 text-base text-gray-500 select-none sm:text-sm/6">G:</div>
-                                <input type="number" name="g" id="g" class="form-input" placeholder="number"
+                                <input type="number" name="g" id="g" class="form-input" placeholder="number" required
                                 pattern="\d{1,3}" maxlength="3" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 3);">
                             </div>
                         </div>
                         <div class="box-form">
                             <div class="form-outline">
                                 <div class="shrink-0 text-base text-gray-500 select-none sm:text-sm/6">B:</div>
-                                <input type="number" name="b" id="b" class="form-input" placeholder="number"
+                                <input type="number" name="b" id="b" class="form-input" placeholder="number" required
                                 pattern="\d{1,3}" maxlength="3" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 3);">
                             </div>
                         </div>
@@ -72,7 +72,7 @@
                 <div class="box-form">
                     <label for="sub-category" class="title-form">Color Family</label>
                     <div class="grid grid-cols-1 focus-within:relative pt-2">
-                        <select id="subcategory" name="subcategory" autocomplete="category-name" aria-label="category" class="form-select">
+                        <select id="subcategory" name="subcategory" autocomplete="category-name" aria-label="category" class="form-select" required>
                             <option value="" hidden selected>Select color family</option>
                             <option value="0">Cateogry one</option>
                             <option value="1">Cateogry two</option>

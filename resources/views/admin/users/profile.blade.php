@@ -15,7 +15,7 @@
                                     alt="Admin Avatar" loading="lazy"
                                     onerror="this.onerror=null;this.src='https://placehold.co/128x128/E2E8F0/4A5568?text=Admin';"/>
                                     <div class="upload-profile">
-                                            <i class="ri-upload-2-fill text-lg"></i>
+                                        <i class="ri-upload-2-fill text-lg"></i>
                                         <input type="file" name="profile_image" id="profileImageInput" class="hidden" accept="image/*">
                                     </div>
                             </div>

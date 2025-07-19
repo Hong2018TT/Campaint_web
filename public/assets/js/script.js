@@ -141,8 +141,9 @@ phoneInput.addEventListener('input', (e) => {
 });
 
   const formatPhone = (val) => {
-    const digits = val.replace(/\D/g, '').slice(0, 9);
-    const match = digits.match(/^(\d{0,3})(\d{0,3})(\d{0,3})$/);
+    // Change slice(0, 9) to slice(0, 10) for 10-digit numbers
+    const digits = val.replace(/\D/g, '').slice(0, 10); 
+    const match = digits.match(/^(\d{0,3})(\d{0,3})(\d{0,4})$/);
     if (!match) return digits;
     return [match[1], match[2], match[3]].filter(Boolean).join('-');
   };

@@ -40,7 +40,10 @@
                     @foreach ($users as $user)
                         <tr class="td-bg-dash">
                             <td class="table-cell-primary">{{ $loop->iteration }}</td>
-                            <td class="table-cell"><img src="{{ asset('assets/img/admin/icon-user.jpg')}}" class="tb-img-user" alt="admin & user" loading="lazy"></td>
+                            <td class="table-cell">
+                                <div class="relative w-14 h-14 p-[3px] rounded-sm overflow-hidden" style="background: linear-gradient(to bottom, red, blue, green , yellow);">
+                                    <img src="{{ asset('assets/img/admin/icon-user.jpg')}}" class="tb-img-user" alt="admin & user" loading="lazy">
+                                </div>
                             <td class="table-cell">{{ $user->name }}</td>
                             <td class="table-cell">{{ $user->email }}</td>
                             <td class="table-cell">
@@ -67,10 +70,12 @@
                                     <p class="text-lg text-red-500">Are you sure you want to delete this item?</p>
                                     </div>
 
-                                    <div class="model-footer flex justify-end space-x-2 px-4 pt-4">
-                                    <a @click="open = false" class="btn-close-model">Close</a>
-                                    <a href="#" class="btn-del-model">Delete</a>
-                                    </div>
+                                    <form id="" name="" action="" method="POST">
+                                        <div class="model-footer flex justify-end space-x-2 px-4 pt-4">
+                                            <a @click="open = false" class="btn-close-model">Close</a>
+                                            <button type="submit" class="btn-del-model">Delete</button>
+                                        </div>
+                                    </form>
                                 </div>
                                 </div>
                             </div>

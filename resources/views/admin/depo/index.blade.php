@@ -76,9 +76,9 @@
                                     <a href="{{route('admin.depo.edit')}}" class="table-action-edit"><i class="ri-edit-circle-fill"></i></a>
                                 </div>
                                     <div x-data="{ open: false }">
-                                        <button @click="open = true" class="table-action-delete">
+                                        <a @click="open = true" class="table-action-delete">
                                             <i class="ri-delete-bin-6-fill"></i>
-                                        </button>
+                                        </a>
                                         <!-- Backdrop -->
                                         <div x-show="open" x-cloak
                                             @include('components.modal.model-transition')>
@@ -94,10 +94,12 @@
                                                 <p class="text-lg text-red-500">Are you sure you want to delete this item?</p>
                                             </div>
 
-                                            <div class="model-footer flex justify-end space-x-2 px-4 pt-4">
-                                                <a @click="open = false" class="btn-close-model">Close</a>
-                                                <a href="#" class="btn-del-model">Delete</a>
-                                            </div>
+                                            <form id="" name="" action="" method="POST">
+                                                <div class="model-footer flex justify-end space-x-2 px-4 pt-4">
+                                                    <a @click="open = false" class="btn-close-model">Close</a>
+                                                    <button type="submit" class="btn-del-model">Delete</button>
+                                                </div>
+                                            </form>
                                             </div>
                                         </div>
                                     </div>

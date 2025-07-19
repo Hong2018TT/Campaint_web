@@ -45,9 +45,9 @@
                 <td class="table-cell-actions">
                   <a href="{{route('admin.product.edit')}}" class="table-action-edit"><i class="ri-edit-circle-fill"></i></a>
                   <div x-data="{ open: false }">
-                    <button @click="open = true" class="table-action-delete">
+                    <a @click="open = true" class="table-action-delete">
                       <i class="ri-delete-bin-6-fill"></i>
-                    </button>
+                    </a>
                     <!-- Backdrop -->
                     <div x-show="open" x-cloak @include('components.modal.model-transition')>
                       <div x-show="open" @include('components.modal.model-fade')

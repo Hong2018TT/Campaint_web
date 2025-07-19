@@ -26,19 +26,19 @@
                             <div class="box-form">
                                 <label for="depo-en" class="title-form">Name (English)</label>
                                 <div class="form-outline">
-                                    <input type="text" name="depo_en" id="depo_en" class="form-input" placeholder="Enter your product name en">
+                                    <input type="text" name="depo_en" id="depo_en" class="form-input" placeholder="Enter your product name en" required>
                                 </div>
                             </div>
                             <div class="box-form">
                                 <label for="depo-add-en" class="title-form">Address (English)</label>
                                 <div class="form-outline">
-                                    <input type="text" name="depo_add_en" id="depo_add_en" class="form-input" placeholder="Enter your product name en">
+                                    <input type="text" name="depo_add_en" id="depo_add_en" class="form-input" placeholder="Enter your product name en" required>
                                 </div>
                             </div>
                             <div class="box-form">
                                 <label for="depo-add-kh" class="title-form">Address (Khmer)</label>
                                 <div class="form-outline">
-                                    <input type="text" name="depo_add_kh" id="depo_add_kh" class="form-input" placeholder="Enter your product name en">
+                                    <input type="text" name="depo_add_kh" id="depo_add_kh" class="form-input" placeholder="Enter your product name en" required>
                                 </div>
                             </div>
                         </div>
@@ -52,19 +52,19 @@
                             <div class="box-form">
                                 <label for="depo-kh" class="title-form">Name (Khmer)</label>
                                 <div class="form-outline">
-                                    <input type="text" name="depo_kh" id="depo_kh" class="form-input" placeholder="Enter your product name en">
+                                    <input type="text" name="depo_kh" id="depo_kh" class="form-input" placeholder="Enter your product name en" required>
                                 </div>
                             </div>
                             <div class="box-form">
                                 <label for="depo-pro-en" class="title-form">Province (english)</label>
                                 <div class="form-outline">
-                                    <input type="text" name="depo_pro_kh" id="depo_pro_kh" class="form-input" placeholder="Enter your product name en">
+                                    <input type="text" name="depo_pro_kh" id="depo_pro_kh" class="form-input" placeholder="Enter your product name en" required>
                                 </div>
                             </div>
                             <div class="box-form">
                                 <label for="depo-pro-kh" class="title-form">Province (Khmer)</label>
                                 <div class="form-outline">
-                                    <input type="text" name="depo_pro_kh" id="depo_pro_kh" class="form-input" placeholder="Enter your product name en">
+                                    <input type="text" name="depo_pro_kh" id="depo_pro_kh" class="form-input" placeholder="Enter your product name en" required>
                                 </div>
                             </div>
                         </div>
@@ -75,13 +75,13 @@
                         <label for="phone" class="title-form">Phone</label>
                         <div class="form-outline">
                             <div class="shrink-0 text-base text-gray-500 select-none sm:text-sm/6">(+855):</div>
-                            <input type="tel" name="phone" id="phone" class="form-input" placeholder="Enter your phone number" maxlength="11">
+                            <input type="tel" name="phone" id="phone" class="form-input" placeholder="Enter your phone number" maxlength="14" required>
                         </div>
                     </div>
                     <div class="box-form">
                         <label for="GPS" class="title-form">GPS</label>
                         <div class="form-outline">
-                            <input type="text" name="GPS" id="GPS" class="form-input" placeholder="Enter your product name en">
+                            <input type="text" name="GPS" id="GPS" class="form-input" placeholder="Enter your product name en" required>
                         </div>
                     </div>
                 </div>
