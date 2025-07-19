@@ -19,6 +19,10 @@ class DepoController extends Controller
         return view('admin.depo.edit');
     }
 
+    public function update(){
+        
+    }
+
     public function delete(){
         
     }

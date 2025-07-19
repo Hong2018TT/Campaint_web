@@ -216,7 +216,7 @@ function setupImagePreview(inputId, previewId) {
     }
 }
 
-function Uploadproductcreate(inputId, previewId, iconId, errorId) {
+function UploadImage(inputId, previewId, iconId, errorId) {
   const imgInput = document.getElementById(inputId);
   const imgPreview = document.getElementById(previewId);
   const uploadIcon = document.getElementById(iconId);
@@ -268,54 +268,22 @@ function Uploadproductcreate(inputId, previewId, iconId, errorId) {
   }
 }
 
-function EditImageProductCreate(inputId, previewId, iconId, errorId) {
-  const imgInput = document.getElementById(inputId);
-  const imgPreview = document.getElementById(previewId);
-  const uploadIcon = document.getElementById(iconId);
-  const errorMsg = document.getElementById(errorId);
+// Set up passwordtoggle user porfile in form
+function PswToggleProfile(inputId, toggleIconId) {
+    const passwordInput = document.getElementById(inputId);
+    const toggleIcon = document.getElementById(toggleIconId);
 
-  const MAX_SIZE_MB = 10;
-  const MAX_SIZE_BYTES = MAX_SIZE_MB * 1024 * 1024; // 10MB in bytes
+    if (passwordInput && toggleIcon) {
+        toggleIcon.addEventListener('click', function () {
+            // Toggle the type attribute
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
 
-  // Helper to reset the UI state for this specific image section
-  const resetUI = () => {
-      imgPreview.src = '#';
-      imgPreview.classList.add('hidden');
-      uploadIcon.classList.remove('hidden');
-      errorMsg && errorMsg.classList.add('hidden'); // Hide error if it exists
-  };
-
-  if (imgInput) { // Ensure the input element exists before attaching event listener
-      imgInput.addEventListener('change', (e) => {
-          const file = e.target.files[0];
-
-          if (!file) { // No file selected (e.g., user canceled)
-              resetUI();
-              return;
-          }
-
-          // Validate file size
-          if (file.size > MAX_SIZE_BYTES) {
-              e.target.value = ''; // Clear the input field to allow re-selection of the same file
-              resetUI();
-              if (errorMsg) {
-                  errorMsg.textContent = `File size exceeds ${MAX_SIZE_MB}MB.`;
-                  errorMsg.classList.remove('hidden');
-              }
-              return; // Stop processing
-          }
-
-          // If size is valid, hide any previous error
-          errorMsg && errorMsg.classList.add('hidden');
-
-          // Read and display the image
-          const reader = new FileReader();
-          reader.onload = (event) => {
-              imgPreview.src = event.target.result;
-              imgPreview.classList.remove('hidden');
-              uploadIcon.classList.add('hidden');
-          };
-          reader.readAsDataURL(file);
-      });
-  }
+            // Toggle the eye icon classes
+            this.classList.toggle('ri-eye-fill');
+            this.classList.toggle('ri-eye-off-fill');
+        });
+    } else {
+        console.warn(`Could not find elements for inputId: ${inputId} or toggleIconId: ${toggleIconId}`);
+    }
 }

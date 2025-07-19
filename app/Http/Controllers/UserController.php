@@ -12,16 +12,21 @@ class UserController extends Controller
     }
 
     public function create(){
-
+        return view('admin.users.create');
     }
 
     public function edit(){
+        return view('admin.users.edit');
+    }
+
+    public function update(){
 
     }
 
     public function delete(){
-        
+
     }
+
 
     public function profile(){
         return view('admin.users.profile');

@@ -54,6 +54,9 @@ Route::middleware(['admin'])->group(function () {
     
     //====== selection User=====
     Route::get('/user',[UserController::class, 'index'])->name('admin.users.index');
+    Route::get('/user-create',[UserController::class, 'create'])->name('admin.users.create');
+    Route::get('/user-edit',[UserController::class ,'edit'])->name('admin.users.edit');
+
     Route::get('/user-profile',[UserController::class, 'profile'])->name('admin.users.profile');
     
     Route::get('/about',[AboutController::class, 'index'])->name('admin.about.index');

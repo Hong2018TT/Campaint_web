@@ -11,6 +11,10 @@ class ColorFamilyController extends Controller
         return view('admin.colorfamily.index',compact('colorfamilys'));
     }
 
+    public function update(){
+        
+    }
+
     public function delete(){
 
     }

@@ -8,7 +8,7 @@
             <h1 class="text-xl font-semibold text-green-800">User</h1>
         </div>
         <div class="sm:mt-0 sm:flex-none">
-            <a href="#">
+            <a href="{{route('admin.users.create')}}">
                 <button type="button" class="btn-add">
                     <i class="ri-add-line text-md"></i>
                     User</button>
@@ -43,10 +43,12 @@
                             <td class="table-cell"><img src="{{ asset('assets/img/admin/icon-user.jpg')}}" class="tb-img-user" alt="admin & user" loading="lazy"></td>
                             <td class="table-cell">{{ $user->name }}</td>
                             <td class="table-cell">{{ $user->email }}</td>
-                            <td class="table-cell">{{ $user->role }}</td>
+                            <td class="table-cell">
+                                <span class="badge-role {{ $user->role == 'Administrator' ? 'text-red-700 ring-red-600/10 bg-red-100' : 'text-gray-600 ring-gray-500/10 bg-gray-100' }}">{{ $user->role }}</span>
+                            </td>
                             <td class="table-cell-actions">
 
-                            <a href="#" class="table-action-edit"><i class="ri-edit-circle-fill"></i></a>
+                            <a href="{{route('admin.users.edit')}}" class="table-action-edit"><i class="ri-edit-circle-fill"></i></a>
                             
                             <div x-data="{ open: false }">
                                 <button @click="open = true" class="table-action-delete">
