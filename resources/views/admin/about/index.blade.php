@@ -18,10 +18,12 @@
                     <fieldset class="border border-gray-300 px-4 pb-4 rounded mt-3">
                         <legend class="description_khmer text-sm rounded-xs font-bold text-white px-2 bg-green-800 pb-0.5">Description (Khmer)</legend>
                         <div class="form-group">
-                            <textarea id="des_about" rows="6" class="description-about sr-only" placeholder="Write your description here..."></textarea>
+                            <textarea id="description_khmer" rows="6" class="description_khmer sr-only" placeholder="Write your description here..."></textarea>
                             <div class="editor-container pt-2">
                                 <!-- Create the first editor container -->
-                                <div id="editor" class="editor-wrapper" name="about-create-khmer"></div>
+                                <div id="editor" class="editor-wrapper" name="about-create-khmer" style="max-height: 25rem;">
+                                    <p>{!! $about_us->description_khmer ?? '' !!}</p
+                                </div>
                             </div>
                         </div>
                     </fieldset>
@@ -29,10 +31,12 @@
                     <fieldset class="border border-gray-300 px-4 pb-4 rounded mt-3">
                         <legend class="description_english text-sm rounded-xs font-bold text-white px-2 bg-green-800 pb-0.5">Description (English)</legend>
                         
-                        <textarea id="des_about" rows="6" class="description-about sr-only" placeholder="Write your description here..."></textarea>
+                        <textarea id="description_english" rows="6" class="description_english sr-only" placeholder="Write your description here..."></textarea>
                         <div class="editor-container pt-2">
                             <!-- Create the first editor container -->
-                            <div id="editor1" class="editor-wrapper" name="about-english"></div>
+                            <div id="editor1" class="editor-wrapper" name="about-english" style="max-height: 25rem;">
+                                <p>{!! $about_us->description_khmer ?? '' !!}</p
+                            </div>
                         </div>
                     </div>
                     <div class="form-group pt-4 flex justify-end">

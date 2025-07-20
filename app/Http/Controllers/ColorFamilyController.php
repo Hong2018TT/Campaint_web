@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 class ColorFamilyController extends Controller
 {
     public function index(){
-        $colorfamilys = DB::table('color_families')->select('id','name')->get();
+        $colorfamilys = DB::table('color_families')->select('id','name','name_kh','color_code','parent')->get();
         return view('admin.colorfamily.index',compact('colorfamilys'));
     }
 

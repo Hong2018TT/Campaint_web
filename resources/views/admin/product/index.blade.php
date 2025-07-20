@@ -36,41 +36,43 @@
             </thead>
             {{-- tb table --}}
             <tbody class="divide-y divide-gray-200 bg-white">
-              <tr class="td-bg-dash">
-                <td class="table-cell-primary">1</td>
-                <td class="table-cell">----</td>
-                <td class="table-cell">----</td>
-                <td class="table-cell">----</td>
+              @foreach ($products as $product)
+                <tr class="td-bg-dash">
+                  <td class="table-cell-primary">{{ $loop->iteration }}</td>
+                  <td class="table-cell">{{ $product->Name_EN }}</td>
+                  <td class="table-cell">{{ $product->Name_KH }}</td>
+                  <td class="table-cell"><img src="{{ asset('assets/image/' . $product->image_url) }}" class="w-14" alt="Image product"></td>
 
-                <td class="table-cell-actions">
-                  <a href="{{route('admin.product.edit')}}" class="table-action-edit"><i class="ri-edit-circle-fill"></i></a>
-                  <div x-data="{ open: false }">
-                    <a @click="open = true" class="table-action-delete">
-                      <i class="ri-delete-bin-6-fill"></i>
-                    </a>
-                    <!-- Backdrop -->
-                    <div x-show="open" x-cloak @include('components.modal.model-transition')>
-                      <div x-show="open" @include('components.modal.model-fade')
-                          class="modal-box-md" @click.outside="open = true">
+                  <td class="table-cell-actions">
+                    <a href="{{route('admin.product.edit')}}" class="table-action-edit"><i class="ri-edit-circle-fill"></i></a>
+                    <div x-data="{ open: false }">
+                      <a @click="open = true" class="table-action-delete">
+                        <i class="ri-delete-bin-6-fill"></i>
+                      </a>
+                      <!-- Backdrop -->
+                      <div x-show="open" x-cloak @include('components.modal.model-transition')>
+                        <div x-show="open" @include('components.modal.model-fade')
+                            class="modal-box-md" @click.outside="open = true">
 
-                        <div class="modal-header-del">Delete</div>
-                        <hr class="border-1 border-gray-400">
+                          <div class="modal-header-del">Delete</div>
+                          <hr class="border-1 border-gray-400">
 
-                        <div class="modal-body text-left px-4 py-2 whitespace-normal">
-                          <p class="text-lg text-red-500">Are you sure you want to delete this item?</p>
-                        </div>
-
-                        <form action="" id="" name="" method="POST">
-                          <div class="model-footer flex justify-end space-x-2 px-4 pt-4">
-                            <a @click="open = false" class="btn-close-model">Close</a>
-                            <button type="submit" class="btn-del-model">Delete</button>
+                          <div class="modal-body text-left px-4 py-2 whitespace-normal">
+                            <p class="text-lg text-red-500">Are you sure you want to delete this item?</p>
                           </div>
-                        </form>
+
+                          <form action="" id="" name="" method="POST">
+                            <div class="model-footer flex justify-end space-x-2 px-4 pt-4">
+                              <a @click="open = false" class="btn-close-model">Close</a>
+                              <button type="submit" class="btn-del-model">Delete</button>
+                            </div>
+                          </form>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </td>
-              </tr>
+                  </td>
+                </tr>
+              @endforeach
 
             <!-- More people... -->
             </tbody>
