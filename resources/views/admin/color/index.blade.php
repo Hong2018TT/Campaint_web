@@ -56,7 +56,7 @@
                   <td class="table-cell"> {{ $color->color_family }}</td>
                   <td class="table-cell-actions">
 
-                    <a href="{{route('admin.color.edit')}}" class="table-action-edit"><i class="ri-edit-circle-fill"></i></a>
+                    <a href="{{route('admin.color.edit')}}" class="table-action-edit"><i class="ri-pencil-line"></i></a>
                     
                     <div x-data="{ open: false }">
                       <button @click="open = true" class="table-action-delete">

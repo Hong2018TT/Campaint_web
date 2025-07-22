@@ -73,7 +73,7 @@
                             <td class="table-cell">{{ $depo->Phone }}</td>
                             <td class="table-cell">{{ $depo->GPS }}</td>
                                 <td class="table-cell-actions">
-                                    <a href="{{route('admin.depo.edit')}}" class="table-action-edit"><i class="ri-edit-circle-fill"></i></a>
+                                    <a href="{{route('admin.depo.edit')}}" class="table-action-edit"><i class="ri-pencil-line"></i></a>
                                 </div>
                                     <div x-data="{ open: false }">
                                         <a @click="open = true" class="table-action-delete">

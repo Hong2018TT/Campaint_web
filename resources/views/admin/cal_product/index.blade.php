@@ -105,7 +105,7 @@
                             {{-- For model edit --}}
                             <div x-data="{ open: false }">
                                 <button @click="open = true" class="table-action-edit">
-                                    <i class="ri-edit-circle-fill"></i>
+                                    <i class="ri-pencil-line"></i>
                                 </button>
 
                                 <!-- Backdrop -->
