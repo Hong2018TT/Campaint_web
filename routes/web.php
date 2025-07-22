@@ -59,7 +59,9 @@ Route::middleware(['admin'])->group(function () {
 
     Route::get('/user-profile',[UserController::class, 'profile'])->name('admin.users.profile');
     
-    Route::get('/about',[AboutController::class, 'index'])->name('admin.about.index');
+    Route::get('/about-us',[AboutController::class, 'index'])->name('admin.about.index');
+    // Route to handle the form submission for updating
+    Route::post('/about-us', [AboutController::class, 'update'])->name('update_aboutus');
 
     Route::get('/task',[TaskController::class, 'index'])->name('admin.task.index');
 });

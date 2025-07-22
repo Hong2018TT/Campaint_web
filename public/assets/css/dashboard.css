@@ -113,8 +113,38 @@ body{
 
 /* Customer editor quill */
 .ql-editor {
-    min-height: 18rem; /* You can change this value */
+    min-height: 20rem; /* You can change this value */
 }
+.ql-editor .ql-align-center {
+  text-align: center;
+}
+.ql-editor .ql-align-right {
+  text-align: right;
+}
+.ql-editor .ql-align-left {
+  text-align: left;
+}
+.ql-editor .ql-align-center img {
+  display: block; /* Make the image a block-level element */
+  margin-left: auto; /* Auto margins will center a block-level element */
+  margin-right: auto;
+}
+.ql-editor .ql-align-left img {
+  float: left;
+  margin-right: 10px; /* Add some spacing */
+}
+
+.ql-editor .ql-align-right img {
+  float: right;
+  margin-left: 10px; /* Add some spacing */
+}
+
+/* General image styling for responsiveness and to prevent overflow */
+.ql-editor img {
+  max-width: 100%; /* Ensures images don't overflow the editor */
+  height: auto;    /* Maintains aspect ratio */
+}
+
 
 /* Set size range color */
 input[type="color"] {

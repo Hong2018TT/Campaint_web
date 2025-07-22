@@ -14,15 +14,18 @@
     <div class="mt-3 flow-root pb-2">
         <div class="tb-overflow p-3">
             <div class="container-edit-aboutus">
-                <form action="#" method="post">
-                    <fieldset class="border border-gray-300 px-4 pb-4 rounded mt-3">
+
+                <form action="{{ route('update_aboutus') }}" method="post">
+                    @csrf
+
+                    <fieldset class="border border-gray-300 px-4 pb-4 rounded mt-1">
                         <legend class="description_khmer text-sm rounded-xs font-bold text-white px-2 bg-green-800 pb-0.5">Description (Khmer)</legend>
                         <div class="form-group">
-                            <textarea id="description_khmer" rows="6" class="description_khmer sr-only" placeholder="Write your description here..."></textarea>
+                            <textarea id="description_khmer" name="description_khmer" rows="6" class="sr-only" placeholder="Write your description here..."></textarea>
                             <div class="editor-container pt-2">
                                 <!-- Create the first editor container -->
-                                <div id="editor" class="editor-wrapper" name="about-create-khmer" style="max-height: 25rem;">
-                                    <p>{!! $about_us->description_khmer ?? '' !!}</p
+                                <div id="editor" class="editor-wrapper" name="about-create-khmer" style="max-height: 26rem;">
+                                    <p>{!! $about_us->description_khmer ?? '' !!}</p>
                                 </div>
                             </div>
                         </div>
@@ -34,11 +37,12 @@
                         <textarea id="description_english" rows="6" class="description_english sr-only" placeholder="Write your description here..."></textarea>
                         <div class="editor-container pt-2">
                             <!-- Create the first editor container -->
-                            <div id="editor1" class="editor-wrapper" name="about-english" style="max-height: 25rem;">
-                                <p>{!! $about_us->description_khmer ?? '' !!}</p
+                            <div id="editor1" class="editor-wrapper" name="about-english" style="max-height: 26rem;">
+                                <p>{!! $about_us->description_english ?? '' !!}</p
                             </div>
                         </div>
                     </div>
+                    </fieldset>
                     <div class="form-group pt-4 flex justify-end">
                         <button type="submit" class="btn-form">Save Changes</button>
                         <button type="reset" class="btn-form-cancel">Cancel</button>
@@ -48,4 +52,30 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var editorElement = document.getElementById('editor');
+        var hiddenTextarea = document.getElementById('description_khmer');
+        // 3. Before form submission, update the hidden textarea with the editor's content
+        var form = editorElement.closest('form');
+        if (form) {
+            form.addEventListener('submit', function() {
+                // Get the HTML content from Quill and put it into the hidden textarea
+                hiddenTextarea.value = quill.root.innerHTML;
+            });
+        }
+
+        var editorElement1 = document.getElementById('editor1');
+        var hiddenTextarea1 = document.getElementById('description_english');
+        // 3. Before form submission, update the hidden textarea with the editor's content
+        var form1 = editorElement1.closest('form');
+        if (form1) {
+            form1.addEventListener('submit', function() {
+                // Get the HTML content from Quill and put it into the hidden textarea
+                hiddenTextarea1.value = quill1.root.innerHTML;
+            });
+        }
+    });
+</script>
 @endsection

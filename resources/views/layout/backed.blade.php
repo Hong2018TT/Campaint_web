@@ -18,7 +18,10 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
     {{-- Link node editor Quill styles --}}
-    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet" />
+    {{-- <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet" /> --}}
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/quill@2/dist/quill.snow.css" rel="stylesheet" />
 
     {{-- Link Datatable.net --}}
     <link href="https://cdn.datatables.net/1.13.6/css/dataTables.tailwindcss.min.css" rel="stylesheet">
@@ -69,37 +72,35 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
-
 <script src="{{asset('assets/js/script.js')}}"></script>
 
 <script>
-
-  // SweetAlert notifications for session messages
-  @if (session('success'))
-      Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "{{ session('success') }}",
-          showConfirmButton: false,
-          timer: 1500
-      });
-  @elseif (session('error'))
-      Swal.fire({
-          position: "center",
-          icon: "error",
-          title: "{{ session('error') }}",
-          showConfirmButton: false,
-          timer: 1500
-      });
-  @endif
-
   // Initialize plugins and event listeners after the DOM is fully loaded
   $(document).ready(function () {
       initializeTailwindDataTable('.table-filter');
   });
 
   document.addEventListener('DOMContentLoaded', function () {
+
+    // SweetAlert notifications for session messages
+    @if (session('success'))
+        Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "{{ session('success') }}",
+            showConfirmButton: false,
+            timer: 1500
+        });
+    @elseif (session('error'))
+        Swal.fire({
+            position: "center",
+            icon: "error",
+            title: "{{ session('error') }}",
+            showConfirmButton: false,
+            timer: 1500
+        });
+    @endif
+
       highlightActiveNavLink();
       // Display Uplaod iamge profile user account
       setupImagePreview('profileImageInput', 'profileImagePreview');

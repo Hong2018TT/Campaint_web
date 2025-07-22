@@ -271,6 +271,7 @@
     @apply h-40 overflow-x-hidden overflow-y-auto resize-y rounded-br-sm rounded-bl-sm 
            focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-green-600;
   }
+  
 }
 
 /* set style profile admin */
