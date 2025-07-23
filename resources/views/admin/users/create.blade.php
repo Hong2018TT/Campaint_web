@@ -18,54 +18,66 @@
     <hr class="text-gray-200">
 
     <div class="mt-3 flow-root pb-2 px-3">
-        <form id="#" name="#" calss="max-w-md mx-auto" action="#" method="post" enctype="multipart/form-data">
+        <form id="#" name="#" class="mx-auto" action="{{route('save_user')}}" method="POST" enctype="multipart/form-data">
+            @csrf
+
             <div class="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 sm:gap-2 md:gap-x-4">
                 <div class="box-form">
                     <label for="product-en" class="title-form">Name</label>
                     <div class="form-outline">
-                        <input type="text" name="Name" id="Name" class="form-input" placeholder="Enter your product name" required>
+                        <input type="text" name="name" id="name" class="form-input" value="{{ old('name') }}" placeholder="Enter your product name" required>
                     </div>
                 </div>
 
                 <div class="box-form">
                     <label for="product-en" class="title-form">Email</label>
                     <div class="form-outline">
-                        <input type="email" name="email" id="email" class="form-input" placeholder="Enter your @gamil.com" required>
+                        <input type="email" name="email" id="email" class="form-input" value="{{ old('email') }}" placeholder="Enter your @gamil.com" required>
                     </div>
+                    @error('email')
+                        <span>{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="box-form">
                     <label for="password" class="block text-sm font-medium text-gray-700 mb-2">Password</label>
                     <div class="relative">
                         <div class="form-outline">
-                            <input type="password" id="password" class="form-input" placeholder="Enter your password">
+                            <input type="password" id="password" name="password" class="form-input" placeholder="Enter user password (8 characters min)" required>
                             <div class="absolute inset-y-0 end-0 flex items-center pe-3 cursor-pointer">
                                 <i id="togglePassword" class="ri-eye-off-fill"></i>
                             </div>
                         </div>
                     </div>
+                    @error('password')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="box-form">
                     <label for="password" class="block text-sm font-medium text-gray-700 mb-2">Comfirm Password</label>
                     <div class="relative">
                         <div class="form-outline">
-                            <input type="password" id="comfirm-password" class="form-input" placeholder="Enter your comfirm password">
+                            <input type="password" id="password_confirmation" name="password_confirmation" class="form-input" placeholder="Enter your comfirm password" required>
                             <div class="absolute inset-y-0 end-0 flex items-center pe-3 cursor-pointer">
                                 <i id="toggleComfirmPassword" class="ri-eye-off-fill"></i>
                             </div>
                         </div>
                     </div>
+                    @error('password_confirmation')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
                 </div>
+                
 
                 <div class="box-form">
                     <label for="role" class="title-form">Role</label>
                     <div class="grid grid-cols-1 focus-within:relative pt-2">
                         <select id="role" name="role" autocomplete="role" aria-label="role" class="form-select" required>
-                            <option value="" hidden selected>Select your role</option>
-                            <option value="User">User</option>
-                            <option value="Administrator">Administrator</option>
-                            <option value="Manager">Manager</option>
+                            <option value="" hidden >Select your role</option>
+                            <option value="User" {{ old('role') == 'User' ? 'selected' : '' }}>User</option>
+                            <option value="Administrator" {{ old('role') == 'Administrator' ? 'selected' : '' }}>Administrator</option>
+                            <option value="Manager" {{ old('role') == 'Manager' ? 'selected' : '' }}>Manager</option>
                         </select>
 
                         <svg class="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-500 sm:size-4" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-slot="icon">

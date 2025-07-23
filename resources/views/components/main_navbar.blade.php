@@ -26,7 +26,16 @@
             <span class="sr-only">Open user menu</span>
             <img class="profile-admin" src="{{ asset('assets/img/logo/Campaint Original.png') }}" alt="Logo image" loading="lazy">
             <span class="hidden lg:flex lg:items-center">
-            <span class="ml-2 text-sm/6 font-semibold">Admin</span>
+                @if(Auth::check() == 'Administrator')
+                    <span class="ml-2 text-sm/6 font-semibold">Admin</span>
+                @elseif(Auth::check() == 'User')
+                    <span class="ml-2 text-sm/6 font-semibold">User</span>
+                @elseif(Auth::check() == 'Manager')
+                    <span class="ml-2 text-sm/6 font-semibold">Manager</span>
+                @else
+                    <span class="ml-2 text-sm/6 font-semibold">Guest</span>
+                @endif
+            <span class="ml-2 text-sm/6 font-semibold"></span>
                 <i class="ri-arrow-down-s-line text-lg transition-transform duration-300 caret-icon ml-1" :class="{'rotate-180': open}"></i>
             </span>
         </button>
@@ -47,8 +56,8 @@
             >
                 <div class="py-1 text-nowrap" role="none">
                     <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
-                    <a href="{{route('admin.users.profile')}}" class="text-gray-700 block px-3 py-1 text-sm hover:bg-gray-100" role="menuitem" tabindex="-1" id="menu-item-0">Your Profile</a>
-                    <a href="{{route('logout')}}" type="button" class="text-red-600 block w-full px-3 py-1 text-left text-sm hover:bg-gray-100" role="menuitem" tabindex="-1" id="menu-item-3">Sign out</a>
+                    <a href="{{route('admin.users.profile')}}" class="text-gray-700 block px-3 py-1 text-sm hover:bg-gray-100 font-bold" role="menuitem" tabindex="-1" id="menu-item-0">Your Profile</a>
+                    <a href="{{route('logout')}}" type="button" class="text-red-600 block w-full px-3 py-1 text-left text-sm hover:bg-gray-100 font-bold" role="menuitem" tabindex="-1" id="menu-item-3"><i class="ri-logout-box-line mr-1"></i>Sign out</a>
                 </div>
             </div>
     </div>

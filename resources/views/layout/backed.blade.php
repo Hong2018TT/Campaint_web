@@ -51,14 +51,7 @@
       </div>
     </script>
     </div>
-
-  </main>
-  
-  <style>
-    [x-cloak] {
-      display: none !important;
-    }
-  </style>
+</main>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
@@ -82,25 +75,6 @@
 
   document.addEventListener('DOMContentLoaded', function () {
 
-    // SweetAlert notifications for session messages
-    @if (session('success'))
-        Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "{{ session('success') }}",
-            showConfirmButton: false,
-            timer: 1500
-        });
-    @elseif (session('error'))
-        Swal.fire({
-            position: "center",
-            icon: "error",
-            title: "{{ session('error') }}",
-            showConfirmButton: false,
-            timer: 1500
-        });
-    @endif
-
       highlightActiveNavLink();
       // Display Uplaod iamge profile user account
       setupImagePreview('profileImageInput', 'profileImagePreview');
@@ -122,7 +96,7 @@
 
       // Call the function for each password field you have
       PswToggleProfile('password', 'togglePassword');
-      PswToggleProfile('comfirm-password', 'toggleComfirmPassword');
+      PswToggleProfile('password_confirmation', 'toggleComfirmPassword');
 
   });
 

@@ -17,9 +17,9 @@ class DashboardController extends Controller
         $color_familycount = Color_families::All()->count();
 
 
-        $depos = Depo::All();
+        $colorfamilys = DB::table('color_families')->select('id','name','name_kh','color_code','parent')->get();
 
-        return view('admin.dashboard.home' , compact('depos','depocount','product_typecount','colorcount','color_familycount') ); // Pass users to the view
+        return view('admin.dashboard.home' , compact('colorfamilys','depocount','product_typecount','colorcount','color_familycount') ); // Pass users to the view
     }
 
     public function delete(){

@@ -7,26 +7,28 @@
         <div class="container-bg-profile">
             <div class="h-32 sm:h-88 md:h-88 bg-cover bg-center object-cover" style="background-image: url({{asset('assets/img/admin/bg-campaint.jpg')}})" loading="lazy"></div>
             <div class="p-6 md:p-6 relative">
-                <div class="absolute -top-16 left-8">
-                    <picture>
-                        <label for="profileImageInput">
-                            <div class="box-img-profile relative overflow-hidden">
-                                <img class="" id="profileImagePreview"  src="{{asset('assets/img/admin/icon-user.jpg')}}" 
-                                    alt="Admin Avatar" loading="lazy"
-                                    onerror="this.onerror=null;this.src='https://placehold.co/128x128/E2E8F0/4A5568?text=Admin';"/>
-                                    <div class="upload-profile">
-                                        <i class="ri-upload-2-fill text-lg"></i>
-                                        <input type="file" name="profile_image" id="profileImageInput" class="hidden" accept="image/*">
-                                    </div>
-                            </div>
-                        </label>
-                    </picture>
-                </div>
-                <div class="mt-10 md:mt-0 md:ml-40">
-                    <h2 id="user-name" class="text-2xl font-bold">Adminstrator</h2>
-                    {{-- <p class="text-sm text-gray-600 dark:text-gray-400">@catherinew</p> --}}
-                    <button type="button" class="mt-2 rounded-sm bg-green-700 px-2 py-1 text-sm font-semibold text-white shadow-xs hover:bg-green-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Edit Profile</button>
-                </div>
+                @if(Auth::check())
+                    <div class="absolute -top-16 left-8">
+                        <picture>
+                            <label for="profileImageInput">
+                                <div class="box-img-profile relative overflow-hidden">
+                                    <img class="object-cover w-full h-full" id="profileImagePreview" src="{{ asset($users->image_url) }}"
+                                        alt="Admin Avatar" loading="lazy" 
+                                        onerror="this.onerror=null;this.src='https://placehold.co/128x128/E2E8F0/4A5568?text=Admin';"/>
+                                        <div class="upload-profile">
+                                            <i class="ri-upload-2-fill text-lg"></i>
+                                            <input type="file" name="profile_image" id="profileImageInput" class="hidden" accept="image/*">
+                                        </div>
+                                </div>
+                            </label>
+                        </picture>
+                    </div>
+                    <div class="mt-10 md:mt-0 md:ml-40">
+                        <h2 id="user-name" class="text-2xl font-bold">{{ $users->name }}</h2>
+                        {{-- <p class="text-sm text-gray-600 dark:text-gray-400">@catherinew</p> --}}
+                        <button type="button" class="mt-2 rounded-sm bg-green-700 px-2 py-1 text-sm font-semibold text-white shadow-xs hover:bg-green-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Edit Profile</button>
+                    </div>
+                @endif
             </div>
         </div>
 

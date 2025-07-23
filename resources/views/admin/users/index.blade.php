@@ -1,6 +1,9 @@
 @extends ('layout.backed')
 @section('content')
 
+@include('components.sweetalerttwo.alerttwo')
+
+{{-- This section for display user --}}
 {{-- content for display task --}}
 <div class="shadow-lg rounded-md bg-white">
     <div class="header-main-tb">
@@ -42,16 +45,23 @@
                             <td class="table-cell-primary">{{ $loop->iteration }}</td>
                             <td class="table-cell">
                                 <div class="relative w-14 h-14 p-[3px] rounded-sm overflow-hidden" style="background: linear-gradient(to bottom, red, blue, green , yellow);">
-                                    <img src="{{ asset('assets/img/admin/icon-user.jpg')}}" class="tb-img-user" alt="admin & user" loading="lazy">
+                                    <img src="{{ asset('assets/img/admin/icon-user.jpg') }}" class="tb-img-user" alt="admin & user" loading="lazy">
                                 </div>
                             <td class="table-cell">{{ $user->name }}</td>
                             <td class="table-cell">{{ $user->email }}</td>
                             <td class="table-cell">
-                                <span class="badge-role {{ $user->role == 'Administrator' ? 'text-red-700 ring-red-600/10 bg-red-100' : 'text-gray-600 ring-gray-500/10 bg-gray-100' }}">{{ $user->role }}</span>
+                                <span class="badge-role
+                                    @if($user->role === 'Administrator') text-red-700 bg-red-100
+                                    @elseif($user->role === 'Manager') text-yellow-800 bg-yellow-100
+                                    @else text-green-700 bg-green-100
+                                    @endif ">
+                                    {{ $user->role }}
+                                </span>
+
                             </td>
                             <td class="table-cell-actions">
 
-                            <a href="{{route('admin.users.edit')}}" class="table-action-edit"><i class="ri-pencil-line"></i></a>
+                            <a href="{{route('admin.users.edit', $user->id)}}" class="table-action-edit"><i class="ri-pencil-line"></i></a>
                             
                             <div x-data="{ open: false }">
                                 <button @click="open = true" class="table-action-delete">

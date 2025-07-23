@@ -65,10 +65,14 @@ class AuthController extends Controller
             if ($user->role === 'Administrator') { // Use strict comparison
                 // Use a proper success message with `session()->flash()` or `with()` helper
                 return redirect()->intended(route('admin.dashboard.home'))->with('success', 'Welcome back, Administrator!');
-            } else {
+            } else if(($user->role === 'Administrator') || ($user->role === 'Manager')) {
+                // If the user is a Super Administrator, redirect to the intended route
+                return redirect()->intended(route('admin.dashboard.home'))->with('success', 'Welcome back, Super Administrator!');
+            }else{
                 // If the user logs in but isn't an administrator, perhaps redirect to a regular user dashboard
                 // or log them out if they are not supposed to be able to login here.
-                Auth::logout(); // Log out non-admin users if this is strictly an admin login
+                // If the user is not an administrator, log them out and redirect with an error
+                Auth::logout();
                 $request->session()->invalidate();
                 $request->session()->regenerateToken();
                 return redirect(route('admin.auth.index'))
