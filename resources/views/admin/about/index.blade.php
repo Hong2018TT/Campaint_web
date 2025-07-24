@@ -1,5 +1,6 @@
 @extends ('layout.backed')
 @section('content')
+@include('components.sweetalerttwo.alerttwo')
 
 {{-- content for display about --}}
 <div class="shadow-lg rounded-md bg-white">
@@ -21,7 +22,7 @@
                     <fieldset class="border border-gray-300 px-4 pb-4 rounded mt-1">
                         <legend class="description_khmer text-sm rounded-xs font-bold text-white px-2 bg-green-800 pb-0.5">Description (Khmer)</legend>
                         <div class="form-group">
-                            <textarea id="description_khmer" name="description_khmer" rows="6" class="sr-only" placeholder="Write your description here..."></textarea>
+                            <textarea id="description_khmer" name="description_khmer" value="{{old('description_khmer')}}" rows="6" class="sr-only" placeholder="Write your description here..."></textarea>
                             <div class="editor-container pt-2">
                                 <!-- Create the first editor container -->
                                 <div id="editor" class="editor-wrapper" name="about-create-khmer" style="max-height: 26rem;">

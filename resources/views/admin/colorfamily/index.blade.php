@@ -1,5 +1,6 @@
 @extends ('layout.backed')
 @section('content')
+@include('components.sweetalerttwo.alerttwo')
 
 {{-- content for display colorfamily --}}
 <div class="shadow-lg rounded-md bg-white">

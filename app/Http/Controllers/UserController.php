@@ -9,14 +9,21 @@ use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
+    /**
+     * Display a listing of the users.
+     */
     public function index(){
         $users = User::orderBy('id', 'desc')->get();
         return view('admin.users.index', compact('users'));
     }
 
+    /**
+     * Show the form for creating a new user.
+     */
     public function create(){
         return view('admin.users.create');
     }
+
     /**
      * Store a newly created user in storage (with image upload).
      */
@@ -50,6 +57,7 @@ class UserController extends Controller
 
         // 4. Create the user
         $user = User::create($data); // The create method directly saves the model
+        
         // 5. Handle success redirection and flash message
         if ($user) { // Check if user creation was successful
             // Flash success message to the session
@@ -58,17 +66,73 @@ class UserController extends Controller
         }
     }
 
+    /**
+     * Show the form for editing the specified user.
+     */
     public function edit($id){
         $user = User::findOrFail($id);
         return view('admin.users.edit', compact('user'));
     }
 
-    public function update(){
+    /**
+     * Update the specified user in storage (with image upload).
+     */
+    public function update(Request $request, $id){
+        $user = User::findOrFail($id);
 
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,' . $user->id,
+            'role' => 'required|in:User,Administrator,Manager',
+            'password' => 'nullable|min:6',  // ✅ Remove "confirmed"
+            'image_url' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->role = $request->role;
+
+        // ✅ Update password only if it is filled
+        if ($request->filled('password')) {
+            $user->password = Hash::make($request->password);
+        }
+
+        // ✅ Handle image upload
+        if ($request->hasFile('img_url_profile')) {
+            if ($user->img_url_profile && file_exists(public_path($user->img_url_profile))) {
+                unlink(public_path($user->img_url_profile));
+            }
+
+            $file = $request->file('img_url_profile');
+            $filename = time() . '_' . Str::random(8) . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('images/users'), $filename);
+            $user->img_url_profile = 'images/users/' . $filename;
+        }
+
+        if($user->save()){
+            session()->flash('success', 'User updated successfully!');
+            return redirect()->route('admin.users.index');
+        } else {
+            session()->flash('error', 'Failed to update user.');
+            return redirect()->back()->withInput();
+        }
     }
 
-    public function delete(){
+    /**
+     * Remove the specified user from storage.
+     */
+    public function destroy($id)
+    {
+        $user = User::findOrFail($id);
 
+        // ✅ Delete the image if exists
+        if ($user->img_url_profile && file_exists(public_path($user->img_url_profile))) {
+            unlink(public_path($user->img_url_profile));
+        }
+
+        if($user->delete()){
+            return redirect()->route('admin.users.index')->with('success', 'User deleted successfully.');
+        }
     }
 
     public function profile(){

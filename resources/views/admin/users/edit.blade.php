@@ -18,12 +18,15 @@
     <hr class="text-gray-200">
 
     <div class="mt-3 flow-root pb-1 px-3">
-        <form id="#" name="#" class="mx-auto" action="#" method="post" enctype="multipart/form-data">
+        <form id="#" name="#" class="mx-auto" action="{{ route('update_user', $user->id) }}" method="post" enctype="multipart/form-data">
+            @csrf
+            @method('PUT')
+
             <div class="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 sm:gap-2 md:gap-x-4">
                 <div class="box-form">
                     <label for="product-en" class="title-form">Name</label>
                     <div class="form-outline">
-                        <input type="text" name="Name" id="Name" class="form-input" value="{{ $user->name }}" placeholder="Enter your product name" required>
+                        <input type="text" name="name" id="name" class="form-input" value="{{ $user->name }}" placeholder="Enter your product name" required>
                     </div>
                 </div>
 
@@ -37,7 +40,7 @@
                     @enderror
                 </div>
 
-                <div class="box-form">
+                <div class="box-form mt-1">
                     <label for="password" class="block text-sm font-medium text-gray-700 mb-2">Password (Leave blank if you don’t want to change)</label>
                     <div class="relative">
                         <div class="form-outline">

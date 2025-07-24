@@ -1,5 +1,6 @@
 @extends ('layout.backed')
 @section('content')
+@include('components.sweetalerttwo.alerttwo')
 
 {{-- Content for display depo --}}
 <div class="shadow-lg rounded-md bg-white">

@@ -1,5 +1,6 @@
 @extends ('layout.backed')
 @section('content')
+@include('components.sweetalerttwo.alerttwo')
 
 {{-- content for display task --}}
 <div class="mb-6 rounded-md max-w-7xl mx-auto mt-2">
@@ -14,7 +15,7 @@
                                 <div class="box-img-profile relative overflow-hidden">
                                     <img class="object-cover w-full h-full" id="profileImagePreview" src="{{ asset($users->image_url) }}"
                                         alt="Admin Avatar" loading="lazy" 
-                                        onerror="this.onerror=null;this.src='https://placehold.co/128x128/E2E8F0/4A5568?text=Admin';"/>
+                                        onerror="this.onerror=null;this.src='{{asset('assets/img/admin/user.png')}}';"/>
                                         <div class="upload-profile">
                                             <i class="ri-upload-2-fill text-lg"></i>
                                             <input type="file" name="profile_image" id="profileImageInput" class="hidden" accept="image/*">
