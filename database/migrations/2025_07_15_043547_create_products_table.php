@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('brand', 255)->nullable();
             $table->decimal('price_after_discount', 10, 2)->nullable();
             $table->decimal('discount_percent', 5, 2)->nullable();
-            $table->decimal('original_price', 10, 2)->nullable();
+            $table->integer('discount_percent')->default(0); // Integer for percentage
             $table->string('color_type', 100)->nullable();
             $table->string('size', 100)->nullable();
             $table->text('image_url')->nullable();
@@ -31,6 +31,7 @@ return new class extends Migration
             $table->integer('stock_quantity')->nullable();
             $table->unsignedBigInteger('category_id')->nullable();
             $table->unsignedBigInteger('sub_category_id')->nullable();
+            $table->enum('status', ['1', '0'])->default('1'); // Assuming status can be '1' (active) or '0' (inactive)
             $table->timestamps();
         });
     }

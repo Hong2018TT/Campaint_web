@@ -42,34 +42,37 @@
                   <td class="table-cell-primary">{{ $loop->iteration }}</td>
                   <td class="table-cell">{{ $product->Name_EN }}</td>
                   <td class="table-cell">{{ $product->Name_KH }}</td>
-                  <td class="table-cell"><img src="{{ asset('assets/image/' . $product->image_url) }}" class="w-14" alt="Image product"></td>
+                  <td class="table-cell"><img src="{{ asset('assets/img/products/' . $product->image_url) }}" class="w-14" alt="Image product" loading="lazy"></td>
 
-                  <td class="table-cell-actions">
-                    <a href="{{route('admin.product.edit')}}" class="table-action-edit"><i class="ri-pencil-line"></i></a>
-                    <div x-data="{ open: false }">
-                      <a @click="open = true" class="table-action-delete">
-                        <i class="ri-delete-bin-6-fill"></i>
-                      </a>
-                      <!-- Backdrop -->
-                      <div x-show="open" x-cloak @include('components.modal.model-transition')>
-                        <div x-show="open" @include('components.modal.model-fade')
-                            class="modal-box-md" @click.outside="open = true">
+                  <td>
+                    <div class="table-cell-actions">
+                      <a href="{{route('admin.product.edit', $product->id)}}" class="table-action-edit"><i class="ri-pencil-line"></i></a>
+                      <div x-data="{ open: false, productIdToDelete: null }">
+                        <a @click="open = true; productIdToDelete = {{ $product->id }}" class="table-action-delete">
+                            <i class="ri-delete-bin-6-fill"></i>
+                        </a>
+                        <div x-show="open" x-cloak @include('components.modal.model-transition')>
+                            <div x-show="open" @include('components.modal.model-fade')
+                                class="modal-box-md" @click.outside="open = false"> {{-- Changed @click.outside="open = true" to @click.outside="open = false" to allow closing --}}
 
-                          <div class="modal-header-del">Delete</div>
-                          <hr class="border-1 border-gray-400">
+                                <div class="modal-header-del">Delete</div>
+                                <hr class="border-1 border-gray-400">
 
-                          <div class="modal-body text-left px-4 py-2 whitespace-normal">
-                            <p class="text-lg text-red-500">Are you sure you want to delete this item?</p>
-                          </div>
+                                <div class="modal-body text-left px-4 py-2 whitespace-normal">
+                                    <p class="text-lg text-red-500">Are you sure you want to delete this item?</p>
+                                </div>
 
-                          <form action="" id="" name="" method="POST">
-                            <div class="model-footer flex justify-end space-x-2 px-4 pt-4">
-                              <a @click="open = false" class="btn-close-model">Close</a>
-                              <button type="submit" class="btn-del-model">Delete</button>
+                                <form :action="`/products-delete/${productIdToDelete}`" method="POST">
+                                    @csrf
+                                    @method('DELETE') {{-- Important for Laravel DELETE routes --}}
+                                    <div class="model-footer flex justify-end space-x-2 px-4 pt-4">
+                                        <a @click="open = false" class="btn-close-model">Close</a>
+                                        <button type="submit" class="btn-del-model">Delete</button>
+                                    </div>
+                                </form>
                             </div>
-                          </form>
                         </div>
-                      </div>
+                    </div>
                     </div>
                   </td>
                 </tr>

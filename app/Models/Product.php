@@ -21,13 +21,14 @@ class Product extends Model
      *
      * @var string
      */
-    protected $primaryKey = 'product_id';
+    protected $primaryKey = 'id';
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
+    // In app/Models/Product.php
     protected $fillable = [
         'Name_EN',
         'Name_KH',
@@ -37,15 +38,16 @@ class Product extends Model
         'original_price',
         'color_type',
         'size',
-        'image_url',
-        'image_slide1',
-        'image_slide2',
-        'image_slide3',
-        'image_slide4',
+        'image_url',     // Main image
+        'img_url1',      // <--- CHANGE THIS TO MATCH YOUR DATABASE COLUMN NAME
+        'img_url2',      // <--- CHANGE THIS TO MATCH YOUR DATABASE COLUMN NAME
+        'img_url3',      // <--- CHANGE THIS TO MATCH YOUR DATABASE COLUMN NAME
+        'img_url4',      // <--- CHANGE THIS TO MATCH YOUR DATABASE COLUMN NAME
         'description',
         'delivery_option',
         'stock_quantity',
         'category_id',
         'sub_category_id',
+        'status',
     ];
 }

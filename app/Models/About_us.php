@@ -3,13 +3,20 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class About_us extends Model
 {
-    protected $table = 'about_us';
-    
+    use HasFactory;
+
+    protected $table = 'about_us'; // Define the correct table name
+
+    protected $primaryKey = 'id'; // Primary key
+
     protected $fillable = [
         'description_khmer',
         'description_english',
     ];
+
+    public $timestamps = true; // Enable timestamps (created_at, updated_at)
 }

@@ -16,6 +16,7 @@ class AboutController extends Controller
         // 1. Validate the incoming request data
         $request->validate([
             'description_khmer' => 'required|string', // Ensure the field is present and a string
+            'description_english' => 'nullable|string', // Optional field, can be null
         ]);
 
         // 2. Find the existing record or create a new one if it doesn't exist
@@ -30,6 +31,10 @@ class AboutController extends Controller
         // 3. Assign the validated data to the model property
         // The 'description_khmer' comes from the 'name' attribute of your textarea/hidden input
         $about_us->description_khmer = $request->input('description_khmer');
+
+        // Updat is not at all
+        
+        // $about_us->description_english = $request->input('description_english');
 
         // 4. Save the changes to the database
         if($about_us->save()){

@@ -85,12 +85,6 @@
       UploadImage('img_url_3', 'preview-image-3', 'upload-icon-3', 'file-size-error-3');
       UploadImage('img_url_4', 'preview-image-4', 'upload-icon-4', 'file-size-error-4')
 
-      UploadImage('edit_img_url_main','edit-preview-image-product','edit-upload-icon','edit-file-size-error');
-      UploadImage('edit_img_url_1','edit-preview-image-1','edit-upload-icon-1','edit-file-size-error-1');
-      UploadImage('edit_img_url_2','edit-preview-image-2','edit-upload-icon-2','edit-file-size-error-2');
-      UploadImage('edit_img_url_3','edit-preview-image-3','edit-upload-icon-3','edit-file-size-error-3');
-      UploadImage('edit_img_url_4','edit-preview-image-4','edit-upload-icon-4','edit-file-size-error-4');
-
       // User Profile
       UploadImage('img_url_profile','preview-image-profile','upload-icon-profile','file-size-error-profile');
 

@@ -134,7 +134,7 @@
 
   /* Action cell */
   .table-cell-actions {
-    @apply flex justify-center py-4 gap-x-2 text-right text-sm font-medium whitespace-nowrap sm:pr-4;
+    @apply flex justify-center items-center my-auto gap-x-2 text-right text-sm font-medium whitespace-nowrap sm:pr-4;
   }
 
   /* Action links */

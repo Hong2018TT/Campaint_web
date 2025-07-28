@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('about_us', function (Blueprint $table) {
             $table->id();
-            $table->longtext('description_khmer');
-            $table->longtext('description_english');
+            $table->longtext('description_khmer')->nullable();
+            $table->longtext('description_english')->nullable()->change();
             $table->timestamps();
         });
     }

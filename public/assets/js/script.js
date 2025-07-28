@@ -63,7 +63,6 @@ function highlightActiveNavLink() {
 function initializeTailwindDataTable(tableSelector) {
   $(tableSelector).each(function () {
     $(this).DataTable({
-
       // ✅ Add buttons extension
       dom: '<"top flex flex-wrap items-center justify-between mb-2 gap-2 lg:ml-1"Bfl>rt<"bottom flex flex-wrap items-center justify-between mt-2 gap-2"ip>',
         buttons: {
@@ -288,3 +287,4 @@ function PswToggleProfile(inputId, toggleIconId) {
         console.warn(`Could not find elements for inputId: ${inputId} or toggleIconId: ${toggleIconId}`);
     }
 }
+// set up function for calcultate after discount product

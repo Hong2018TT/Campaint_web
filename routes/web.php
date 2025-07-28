@@ -4,16 +4,18 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
 // Controller All In
-use App\Http\Controllers\Auth\AuthController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ColorFamilyController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\ColorController;
-use App\Http\Controllers\DepoController;
-use App\Http\Controllers\CaculateProductController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\AboutController;
-use App\Http\Controllers\TaskController;
+use App\Http\Controllers\{
+    Auth\AuthController,
+    DashboardController,
+    ColorFamilyController,
+    ProductController,
+    ColorController,
+    DepoController,
+    CaculateProductController,
+    UserController,
+    AboutController,
+    TaskController
+};
 
 Route::get('/', function () {
     if (Auth::check() && Auth::user()->role === 'Administrator') {
@@ -33,9 +35,12 @@ Route::middleware(['admin'])->group(function () {
     
     //====== selection Product=====
     Route::get('/products', [ProductController::class, 'index'])->name('admin.product.index');
-    Route::get('/product-create',[ProductController::class, 'create'])->name('admin.product.create');
-    Route::get('/product-edit',[ProductController::class, 'edit'])->name('admin.product.edit');
-    
+    Route::get('/products-create',[ProductController::class, 'create'])->name('admin.product.create');
+    Route::post('/products',[ProductController::class, 'store'])->name('save_product');
+    Route::get('/products-edit/{id}',[ProductController::class, 'edit'])->name('admin.product.edit');
+    Route::put('/products-update/{id}',[ProductController::class, 'update'])->name('update_product');
+    Route::delete('/products-delete/{id}', [ProductController::class, 'destroy'])->name('delete_product');
+
     //====== selection Color Family=====
     Route::get('/colorfamily',[ColorFamilyController::class, 'index'])->name('admin.colorfamily.index');
     
@@ -67,4 +72,12 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/about-us', [AboutController::class, 'update'])->name('update_aboutus');
 
     Route::get('/task',[TaskController::class, 'index'])->name('admin.task.index');
+});
+
+Route::middleware(['user'])->group(function () {
+    // This middleware will apply to all routes that require authentication
+});
+
+Route::middleware(['manager'])->group(function () {
+    // This middleware will apply to all routes that require manager access
 });

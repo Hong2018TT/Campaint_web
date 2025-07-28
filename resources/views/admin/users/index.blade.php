@@ -58,45 +58,45 @@
                                 </span>
 
                             </td>
-                            <td class="table-cell-actions">
-
-                            <a href="{{route('admin.users.edit', $user->id)}}" class="table-action-edit"><i class="ri-pencil-line"></i></a>
-                            
-                            <div x-data="{ open: false, userIdToDelete: null, deleteFormAction: '' }">
-                                <button
-                                    @click=" open = true;
-                                        userIdToDelete = {{ $user->id }};
-                                        // Dynamically build the action URL for the form inside the modal
-                                        deleteFormAction = '{{ route('delete_user', ['id' => 'PLACEHOLDER_ID']) }}'.replace('PLACEHOLDER_ID', userIdToDelete);
-                                    "
-                                    class="table-action-delete" title="Delete User">
-                                    <i class="ri-delete-bin-6-fill"></i>
-                                </button>
-
-                                <div x-show="open" x-cloak @include('components.modal.model-transition')>
-                                    <div x-show="open" @include('components.modal.model-fade')
-                                        class="modal-box-md" @click.outside="open = true">
-
-                                        <div class="modal-header-del">Delete</div>
-                                        <hr class="border-1 border-gray-400">
-
-                                        <div class="modal-body text-left px-4 py-2 whitespace-normal">
-                                            <p class="text-lg text-red-500">Are you sure you want to delete this User?</p>
-                                        </div>
-
-                                        {{-- The actual form that sends the DELETE request --}}
-                                        <form :action="deleteFormAction" method="POST">
-                                            @csrf {{-- CSRF token for security --}}
-                                            @method('DELETE') {{-- Method spoofing for DELETE request --}}
-                                            <div class="model-footer flex justify-end space-x-2 px-4 pt-4">
-                                                <button type="button" @click="open = false" class="btn-close-model">Cancel</button>
-                                                <button type="submit" class="btn-del-model">Delete</button>
+                            <td>
+                                <div class="table-cell-actions">
+                                    <a href="{{route('admin.users.edit', $user->id)}}" class="table-action-edit"><i class="ri-pencil-line"></i></a>
+                                    
+                                    <div x-data="{ open: false, userIdToDelete: null, deleteFormAction: '' }">
+                                        <button
+                                            @click=" open = true;
+                                                userIdToDelete = {{ $user->id }};
+                                                // Dynamically build the action URL for the form inside the modal
+                                                deleteFormAction = '{{ route('delete_user', ['id' => 'PLACEHOLDER_ID']) }}'.replace('PLACEHOLDER_ID', userIdToDelete);
+                                            "
+                                            class="table-action-delete" title="Delete User">
+                                            <i class="ri-delete-bin-6-fill"></i>
+                                        </button>
+        
+                                        <div x-show="open" x-cloak @include('components.modal.model-transition')>
+                                            <div x-show="open" @include('components.modal.model-fade')
+                                                class="modal-box-md" @click.outside="open = true">
+        
+                                                <div class="modal-header-del">Delete</div>
+                                                <hr class="border-1 border-gray-400">
+        
+                                                <div class="modal-body text-left px-4 py-2 whitespace-normal">
+                                                    <p class="text-lg text-red-500">Are you sure you want to delete this User?</p>
+                                                </div>
+        
+                                                {{-- The actual form that sends the DELETE request --}}
+                                                <form :action="deleteFormAction" method="POST">
+                                                    @csrf {{-- CSRF token for security --}}
+                                                    @method('DELETE') {{-- Method spoofing for DELETE request --}}
+                                                    <div class="model-footer flex justify-end space-x-2 px-4 pt-4">
+                                                        <button type="button" @click="open = false" class="btn-close-model">Cancel</button>
+                                                        <button type="submit" class="btn-del-model">Delete</button>
+                                                    </div>
+                                                </form>
                                             </div>
-                                        </form>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-
                             </td>
                         </tr>
                     @endforeach

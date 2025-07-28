@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 class CaculateProductController extends Controller
 {
     public function index(){
-        $products = DB::table('products')->select('product_id','Name_EN','Name_KH')->get();
+        $products = DB::table('products')->select('id','Name_EN','Name_KH')->get();
         // Clear and specific
         return view('admin.cal_product.index', ['products' => $products]);
 
