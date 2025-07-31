@@ -18,21 +18,9 @@
     </div>
 
     <hr class="text-gray-200">
-    
+    @include('components.txt-error.txt-error')
     
     <div class="mt-3 flow-root pb-1 px-3">
-        @if ($errors->any())
-            <div class="mb-4 rounded-sm border border-red-300 bg-red-50 p-3 text-sm text-red-700 shadow-sm">
-                <div class="mb-1 font-semibold text-red-800">
-                    {{ __('There were some problems with your input:') }}
-                </div>
-                <ul class="list-disc list-inside space-y-1 pl-2">
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
 
         <form id="form-product" name="#" calss="max-w-md mx-auto" action="{{route('save_product')}}" method="POST" enctype="multipart/form-data">
             @csrf
@@ -103,8 +91,8 @@
 
                 <div class="box-form">
                     <label for="category_id" class="title-form">Category</label>
-                    <div class="grid grid-cols-1 focus-within:relative pt-2">
-                        <select id="category_id" name="category_id" autocomplete="category-name" aria-label="category" class="form-select">
+                    <div class="grid grid-cols-1 focus-within:relative">
+                        <select id="category_id" name="category_id" autocomplete="category-name" value="{{ old('category_id') }}" aria-label="category" class="form-select">
                             <option value="" hidden selected>Select category</option>
                             <option value="1">Category One</option>
                             @foreach($categorys as $category)
@@ -124,8 +112,8 @@
 
                 <div class="box-form">
                     <label for="sub_category_id" class="title-form">Subcategory</label>
-                    <div class="grid grid-cols-1 focus-within:relative pt-2">
-                        <select id="sub_category_id" name="sub_category_id" autocomplete="subcategory-name" aria-label="subcategory" class="form-select bg-gray-200" disabled>
+                    <div class="grid grid-cols-1 focus-within:relative">
+                        <select id="sub_category_id" name="sub_category_id" autocomplete="subcategory-name" value="{{ old('sub_category_id') }}" aria-label="subcategory" class="form-select bg-gray-200" disabled>
                             <option value="" hidden selected>Select Subcategory</option>
                             <option value="0">Cateogry one</option>
                             <option value="1">Cateogry two</option>
@@ -142,7 +130,7 @@
             <div class="grid grid-cols-1 mt-5">
                 <div class="box-form">
                     <label for="description" class="title-form">Description</label>
-                    <textarea id="description" name="description" rows="6" class="description sr-only" placeholder="Write your description here..."></textarea>
+                    <textarea id="description" name="description" rows="6" class="description sr-only" value="{{ old('description') }}" placeholder="Write your description here..."></textarea>
                     <!-- Create the editor container -->
                     <div class="editor-container mt-2">
                         <!-- Create the first editor container -->

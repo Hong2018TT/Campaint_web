@@ -134,7 +134,7 @@ function initializeTailwindDataTable(tableSelector) {
 });
 
 // For write lenght phone
-const phoneInput = document.getElementById('phone');
+const phoneInput = document.getElementById('Phone');
 phoneInput.addEventListener('input', (e) => {
   e.target.value = formatPhone(e.target.value);
 });
@@ -149,44 +149,61 @@ phoneInput.addEventListener('input', (e) => {
 }
 
 // Javascript for Editor Quill
+// --- Global Quill Configuration (Do this only once) ---
+// 1. Import the modules you want to customize
+const size = Quill.import('attributors/style/size');
+const Font = Quill.import('attributors/class/font'); // You were missing this line
+
+// 2. Add your custom values to the whitelist
+size.whitelist = ['small', false, 'large', 'huge', '14px'];
+Font.whitelist = ['sans-serif', 'serif', 'monospace', 'battambang'];
+
+// 3. Register BOTH customized modules
+Quill.register(size, true);
+Quill.register(Font, true); // You were missing this line
+
+
+// --- Initialize your editors ---
+
+// Initialize the first editor
 const quill = new Quill('#editor', {
   modules: {
-      toolbar: [
-          [{ 'font': [] }],
-          [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-          [{ 'size': ['small', false, 'large', 'huge'] }],
-          ['bold', 'italic', 'underline', 'strike'],
-          [{ 'color': [] }, { 'background': [] }],
-          [{ 'script': 'sub'}, { 'script': 'super' }],
-          ['blockquote', 'code-block'],
-          [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-          [{ 'indent': '-1'}, { 'indent': '+1' }],
-          [{ 'align': [] }],
-          ['link', 'image', 'video', 'formula'],
-          ['clean']
-      ]
+    toolbar: [
+      [{ 'font': ['sans-serif', 'serif', 'monospace', 'battambang'] }],
+      [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+      [{ 'size': ['small', false, 'large', 'huge', '14px'] }],
+      ['bold', 'italic', 'underline', 'strike'],
+      [{ 'color': [] }, { 'background': [] }],
+      [{ 'script': 'sub'}, { 'script': 'super' }],
+      ['blockquote', 'code-block'],
+      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+      [{ 'indent': '-1'}, { 'indent': '+1' }],
+      [{ 'align': [] }],
+      ['link', 'image', 'video', 'formula'],
+      ['clean']
+    ]
   },
   theme: 'snow',
   placeholder: 'Compose your content here...'
 });
 
-// Javascript for Editor Quill 1
+// Initialize the second editor
 const quill1 = new Quill('#editor1', {
   modules: {
-      toolbar: [
-          [{ 'font': [] }],
-          [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-          [{ 'size': ['small', false, 'large', 'huge'] }],
-          ['bold', 'italic', 'underline', 'strike'],
-          [{ 'color': [] }, { 'background': [] }],
-          [{ 'script': 'sub'}, { 'script': 'super' }],
-          ['blockquote', 'code-block'],
-          [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-          [{ 'indent': '-1'}, { 'indent': '+1' }],
-          [{ 'align': [] }],
-          ['link', 'image', 'video', 'formula'],
-          ['clean']
-      ]
+    toolbar: [
+      [{ 'font': ['sans-serif', 'serif', 'monospace', 'battambang'] }],
+      [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+      [{ 'size': ['small', false, 'large', 'huge', '14px'] }],
+      ['bold', 'italic', 'underline', 'strike'],
+      [{ 'color': [] }, { 'background': [] }],
+      [{ 'script': 'sub'}, { 'script': 'super' }],
+      ['blockquote', 'code-block'],
+      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+      [{ 'indent': '-1'}, { 'indent': '+1' }],
+      [{ 'align': [] }],
+      ['link', 'image', 'video', 'formula'],
+      ['clean']
+    ]
   },
   theme: 'snow',
   placeholder: 'Compose your content here...'

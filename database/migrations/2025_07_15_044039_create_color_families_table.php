@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('name_kh', 255)->nullable(); // varchar(255) with NULL
             $table->string('color_code', 7)->nullable(); // varchar(7) with NULL
             $table->string('parent', 255)->nullable()->comment('Color Families (ប្រភេទពណ៌)'); // varchar(255) with NULL and comment
+            $table->enum('status', ['1', '0'])->default('1'); // Assuming status can be '1' (active) or '0' (inactive)
             $table->timestamps(); // creates created_at and updated_at
         });
     }

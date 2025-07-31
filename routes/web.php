@@ -43,16 +43,27 @@ Route::middleware(['admin'])->group(function () {
 
     //====== selection Color Family=====
     Route::get('/colorfamily',[ColorFamilyController::class, 'index'])->name('admin.colorfamily.index');
+    Route::post('/colorfamily-store',[ColorFamilyController::class, 'store'])->name('save_colorfamily');
+    // Is not already code
+    Route::get('/colorfamily-edit/{id}', [ColorFamilyController::class, 'edit'])->name('edit_colorfamily');
+    Route::put('/colorfamily-update/{id}', [ColorFamilyController::class, 'update'])->name('update_colorfamily');
+
+    Route::delete('/colorfamily-delete/{id}', [ColorFamilyController::class, 'destroy'])->name('delete_colorfamily');
     
     //====== selection Colors=====
     Route::get('/colors',[ColorController::class, 'index'])->name('admin.color.index');
     Route::get('/colors-create',[ColorController::class, 'create'])->name('admin.color.create');
-    Route::get('/colors-edit',[ColorController::class, 'edit'])->name('admin.color.edit');
+    Route::post('/colors',[ColorController::class, 'store'])->name('save_color');
+    Route::get('/colors-edit/{id}',[ColorController::class, 'edit'])->name('admin.color.edit');
+    Route::put('/colors-update{id}',[ColorController::class, 'update'])->name('update_color');
+    Route::delete('/colors-delete/{id}',[ColorController::class, 'destroy'])->name('delete_color');
     
     //====== selection Depo=====
     Route::get('/depo',[DepoController::class, 'index'])->name('admin.depo.index');
     Route::get('/depo-create',[DepoController::class, 'create'])->name('admin.depo.create');
+    Route::post('/depo',[DepoController::class, 'store'])->name('save_depo');
     Route::get('/depo-edit',[DepoController::class, 'edit'])->name('admin.depo.edit');
+    Route::delete('/depo-delete/{id}',[DepoController::class, 'destroy'])->name('delete_depo');
     
     //====== selection CaculateProduct=====
     Route::get('/calculate-product',[CaculateProductController::class, 'index'])->name('admin.cal_product.index');

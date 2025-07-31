@@ -21,6 +21,8 @@
     <hr class="text-gray-300">
 
     <div class="mt-3 flow-root pb-2 px-3">
+        @include('components.txt-error.txt-error')
+        
         <div class="tb-overflow">
             <div class="inline-block min-w-full pb-2 align-middle pt-2">
             <table id="#" class="table-filter min-w-full divide-y divide-green-300">
@@ -44,7 +46,13 @@
                             <td class="table-cell-primary">{{ $loop->iteration }}</td>
                             <td class="table-cell">
                                 <div class="relative w-14 h-14 p-[3px] rounded-sm overflow-hidden" style="background: linear-gradient(to bottom, red, blue, green , yellow);">
-                                    <img src="{{ asset('assets/img/admin/user-profile.png') }}" class="tb-img-user" alt="admin & user" loading="lazy">
+                                    @if($user->image_url)
+                                        {{-- This will show if the user has an image --}}
+                                        <img src="{{ asset($user->image_url) }}" class="tb-img-user" alt="admin & user" loading="lazy">
+                                    @else
+                                        {{-- This will show if the user does NOT have an image --}}
+                                        <img src="{{ asset('assets/img/users/user-profile.png') }}" class="tb-img-user" alt="admin & user" loading="lazy">
+                                    @endif
                                 </div>
                             <td class="table-cell">{{ $user->name }}</td>
                             <td class="table-cell">{{ $user->email }}</td>
@@ -66,7 +74,6 @@
                                         <button
                                             @click=" open = true;
                                                 userIdToDelete = {{ $user->id }};
-                                                // Dynamically build the action URL for the form inside the modal
                                                 deleteFormAction = '{{ route('delete_user', ['id' => 'PLACEHOLDER_ID']) }}'.replace('PLACEHOLDER_ID', userIdToDelete);
                                             "
                                             class="table-action-delete" title="Delete User">

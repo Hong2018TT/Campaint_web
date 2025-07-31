@@ -15,7 +15,7 @@
                                 <div class="box-img-profile relative overflow-hidden">
                                     <img class="object-cover w-full h-full" id="profileImagePreview" src="{{ asset($users->image_url) }}"
                                         alt="Admin Avatar" loading="lazy" 
-                                        onerror="this.onerror=null;this.src='{{asset('assets/img/admin/user.png')}}';"/>
+                                        onerror="this.onerror=null;this.src='{{asset('assets/img/users/user.png')}}';"/>
                                         <div class="upload-profile">
                                             <i class="ri-upload-2-fill text-lg"></i>
                                             <input type="file" name="profile_image" id="profileImageInput" class="hidden" accept="image/*">

@@ -13,34 +13,21 @@ class AboutController extends Controller
 
     public function update(Request $request)
     {
-        // 1. Validate the incoming request data
-        $request->validate([
-            'description_khmer' => 'required|string', // Ensure the field is present and a string
-            'description_english' => 'nullable|string', // Optional field, can be null
+        // 1. Validate the incoming request.
+        // The validated() method returns a clean array of the validated data.
+        $validatedData = $request->validate([
+            'description_khmer' => 'required|string',
+            'description_english' => 'nullable|string',
         ]);
 
-        // 2. Find the existing record or create a new one if it doesn't exist
-        // This is crucial for "saving changes" whether it's an initial save or an update.
-        $about_us = About_us::first(); // Try to find the first record
+        // 2. Find the first record or create a new one, then fill and save it.
+        // This one-liner handles both creating and updating the record.
+        // Note: Ensure the model's $fillable property is set correctly.
+        About_us::firstOrNew([])->fill($validatedData)->save();
 
-        if (!$about_us) {
-            // If no record exists, create a new one
-            $about_us = new About_us();
-        }
-
-        // 3. Assign the validated data to the model property
-        // The 'description_khmer' comes from the 'name' attribute of your textarea/hidden input
-        $about_us->description_khmer = $request->input('description_khmer');
-
-        // Updat is not at all
-        
-        // $about_us->description_english = $request->input('description_english');
-
-        // 4. Save the changes to the database
-        if($about_us->save()){
-            session()->flash('success', 'About Us content updated successfully!');
-            // Redirect back to the users list or another page
-            return redirect('/about-us');
-        }
+        // 3. Redirect back with a success message.
+        // Using ->with() is a convenient shorthand for flashing session data.
+        return redirect('/about-us')
+            ->with('success', 'About Us content updated successfully!');
     }
 }

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Depo extends Model
 {
     protected $table = 'depo';
+    public $timestamps = false; // ✅ You must add this line
     protected $fillable = [
         'Name_EN',
         'Name_KH',
@@ -16,5 +17,6 @@ class Depo extends Model
         'province_KH',
         'Phone',
         'GPS',
+        'status',
     ];
 }

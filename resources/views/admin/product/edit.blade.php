@@ -17,15 +17,7 @@
     </div>
 
     <hr class="text-gray-200">
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+    @include('components.txt-error.txt-error')
 
     <div class="flow-root pb-1 mx-3 pt-3">
         <form id="form-product" name="#" calss="max-w-md mx-auto" action="{{route('update_product', $product->id)}}" method="post" enctype="multipart/form-data">
@@ -99,7 +91,7 @@
                 {{-- This place for unknown category id--}}
                 <div class="box-form">
                     <label for="category" class="title-form">Category</label>
-                    <div class="grid grid-cols-1 focus-within:relative pt-2">
+                    <div class="grid grid-cols-1 focus-within:relative">
                         <select id="category" name="category" autocomplete="category-name" aria-label="category" class="form-select">
                             <option value="" hidden selected>Select category</option>
                             <option value="0">Cateogry one</option>
@@ -115,7 +107,7 @@
                 {{-- This place for unknown subcategory id--}}
                 <div class="box-form">
                     <label for="sub-category" class="title-form">Subcategory</label>
-                    <div class="grid grid-cols-1 focus-within:relative pt-2">
+                    <div class="grid grid-cols-1 focus-within:relative">
                         <select id="subcategory" name="subcategory" autocomplete="category-name" aria-label="category" class="form-select bg-gray-200" disabled>
                             <option value="" hidden selected>Select Subcategory</option>
                             <option value="0">Cateogry one</option>

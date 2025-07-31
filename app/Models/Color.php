@@ -8,19 +8,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Color extends Model
 {
     use HasFactory;
-
-    /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
     protected $table = 'colors';
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+    public $timestamps = false; // ✅ You must add this line
     protected $fillable = [
         'color_code',
         'color_name',
@@ -29,5 +18,6 @@ class Color extends Model
         'b',
         'product_type',
         'color_family',
+        'status',
     ];
 }

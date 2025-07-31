@@ -1,5 +1,7 @@
 @extends ('layout.backed')
 @section('content')
+@include('components.sweetalerttwo.alerttwo')
+
 {{-- Content for create product --}}
 <div class="mb-3 shadow-lg rounded-md bg-white">
     <div class="header-main-tb">
@@ -18,27 +20,31 @@
     <hr class="text-gray-200">
 
     <div class="mt-5 flow-root pb-2 px-3">
-        <form id="#" name="#" calss="max-w-md mx-auto" action="#" method="post" enctype="multipart/form-data">
+        @include('components.txt-error.txt-error')
+
+        <form id="form-depo" name="from-depo" calss="max-w-md mx-auto" action="{{route('save_depo')}}" method="post" enctype="multipart/form-data">
+            @csrf
+
             {{-- section for address depo --}}
                 <fieldset class="border border-gray-300 p-4 rounded">
                     <legend class="text-sm rounded-xs font-bold text-white px-2 bg-green-700">Address:</legend>
                         <div class="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 sm:gap-2 md:gap-4">
                             <div class="box-form">
-                                <label for="depo-en" class="title-form">Name (English)</label>
+                                <label for="Name_EN" class="title-form">Name (English)</label>
                                 <div class="form-outline">
-                                    <input type="text" name="depo_en" id="depo_en" class="form-input" placeholder="Enter your product name en" required>
+                                    <input type="text" name="Name_EN" id="Name_EN" value="{{ old('Name_EN') }}" class="form-input" placeholder="Enter your product name en" required>
                                 </div>
                             </div>
                             <div class="box-form">
-                                <label for="depo-add-en" class="title-form">Address (English)</label>
+                                <label for="province_EN" class="title-form">Address (English)</label>
                                 <div class="form-outline">
-                                    <input type="text" name="depo_add_en" id="depo_add_en" class="form-input" placeholder="Enter your product name en" required>
+                                    <input type="text" name="province_EN" id="province_EN" value="{{ old('province_EN') }}" class="form-input" placeholder="Enter your product name en" required>
                                 </div>
                             </div>
                             <div class="box-form">
-                                <label for="depo-add-kh" class="title-form">Address (Khmer)</label>
+                                <label for="Address_EN" class="title-form">Address (Khmer)</label>
                                 <div class="form-outline">
-                                    <input type="text" name="depo_add_kh" id="depo_add_kh" class="form-input" placeholder="Enter your product name en" required>
+                                    <input type="text" name="Address_EN" id="Address_EN" value="{{ old('Address_KH') }}" class="form-input" placeholder="Enter your product name en" required>
                                 </div>
                             </div>
                         </div>
@@ -50,21 +56,21 @@
                         <div class="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 sm:gap-2 md:gap-4">
                             {{-- Section fot name khmer --}}
                             <div class="box-form">
-                                <label for="depo-kh" class="title-form">Name (Khmer)</label>
+                                <label for="Name_KH" class="title-form">Name (Khmer)</label>
                                 <div class="form-outline">
-                                    <input type="text" name="depo_kh" id="depo_kh" class="form-input" placeholder="Enter your product name en" required>
+                                    <input type="text" name="Name_KH" id="Name_KH" value="{{ old('Name_KH') }}" class="form-input" placeholder="Enter your product name en" required>
                                 </div>
                             </div>
                             <div class="box-form">
-                                <label for="depo-pro-en" class="title-form">Province (english)</label>
+                                <label for="province_EN" class="title-form">Province (english)</label>
                                 <div class="form-outline">
-                                    <input type="text" name="depo_pro_kh" id="depo_pro_kh" class="form-input" placeholder="Enter your product name en" required>
+                                    <input type="text" name="province_KH" id="province_EN" value="{{ old('province_KH') }}" class="form-input" placeholder="Enter your product name en" required>
                                 </div>
                             </div>
                             <div class="box-form">
-                                <label for="depo-pro-kh" class="title-form">Province (Khmer)</label>
+                                <label for="Address_KH" class="title-form">Province (Khmer)</label>
                                 <div class="form-outline">
-                                    <input type="text" name="depo_pro_kh" id="depo_pro_kh" class="form-input" placeholder="Enter your product name en" required>
+                                    <input type="text" name="Address_KH" id="Address_KH" value="{{ old('Address_KH') }}" class="form-input" placeholder="Enter your product name en" required>
                                 </div>
                             </div>
                         </div>
@@ -72,10 +78,10 @@
 
                 <div class="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 sm:gap-2 md:gap-4 mt-3">
                     <div class="box-form">
-                        <label for="phone" class="title-form">Phone</label>
+                        <label for="Phone" class="title-form">Phone</label>
                         <div class="form-outline">
                             <div class="shrink-0 text-base text-gray-500 select-none sm:text-sm/6">(+855):</div>
-                            <input type="tel" name="phone" id="phone" class="form-input" placeholder="Enter your phone number" maxlength="14" required>
+                            <input type="tel" name="Phone" id="Phone" class="form-input" placeholder="Enter your phone number" maxlength="14" required>
                         </div>
                     </div>
                     <div class="box-form">
@@ -87,7 +93,7 @@
                 </div>
 
                 <div class="mt-4 flex justify-end">
-                    <button type="submit" class="btn-form">Save</button>
+                    <button type="submit" class="btn-form" name="save_depo" id="save_depo">Save</button>
                     <button type="reset" class="btn-form-cancel">Cancel</button>
                 </div>
                 

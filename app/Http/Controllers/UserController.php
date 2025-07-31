@@ -13,7 +13,8 @@ class UserController extends Controller
      * Display a listing of the users.
      */
     public function index(){
-        $users = User::orderBy('id', 'desc')->get();
+        // Big DESC
+        $users = User::orderBy('id', 'asc')->where('status','1')->get();
         return view('admin.users.index', compact('users'));
     }
 
@@ -48,11 +49,11 @@ class UserController extends Controller
         $data['remember_token'] = Str::random(10);
 
         // ✅ Handle image upload
-        if ($request->hasFile('img_url_profile')) {
-            $file = $request->file('img_url_profile');
+        if ($request->hasFile('img_url')) {
+            $file = $request->file('img_url');
             $filename = time() . '_' . Str::random(8) . '.' . $file->getClientOriginalExtension();
-            $file->move(public_path('images/users'), $filename);
-            $data['img_url_profile'] = 'images/users/' . $filename;
+            $file->move(public_path('assets/img/users'), $filename);
+            $data['image_url'] = 'assets/img/users/' . $filename;
         }
 
         // 4. Create the user
@@ -98,15 +99,15 @@ class UserController extends Controller
         }
 
         // ✅ Handle image upload
-        if ($request->hasFile('img_url_profile')) {
-            if ($user->img_url_profile && file_exists(public_path($user->img_url_profile))) {
-                unlink(public_path($user->img_url_profile));
+        if ($request->hasFile('img_url')) {
+            if ($user->image_url && file_exists(public_path($user->img_url))) {
+                unlink(public_path($user->image_url));
             }
 
-            $file = $request->file('img_url_profile');
+            $file = $request->file('img_url');
             $filename = time() . '_' . Str::random(8) . '.' . $file->getClientOriginalExtension();
-            $file->move(public_path('images/users'), $filename);
-            $user->img_url_profile = 'images/users/' . $filename;
+            $file->move(public_path('assets/img/users/'), $filename);
+            $user->image_url = 'assets/img/users/' . $filename;
         }
 
         if($user->save()){
@@ -121,16 +122,18 @@ class UserController extends Controller
     /**
      * Remove the specified user from storage.
      */
-    public function destroy($id)
-    {
+    public function destroy($id){
         $user = User::findOrFail($id);
 
-        // ✅ Delete the image if exists
-        if ($user->img_url_profile && file_exists(public_path($user->img_url_profile))) {
-            unlink(public_path($user->img_url_profile));
-        }
+        $user->update(['status' => 0]);
 
-        if($user->delete()){
+        // ✅ Delete the image if exists
+        // if ($user->image_url && file_exists(public_path($user->image_url))) {
+        //     unlink(public_path($user->image_url));
+        // }
+        // delete()
+
+        if($user->save()){
             return redirect()->route('admin.users.index')->with('success', 'User deleted successfully.');
         }
     }

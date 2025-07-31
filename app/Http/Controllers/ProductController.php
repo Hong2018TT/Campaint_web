@@ -20,7 +20,7 @@ class ProductController extends Controller
             'discount_percent' => 'nullable|numeric|min:0|max:100',
             'price_after_discount' => 'nullable|numeric',
             'original_price' => 'nullable|numeric',
-            'color_type' => 'required|string|max:100',
+            'color_type' => 'required|string|max:7',
             'size' => 'required|string|max:100',
             'description' => 'nullable|string',
             'image_url' => 'nullable|image|mimes:jpeg,jpg,png,gif,webp|max:2048',
@@ -33,8 +33,8 @@ class ProductController extends Controller
     }
     
     public function index(){
+        // Display status = 1
         $products = DB::table('products')->select('id','Name_EN','Name_KH','image_url')->where('status', '1')->get();
-
         return view('admin.product.index',compact('products')); // Pass users to the view
     }
 
@@ -114,6 +114,7 @@ class ProductController extends Controller
             Log::error('Product creation failed: ' . $e->getMessage(), [
                 'request_data' => $request->all(),
                 'uploaded_filenames_for_db' => $imageFileNamesForDatabase,
+                'exception_trace' => $e->getTraceAsString() // Add trace for better debugging
             ]);
             return back()->withInput()->with('error', 'Failed to create product. Please try again.');
         }
@@ -221,6 +222,7 @@ class ProductController extends Controller
                 'product_id' => $id,
                 'request_data' => $request->all(),
                 'uploaded_filenames_for_db' => $imageFileNamesForDatabase,
+                'exception_trace' => $e->getTraceAsString() // Add trace for better debugging
             ]);
             // Redirect back with an error message and repopulate form with old input
             return back()->withInput()->with('error', 'Failed to update product. Please try again.');
@@ -256,6 +258,7 @@ class ProductController extends Controller
             Log::error('Product status update to inactive failed: ' . $e->getMessage(), [
                 'product_id' => $id,
                 'product_data' => $product->toArray(), // Log product data for context
+                'exception_trace' => $e->getTraceAsString() // Add trace for better debugging
             ]);
             // Redirect back with an error message
             return back()->with('error', 'Failed to change product status. Please try again.');

@@ -83,17 +83,21 @@
             </ul>
         </li>
 
-        <li class="nav-item">
-            <a href="{{route('admin.users.index')}}" class="nav-link">
-                <i class="ri-user-3-fill text-xl transition-transform duration-300"></i>
-                <span class="nav-label">User</span>
-            </a>
-            <ul class="dropdown-menu pl-4">
-                <li class="nav-item px-3">
-                    <a href="{{route('admin.users.index')}}" class="nav-link dropdown-link">User</a>
+        @auth
+            @if(auth()->user()->role == 'Administrator')
+                <li class="nav-item">
+                    <a href="{{ route('admin.users.index') }}" class="nav-link">
+                        <i class="ri-user-3-fill text-xl transition-transform duration-300"></i>
+                        <span class="nav-label">User</span>
+                    </a>
+                    <ul class="dropdown-menu pl-4">
+                        <li class="nav-item px-3">
+                            <a href="{{ route('admin.users.index') }}" class="nav-link dropdown-link">User</a>
+                        </li>
+                    </ul>
                 </li>
-            </ul>
-        </li>
+            @endif
+        @endauth
 
         <li class="nav-item">
             <a href="{{route('admin.about.index')}}" class="nav-link">

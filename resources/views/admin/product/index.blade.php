@@ -20,6 +20,8 @@
     <hr class="text-gray-300">
     
     <div class="mt-3 flow-root pb-2 px-3">
+      @include('components.txt-error.txt-error')
+      
       <div class="tb-overflow">
         <div class="inline-block min-w-full pb-2 align-middle pt-2">
           <table id="#" class="table-filter min-w-full divide-y divide-green-300">
@@ -47,6 +49,7 @@
                   <td>
                     <div class="table-cell-actions">
                       <a href="{{route('admin.product.edit', $product->id)}}" class="table-action-edit"><i class="ri-pencil-line"></i></a>
+                      
                       <div x-data="{ open: false, productIdToDelete: null }">
                         <a @click="open = true; productIdToDelete = {{ $product->id }}" class="table-action-delete">
                             <i class="ri-delete-bin-6-fill"></i>
@@ -87,3 +90,4 @@
 </div>
 
 @endsection
+

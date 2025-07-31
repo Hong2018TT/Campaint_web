@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     {{-- Link set Logo tabs website --}}
     <link rel="icon" href="{{asset('assets/img/logo/favicon.ico')}}" type="image/x-icon">
 
@@ -86,7 +87,7 @@
       UploadImage('img_url_4', 'preview-image-4', 'upload-icon-4', 'file-size-error-4')
 
       // User Profile
-      UploadImage('img_url_profile','preview-image-profile','upload-icon-profile','file-size-error-profile');
+      UploadImage('img_url','preview-image-profile','upload-icon-profile','file-size-error-profile');
 
       // Call the function for each password field you have
       PswToggleProfile('password', 'togglePassword');

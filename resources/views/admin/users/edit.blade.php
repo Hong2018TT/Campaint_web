@@ -18,6 +18,8 @@
     <hr class="text-gray-200">
 
     <div class="mt-3 flow-root pb-1 px-3">
+        @include('components.txt-error.txt-error')
+
         <form id="#" name="#" class="mx-auto" action="{{ route('update_user', $user->id) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PUT')
@@ -57,7 +59,7 @@
 
                 <div class="box-form">
                     <label for="role" class="title-form">Role</label>
-                    <div class="grid grid-cols-1 focus-within:relative pt-2">
+                    <div class="grid grid-cols-1 focus-within:relative">
                         <select id="role" name="role" autocomplete="role" aria-label="role" class="form-select" required>
                             <option value="" hidden>Select your role</option>
                             <option value="User" {{ $user->role == 'User' ? 'selected' : '' }}>User</option>
@@ -73,17 +75,21 @@
 
                 {{-- Section main image product --}}
                 <div class="box-form-img pb-1">
-                    <label for="img_url_profile" class="main-image-title text-sm/6 font-medium">Profile Image</label>
+                    <label for="img_url" class="main-image-title text-sm/6 font-medium">Profile Image</label>
                     <div class="box-upload-image">
                         <div class="text-center">
                             <div class="min-h-48 flex justify-center items-center">
-                                <i class="ri-image-add-line mx-auto text-9xl text-black/25" id="upload-icon-profile"></i>
-                                <img id="preview-image-profile" src="#" alt="Image Preview" class="preview-image-product hidden max-w-full mx-auto rounded-sm"/> 
+                                {{-- Display existing image or upload icon --}}
+                                <i class="ri-image-add-line mx-auto text-9xl text-black/25 {{ $user->image_url ? 'hidden' : '' }}" id="upload-icon-main"></i>
+                                <img id="preview-image-profile"
+                                    src="{{ $user->image_url ? asset ($user->image_url) : '#' }}"
+                                    alt="Image Preview"
+                                    class="preview-image-product {{ $user->image_url ? '' : 'hidden' }} max-w-full mx-auto rounded-sm"/>
                             </div>
                             <div class="flex justify-center text-sm/6 text-gray-400 mt-2">
-                                <label for="img_url_profile" class="text-upload-img">
+                                <label for="img_url" class="text-upload-img">
                                     <span>Upload a file</span>
-                                    <input id="img_url_profile" name="img_url_profile" type="file" class="sr-only" accept="image/*">
+                                    <input id="img_url" name="img_url" type="file" class="sr-only" accept="image/*">
                                 </label>
                                 <p class="pl-1">or drag and drop</p>
                             </div>

@@ -24,7 +24,7 @@
                 aria-haspopup="true">
 
             <span class="sr-only">Open user menu</span>
-            <img class="profile-admin" src="{{ asset('assets/img/admin/user.png') }}" alt="Logo image" loading="lazy">
+            <img class="profile-admin" src="{{ asset('assets/img/users/user.png') }}" alt="Logo image" loading="lazy">
             <span class="hidden lg:flex lg:items-center">
                 @if(Auth::check() == 'Administrator')
                     <span class="ml-2 text-sm/6 font-semibold">Admin</span>

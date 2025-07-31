@@ -80,6 +80,8 @@
     <hr class="text-gray-200">
 
     <div class="mt-3 flow-root pb-2 px-3">
+        @include('components.txt-error.txt-error')
+        
         <div class="tb-overflow">
             <div class="inline-block min-w-full pb-2 align-middle pt-2">
                 <table id="#" class="table-filter min-w-full divide-y divide-blue-300">

@@ -28,23 +28,28 @@
                 </div>
                 <hr class="border-1 border-gray-400">
                 <div class="modal-body p-4">
-                    <form id="" name="" action="#" method="POST">
+                    @error('name_en')
+                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                    @enderror
+                    <form id="form-colorfamily" name="form-colorfamily" action="{{ route('save_colorfamily') }}" method="POST">
+                        @csrf
+
                         <div class="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 sm:gap-2 md:gap-x-4 text-left">
                             <div class="box-form">
-                                <label for="product-en" class="title-form">Name (English)</label>
+                                <label for="name_en" class="title-form">Name (English)</label>
                                 <div class="form-outline">
-                                    <input type="text" name="Name_en" id="Name_en" class="form-input" placeholder="Enter your color name en" required>
+                                    <input type="text" name="name_en" id="name_en" class="form-input" placeholder="Enter your color name en" required>
                                 </div>
                             </div>
                             <div class="box-form">
-                                <label for="product-en" class="title-form">Name (Khmer)</label>
+                                <label for="name_kh" class="title-form">Name (Khmer)</label>
                                 <div class="form-outline">
-                                    <input type="text" name="Name_kh" id="Name_kh" class="form-input" placeholder="Enter your color name kh" required>
+                                    <input type="text" name="name_kh" id="name_kh" class="form-input" placeholder="Enter your color name kh" required>
                                 </div>
                             </div>
 
                             <div class="box-form">
-                                <label for="color" class="title-form">Color</label>
+                                <label for="color_code" class="title-form">Color</label>
                                 <div class="flex items-center rounded-sm bg-white outline-1 -outline-offset-1 outline-gray-300 
                                 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-green-600 mb-1 mt-1">
                                     <input type="color" name="color_code" id="color_code" class="form-input" placeholder="Enter your color" required>
@@ -53,11 +58,11 @@
                             
                             <div class="box-form">
                                 <label for="parent" class="title-form">Parent Color</label>
-                                <div class="grid grid-cols-1 focus-within:relative pt-2">
+                                <div class="grid grid-cols-1 focus-within:relative">
                                     <select id="parent" name="parent" autocomplete="parent" aria-label="parent" class="form-select" required>
                                         <option value="" hidden selected>Select color families</option>
                                         @foreach ($colorfamilys as $colorfamily)
-                                            <option value="{{ $colorfamily->id }}">{{ $colorfamily->name }}</option>
+                                            <option value="{{ $colorfamily->name }}">{{ $colorfamily->name }}</option>
                                         @endforeach
                                     </select>
 
@@ -82,6 +87,8 @@
     <hr class="text-gray-200">
     
     <div class="mt-3 flow-root pb-2 px-3">
+        @include('components.txt-error.txt-error')
+        
         <div class="tb-overflow">
             <div class="inline-block min-w-full pb-2 align-middle pt-2">
                 <table id="#" class="table-filter min-w-full divide-y divide-blue-300">
@@ -131,34 +138,35 @@
                                             </div>
                                             <hr class="border-1 border-gray-400">
                                             <div class="modal-body p-4">
-                                                <form id="" name="" action="#" method="POST">
+                                                <form id="form-colorfamily-edit" name="form-colorfamily-edit" action="#" method="POST">
                                                     <div class="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 sm:gap-2 md:gap-x-4 text-left">
                                                         <div class="box-form">
-                                                            <label for="product-en" class="title-form">Name (English)</label>
+                                                            <label for="name_kh_edit" class="title-form">Name (English)</label>
                                                             <div class="form-outline">
-                                                                <input type="text" name="Name_EN" id="Name_EN" class="form-input" placeholder="Enter your color name en" required>
+                                                                <input type="text" name="name_en_edit" id="name_en_edit" class="form-input" placeholder="Enter your color name en" required>
                                                             </div>
                                                         </div>
                                                         <div class="box-form">
-                                                            <label for="product-en" class="title-form">Name (Khmer)</label>
+                                                            <label for="name_en_edit" class="title-form">Name (Khmer)</label>
                                                             <div class="form-outline">
-                                                                <input type="text" name="Name_KH" id="Name_KH" class="form-input" placeholder="Enter your color name kh" required>
+                                                                <input type="text" name="name_en_edit" id="name_en_edit" class="form-input" placeholder="Enter your color name kh" required>
                                                             </div>
                                                         </div>
         
                                                         <div class="box-form">
-                                                            <label for="product-en" class="title-form">Color</label>
+                                                            <label for="color_code_edit" class="title-form">Color</label>
                                                             <div class="flex items-center rounded-sm bg-white outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-green-600 mb-1 mt-1">
-                                                                <input type="color" name="color" id="color" class="form-input" placeholder="Enter your color">
+                                                                <input type="color" name="color_code_edit" id="color_code_edit" class="form-input" placeholder="Enter your color">
                                                             </div>
                                                         </div>
                                                         <div class="box-form">
                                                             <label for="parent" class="title-form">Parent Color</label>
-                                                            <div class="grid grid-cols-1 focus-within:relative pt-2">
-                                                                <select id="parent" name="parent" autocomplete="parent" aria-label="parent" class="form-select" required>
+                                                            <div class="grid grid-cols-1 focus-within:relative">
+                                                                <select id="parent" name="parent_edit" autocomplete="parent_edit" aria-label="parent" class="form-select" required>
                                                                     <option value="" hidden selected>Select color families</option>
-                                                                    <option value="0">Cateogry one</option>
-                                                                    <option value="1">Cateogry two</option>
+                                                                    @foreach ($colorfamilys as $colorfamily)
+                                                                        <option value="{{ $colorfamily->name }}">{{ $colorfamily->name }}</option>
+                                                                    @endforeach
                                                                 </select>
         
                                                                 <svg class="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-500 sm:size-4" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-slot="icon">
@@ -180,32 +188,30 @@
                                     </div>
 
                                     {{-- For model delete --}}
-                                    <div x-data="{ open: false }">
-                                        <button @click="open = true" class="table-action-delete">
+                                    <div x-data="{ open: false, colorfamilyIdToDelete: null }">
+                                        <a @click="open = true; colorfamilyIdToDelete = {{ $colorfamily->id }}" class="table-action-delete">
                                             <i class="ri-delete-bin-6-fill"></i>
-                                        </button>
-                                        <!-- Backdrop -->
-                                        <div x-show="open" x-cloak
-                                            @include('components.modal.model-transition')>
-        
+                                        </a>
+                                        <div x-show="open" x-cloak @include('components.modal.model-transition')>
                                             <div x-show="open" @include('components.modal.model-fade')
-                                                class="modal-box-md"
-                                                {{-- For set mourseout --}}
-                                                @click.outside="open = true">
-        
-                                            <div class="modal-header-del">Delete</div>
-                                            <hr class="border-1 border-gray-400">
-        
-                                            <div class="modal-body text-left px-4 py-2 whitespace-normal">
-                                                <p class="text-lg text-red-500">Are you sure you want to delete this item?</p>
-                                            </div>
-        
-                                            <form id="" name="" action="" method="POST">
-                                                <div class="model-footer flex justify-end space-x-2 px-4 pt-4">
-                                                    <a @click="open = false" class="btn-close-model">Close</a>
-                                                    <button type="submit" class="btn-del-model">Delete</button>
+                                                class="modal-box-md" @click.outside="open = false"> {{-- Changed @click.outside="open = true" to @click.outside="open = false" to allow closing --}}
+
+                                                <div class="modal-header-del">Delete</div>
+                                                <hr class="border-1 border-gray-400">
+
+                                                <div class="modal-body text-left px-4 py-2 whitespace-normal">
+                                                    <p class="text-lg text-red-500">Are you sure you want to delete this item?</p>
                                                 </div>
-                                            </form>
+
+                                                <form :action="`/colorfamily-delete/${colorfamilyIdToDelete}`" method="POST">
+                                                    @csrf
+                                                    @method('DELETE') {{-- Important for Laravel DELETE routes --}}
+
+                                                    <div class="model-footer flex justify-end space-x-2 px-4 pt-4">
+                                                        <a @click="open = false" class="btn-close-model">Close</a>
+                                                        <button type="submit" class="btn-del-model">Delete</button>
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -223,5 +229,4 @@
     </div>
 
 </div>
-
 @endsection

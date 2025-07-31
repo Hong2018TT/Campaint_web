@@ -11,7 +11,7 @@ class About_us extends Model
 
     protected $table = 'about_us'; // Define the correct table name
 
-    protected $primaryKey = 'id'; // Primary key
+    // protected $primaryKey = 'id';
 
     protected $fillable = [
         'description_khmer',
