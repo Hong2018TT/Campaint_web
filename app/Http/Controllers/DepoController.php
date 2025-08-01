@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Depo;
+use App\Models\Province;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\File;
@@ -23,12 +24,14 @@ class DepoController extends Controller
     }
 
     public function index(){
-        $depos = Depo::where('status','1')->limit(50)->get();
-        return view('admin.depo.index', compact('depos'));
+        $depos = Depo::where('status','1')->limit(100)->get();
+        $provinces = Province::All();
+        return view('admin.depo.index', compact('depos','provinces'));
     }
 
     public function create(){
-        return view('admin.depo.create');
+        $provinces = Province::All();
+        return view('admin.depo.create',compact('provinces'));
     }
 
     public function store(Request $request){
@@ -82,7 +85,7 @@ class DepoController extends Controller
             // Log any errors that occur during the status update process
             Log::error('Product status update to inactive failed: ' . $e->getMessage(), [
                 'id' => $id,
-                'product_data' => $depo->toArray(), // Log product data for context
+                'depo_data' => $depo->toArray(), // Log product data for context
                 'exception_trace' => $e->getTraceAsString() // Add trace for better debugging
             ]);
             // Redirect back with an error message

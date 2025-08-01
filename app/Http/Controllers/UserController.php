@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage; // <-- Add this import
 
 class UserController extends Controller
 {
@@ -138,10 +139,47 @@ class UserController extends Controller
         }
     }
 
+
     public function profile(){
         // Get the currently logged-in user
         $users = Auth::user(); 
         // Pass the user object to the view
         return view('admin.users.profile', ['users' => $users]);
+    }
+    
+    public function profileUpdate(Request $request){
+        // 1. Get the authenticated user.
+        $user = User::find(Auth::id());
+
+        // 2. Validate the request. Note the change to 'profile_image' to match the form input name.
+        $request->validate([
+            'profile_image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
+
+        // 4. Handle image upload.
+        if ($request->hasFile('profile_image')) {
+            // Delete the old image if it exists.
+            // Note the change from $user->profile_image to $user->image_url to match your database field.
+            if ($user->image_url && file_exists(public_path($user->image_url))) {
+                unlink(public_path($user->image_url));
+            }
+
+            // Upload the new image.
+            $file = $request->file('profile_image');
+            $filename = time() . '_' . Str::random(8) . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('assets/img/users/'), $filename);
+
+            // Update the user's image_url field.
+            $user->image_url = 'assets/img/users/' . $filename;
+        }
+
+        // 5. Save the user model.
+        if ($user->save()) {
+            session()->flash('success', 'Profile updated successfully!');
+            return redirect()->back(); // Redirect back to the profile page for a better user experience
+        } else {
+            session()->flash('error', 'Failed to update profile.');
+            return redirect()->back()->withInput();
+        }
     }
 }

@@ -121,8 +121,8 @@
                                             <div class="modal-header-add">
                                                 Edit Color Family
                                             </div>
-                                            <hr class="border-1 border-gray-400">
-                                            <div class="modal-body p-4">
+
+                                            <div class="modal-body">
                                                 <form id="" name="" action="#" method="POST">
                                                     <div class="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 sm:gap-2 md:gap-x-4 text-left">
                                                         <div class="box-form">
@@ -146,11 +146,13 @@
                                                         </div>
                                                         <div class="box-form">
                                                             <label for="parent" class="title-form">Parent Color</label>
-                                                            <div class="grid grid-cols-1 focus-within:relative pt-2">
+                                                            <div class="grid grid-cols-1 focus-within:relative">
                                                                 <select id="parent" name="parent" autocomplete="parent" aria-label="parent" class="form-select" required>
                                                                     <option value="" hidden selected>Select color families</option>
-                                                                    <option value="0">Cateogry one</option>
-                                                                    <option value="1">Cateogry two</option>
+                                                                    <option value="0">Color Families (អម្បូរពណ៌)</option>
+                                                                    @foreach ($colorfamilyselects as $colorfamilyselect)
+                                                                        <option value="{{ $colorfamilyselect->id }}">{{ $colorfamilyselect->name }}</option>
+                                                                    @endforeach
                                                                 </select>
         
                                                                 <svg class="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-500 sm:size-4" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-slot="icon">
@@ -161,7 +163,7 @@
                                                     </div>
                                                 </div>
                                                     
-                                                    <div class="model-footer flex justify-end space-x-2 px-4 pt-4">
+                                                    <div class="model-footer">
                                                         <button  @click="open = false" class="btn-close-model">Close</button>
                                                         <button type="submit" class="btn-save-model">update</button>
                                                     </div>
@@ -170,33 +172,30 @@
                                             </div>
                                         </div>
                                     </div>
+                                    
                                     {{-- For model delete --}}
-                                    <div x-data="{ open: false }">
-                                        <button @click="open = true" class="table-action-delete">
+                                    <div x-data="{ open: false, dashcolorIdToDelete: null }">
+                                        <a @click="open = true; dashcolorIdToDelete = {{ $colorfamily->id }}" class="table-action-delete">
                                             <i class="ri-delete-bin-6-fill"></i>
-                                        </button>
-                                        <!-- Backdrop -->
-                                        <div x-show="open" x-cloak
-                                            @include('components.modal.model-transition')>
-        
+                                        </a>
+                                        <div x-show="open" x-cloak @include('components.modal.model-transition')>
                                             <div x-show="open" @include('components.modal.model-fade')
-                                                class="modal-box-md"
-                                                {{-- For set mourseout --}}
-                                                @click.outside="open = true">
-        
-                                            <div class="modal-header-del">Delete</div>
-                                            <hr class="border-1 border-gray-400">
-        
-                                            <div class="modal-body text-left px-4 py-2 whitespace-normal">
-                                                <p class="text-lg text-red-500">Are you sure you want to delete this item?</p>
-                                            </div>
-        
-                                            <form id="" name="" action="" method="POST">
-                                                <div class="model-footer flex justify-end space-x-2 px-4 pt-4">
-                                                    <a @click="open = false" class="btn-close-model">Close</a>
-                                                    <button type="submit" class="btn-del-model">Delete</button>
+                                                class="modal-box-md" @click.outside="open = true"> {{-- Changed @click.outside="open = true" to @click.outside="open = false" to allow closing --}}
+
+                                                <div class="modal-header-del">Delete</div>
+
+                                                <div class="modal-body">
+                                                    <p class="text-lg text-red-500">Are you sure you want to delete this item?</p>
                                                 </div>
-                                            </form>
+
+                                                <form :action="`/dashboard-color-del/${dashcolorIdToDelete}`" method="POST">
+                                                    @csrf
+                                                    @method('DELETE') {{-- Important for Laravel DELETE routes --}}
+                                                    <div class="model-footer">
+                                                        <a @click="open = false" class="btn-close-model">Close</a>
+                                                        <button type="submit" class="btn-del-model">Delete</button>
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>

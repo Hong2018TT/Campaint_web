@@ -56,19 +56,18 @@
                         </a>
                         <div x-show="open" x-cloak @include('components.modal.model-transition')>
                             <div x-show="open" @include('components.modal.model-fade')
-                                class="modal-box-md" @click.outside="open = false"> {{-- Changed @click.outside="open = true" to @click.outside="open = false" to allow closing --}}
+                                class="modal-box-md" @click.outside="open = true"> {{-- Changed @click.outside="open = true" to @click.outside="open = false" to allow closing --}}
 
                                 <div class="modal-header-del">Delete</div>
-                                <hr class="border-1 border-gray-400">
 
-                                <div class="modal-body text-left px-4 py-2 whitespace-normal">
+                                <div class="modal-body">
                                     <p class="text-lg text-red-500">Are you sure you want to delete this item?</p>
                                 </div>
 
                                 <form :action="`/products-delete/${productIdToDelete}`" method="POST">
                                     @csrf
                                     @method('DELETE') {{-- Important for Laravel DELETE routes --}}
-                                    <div class="model-footer flex justify-end space-x-2 px-4 pt-4">
+                                    <div class="model-footer">
                                         <a @click="open = false" class="btn-close-model">Close</a>
                                         <button type="submit" class="btn-del-model">Delete</button>
                                     </div>

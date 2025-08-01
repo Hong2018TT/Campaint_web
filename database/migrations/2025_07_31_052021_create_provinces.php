@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('subcategories', function (Blueprint $table) {
+        Schema::create('provinces', function (Blueprint $table) {
             $table->id();
-            $table->integer('category_id');
-            $table->string('name');
-            $table->tinyInteger('status')->default(1);
+            $table->string('PROCODE')->unique();
+            $table->string('prefix')->nullable();
+            $table->string('PROVINCE')->unique();
+            $table->string('PROVINCE_KH')->nullable();
             $table->timestamps();
         });
     }
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('subcategories');
+        Schema::dropIfExists('provinces');
     }
 };

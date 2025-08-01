@@ -6,30 +6,39 @@
 <div class="mb-6 rounded-md max-w-7xl mx-auto mt-2">
     <!-- Profile Header -->
         <div class="container-bg-profile">
-            <div class="h-32 sm:h-88 md:h-88 bg-cover bg-center object-cover" style="background-image: url({{asset('assets/img/admin/bg-campaint.jpg')}})" loading="lazy"></div>
+            <div class="h-32 sm:h-88 md:h-88 bg-cover bg-center object-cover" style="background-image: url({{asset('assets/img/profile/bg-campaint.jpg')}})" loading="lazy"></div>
             <div class="p-6 md:p-6 relative">
                 @if(Auth::check())
-                    <div class="absolute -top-16 left-8">
-                        <picture>
-                            <label for="profileImageInput">
-                                <div class="box-img-profile relative overflow-hidden">
-                                    <img class="object-cover w-full h-full" id="profileImagePreview" src="{{ asset($users->image_url) }}"
-                                        alt="Admin Avatar" loading="lazy" 
-                                        onerror="this.onerror=null;this.src='{{asset('assets/img/users/user.png')}}';"/>
-                                        <div class="upload-profile">
-                                            <i class="ri-upload-2-fill text-lg"></i>
-                                            <input type="file" name="profile_image" id="profileImageInput" class="hidden" accept="image/*">
-                                        </div>
-                                </div>
-                            </label>
-                        </picture>
-                    </div>
-                    <div class="mt-10 md:mt-0 md:ml-40">
-                        <h2 id="user-name" class="text-2xl font-bold">{{ $users->name }}</h2>
-                        {{-- <p class="text-sm text-gray-600 dark:text-gray-400">@catherinew</p> --}}
-                        <button type="button" class="mt-2 rounded-sm bg-green-700 px-2 py-1 text-sm font-semibold text-white shadow-xs hover:bg-green-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Edit Profile</button>
-                    </div>
+                    <form action="{{ route('update_userprofile') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+
+                        <div class="absolute -top-16 left-8">
+                            <picture>
+                                <label for="profileImageInput">
+                                    <div class="box-img-profile relative overflow-hidden">
+                                        <img class="object-cover w-full h-full" id="profileImagePreview" src="{{ asset($users->image_url) }}"
+                                            alt="Admin Avatar" loading="lazy" 
+                                            onerror="this.onerror=null;this.src='{{asset('assets/img/users/user.png')}}';"/>
+                                            <div class="upload-profile">
+                                                <i class="ri-upload-2-fill text-lg"></i>
+                                                <input type="file" name="profile_image" id="profileImageInput" class="hidden" accept="image/*">
+                                            </div>
+                                    </div>
+                                </label>
+                            </picture>
+                        </div>
+                        <div class="flex-grow flex-col md:flex-row items-center w-full lg:mt-12 md:mt-10 sm:mt-8">
+                            <div class="text-center lg:text-left md:text-left sm:text-left">
+                                <h2 id="user-name" class="text-2xl font-bold text-gray-800 lg:pl-12 sm:pl-11 pl-">{{ $users->name }}</h2>
+                                <button type="submit" class="rounded-md bg-green-700 px-3 py-2 lg:ml-6 sm:ml-5 ml-0 text-sm font-semibold text-white shadow-sm hover:bg-green-600 focus-visible:outline-offset-2 focus-visible:outline-green-700 cursor-pointer">
+                                    Edit Profile
+                                </button>
+                            </div>
+                        </div>
+                    </form>
                 @endif
+                {{-- <div class="mt-4 md:mt-0">
+                </div> --}}
             </div>
         </div>
 
@@ -42,41 +51,48 @@
                         <h3 class="text-xl font-semibold">About Me</h3>
                     </div>
                     <p id="about-me-text" class="mt-4 text-gray-600">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci odit quidem rerum, aperiam error neque placeat iure autem dignissimos facere voluptatibus eum, 
-                        quia quam quae magni impedit inventore voluptatum hic minima est, ex veritatis. Deserunt omnis, molestias a officiis cum sapiente.
+                        Dedicated and results-oriented Dashboard Administrator with over 8 years of experience in system management, data analysis, and user support. Passionate about optimizing workflows and ensuring system integrity.
                     </p>
                 </div>
             </div>
 
             <!-- Right Column: Details & Activity -->
             <div class="lg:col-span-1 space-y-6">
-                <!-- User Details -->
-                <div class="bg-white rounded-lg shadow-md p-6">
-                    <h3 class="text-xl font-semibold border-b border-gray-700 pb-3">Details</h3>
-                    <ul class="mt-4 space-y-2 text-gray-700">
-                        <li class="flex items-center">
-                            <i class="ri-user-line text-lg text-gray-400 mr-3"></i>
-                            {{-- <svg class=" h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>  --}}
-                                <strong>Full Name:</strong> <span class="ml-2">---</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="ri-mail-ai-line text-lg text-gray-400 mr-3"></i>
-                            {{-- <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>  --}}
-                                <strong>Email:</strong> <span class="ml-2 text-indigo-500">---</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="ri-phone-line text-lg text-gray-400 mr-3"></i>
-                            {{-- <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg> --}}
-                                <strong>Phone:</strong> <span class="ml-2">---</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="ri-map-pin-line text-lg text-gray-400 mr-3"></i>
-                            {{-- <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg> --}}
-                                <strong>Location:</strong> <span class="ml-2">---</span>
-                        </li>
-                    </ul>
-                </div>
+                <!-- Recent Activity Card -->
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="font-bold text-lg text-gray-800 border-b pb-2 mb-4">Recent Activity</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <div class="bg-green-500 text-white rounded-full h-8 w-8 text-center flex items-center justify-center mr-4 mt-1">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-gray-800">Updated user permissions for the marketing team.</p>
+                                    <p class="text-sm text-gray-500">Today at 10:42 AM</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="bg-blue-500 text-white rounded-full h-8 w-8 text-center flex items-center justify-center mr-4 mt-1">
+                                    <i class="fas fa-chart-bar"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-gray-800">Generated a new quarterly sales report.</p>
+                                    <p class="text-sm text-gray-500">Yesterday at 3:15 PM</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="bg-red-500 text-white rounded-full h-8 w-8 text-center flex items-center justify-center mr-4 mt-1">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-gray-800">Resolved a critical security alert.</p>
+                                    <p class="text-sm text-gray-500">July 29, 2025 at 9:00 AM</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
             </div>
+
         </div>
 </div>
 @endsection

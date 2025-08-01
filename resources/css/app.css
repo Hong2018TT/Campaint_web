@@ -228,40 +228,47 @@
 @layer components{
   /* Style for create */
   .modal-header-del{
-    @apply text-xl font-bold text-left p-4 text-white bg-red-500 rounded-tl-sm rounded-tr-md;
+    @apply text-xl font-bold text-left p-4 text-white bg-red-500 rounded-t-lg;
   }
   .modal-header-add{
-    @apply text-xl font-bold text-left p-4 text-white bg-green-700 rounded-tl-sm rounded-tr-md;
+    @apply text-xl font-bold text-left p-4 text-white bg-green-700 rounded-t-lg;
+  }
+
+  .modal-body{
+    @apply text-left whitespace-normal p-4;
+  }
+  .model-footer{
+    @apply flex justify-end space-x-2 p-3 pt-0;
   }
 
   .btn-close-model{
-    @apply px-4 py-2 text-sm font-medium text-white rounded-full bg-gray-500 hover:bg-gray-600 cursor-pointer;
+    @apply px-4 py-2 text-sm font-medium text-white rounded-lg bg-gray-500 hover:bg-gray-600 cursor-pointer;
   }
   .btn-del-model{
-    @apply px-4 py-2 text-sm font-medium text-white bg-red-500 hover:bg-red-600 rounded-full cursor-pointer;
+    @apply px-4 py-2 text-sm font-medium text-white bg-red-500 hover:bg-red-600 rounded-lg cursor-pointer;
   }
   .btn-save-model{
-    @apply px-4 py-2 text-sm font-medium text-white bg-green-600 hover:bg-green-700 rounded-full cursor-pointer;
+    @apply px-4 py-2 text-sm font-medium text-white bg-green-600 hover:bg-green-700 rounded-lg cursor-pointer;
   }
 
   /* Layout for model */
   .modal-box-sm{
-    @apply bg-white pb-4 rounded-sm shadow-lg max-w-sm w-full mt-18 mx-2;
+    @apply bg-white rounded-lg shadow-lg max-w-sm w-full mt-18 mx-2;
   }
   .modal-box-md{
-    @apply bg-white pb-4 rounded-sm shadow-lg max-w-md w-full mt-18 mx-2;
+    @apply bg-white rounded-lg shadow-lg max-w-md w-full mt-18 mx-2;
   }
   .modal-box-lg{
-    @apply bg-white pb-4 rounded-sm shadow-lg max-w-lg w-full mt-18 mx-2;
+    @apply bg-white rounded-lg shadow-lg max-w-lg w-full mt-18 mx-2;
   }
   .modal-box-xl{
-    @apply bg-white pb-4 rounded-sm shadow-lg max-w-xl w-full mt-18 mx-2;
+    @apply bg-white rounded-lg shadow-lg max-w-xl w-full mt-18 mx-2;
   }
   .modal-box-2xl{
-    @apply bg-white pb-4 rounded-sm shadow-lg max-w-2xl w-full mt-18 mx-2;
+    @apply bg-white rounded-lg shadow-lg max-w-2xl w-full mt-18 mx-2;
   }
   .model-box-full{
-    @apply bg-white pb-4 rounded-sm shadow-lg max-w-full w-full mt-18 mx-2;
+    @apply bg-white rounded-lg shadow-lg max-w-full w-full mt-18 mx-2;
   }
 }
 
@@ -281,11 +288,11 @@
   }
 
   .box-img-profile{
-    @apply h-24 w-24 md:h-32 md:w-32 rounded-full object-cover border-8 border-white shadow-lg;
+    @apply h-25 w-25 md:h-32 md:w-32 rounded-full object-cover lg:border-8 sm:border-6 border-6 border-white shadow-lg;
   }
 
   .upload-profile{
-    @apply text-gray-200 rounded-md cursor-pointer absolute z-2 bg-black/30 bottom-0 right-0 w-full text-center object-fill
+    @apply text-white rounded-md cursor-pointer absolute z-2 bg-black/50 bottom-0 right-0 w-full text-center object-fill
                         focus:outline-none focus:ring-2 focus:ring-indigo-400 transition duration-200;
   }
 }

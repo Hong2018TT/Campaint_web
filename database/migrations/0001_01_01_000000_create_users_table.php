@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('role');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->enum('status', ['1', '0'])->default('1'); // Assuming status can be '1' (active) or '0' (inactive)
+            $table->tinyInteger('status')->default(1);
             $table->rememberToken();
             $table->timestamps();
         });

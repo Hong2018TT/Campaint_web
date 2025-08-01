@@ -85,9 +85,8 @@
                                                 class="modal-box-md" @click.outside="open = true">
         
                                                 <div class="modal-header-del">Delete</div>
-                                                <hr class="border-1 border-gray-400">
         
-                                                <div class="modal-body text-left px-4 py-2 whitespace-normal">
+                                                <div class="modal-body">
                                                     <p class="text-lg text-red-500">Are you sure you want to delete this User?</p>
                                                 </div>
         
@@ -95,7 +94,7 @@
                                                 <form :action="deleteFormAction" method="POST">
                                                     @csrf {{-- CSRF token for security --}}
                                                     @method('DELETE') {{-- Method spoofing for DELETE request --}}
-                                                    <div class="model-footer flex justify-end space-x-2 px-4 pt-4">
+                                                    <div class="model-footer">
                                                         <button type="button" @click="open = false" class="btn-close-model">Cancel</button>
                                                         <button type="submit" class="btn-del-model">Delete</button>
                                                     </div>

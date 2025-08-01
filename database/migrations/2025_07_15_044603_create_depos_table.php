@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('province_KH', 255)->nullable();
             $table->string('Phone', 15)->nullable();
             $table->string('GPS', 255)->nullable();
-            $table->enum('status', ['1', '0'])->default('1'); // Assuming status can be '1' (active) or '0' (inactive)
+            $table->tinyInteger('status')->default(1);
             $table->timestamps(); // adds created_at and updated_at columns
         });
     }

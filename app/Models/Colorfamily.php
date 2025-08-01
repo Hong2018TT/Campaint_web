@@ -3,11 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-class Color_families extends Model
+
+class Colorfamily extends Model
 {
-    use HasFactory;
-    protected $table = 'color_families';
+    protected $table = 'colorfamilys';
     protected $fillable = [
         'name',
         'name_kh',

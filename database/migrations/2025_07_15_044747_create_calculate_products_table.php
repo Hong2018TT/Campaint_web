@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('calculate_products', function (Blueprint $table) {
             $table->id();
             $table->integer('brand_id');
-            $table->integer('Net_Weight');
-            $table->integer('Coverage_area');
+            $table->integer('net_weight');
+            $table->integer('coverage_area');
+            $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });
     }

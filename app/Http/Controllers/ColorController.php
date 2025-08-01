@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Color;
-use App\Models\Color_families;
+use App\Models\Colorfamily;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Yajra\DataTables\DataTables; // Import DataTables
@@ -24,13 +24,12 @@ class ColorController extends Controller
     }
 
     public function index(){
-        $colors = Color::where('status', '1')->limit(50)->get();
+        $colors = Color::where('status', '1')->limit(100)->get();
         return view('admin.color.index', compact('colors'));
     }
 
-
     public function create(){
-        $colorfamilys = Color_families::select('id','name')->get();
+        $colorfamilys = Colorfamily::select('id','name')->get();
         return view('admin.color.create',compact('colorfamilys')); // Pass colors to the insert database
     }
 
@@ -63,7 +62,7 @@ class ColorController extends Controller
     }
 
     public function edit($id){
-        $colorfamilys = Color_families::All();
+        $colorfamilys = Colorfamily::All();
         $color = Color::findOrFail($id);
         return view('admin.color.edit',compact('color','colorfamilys')); // Pass colors to the edit database
     }
@@ -96,26 +95,6 @@ class ColorController extends Controller
             ]);
             // Redirect back with an error message
             return back()->with('error', 'Failed to change color status. Please try again.');
-        }
-    }
-
-    public function destroy($id){
-        $color = Color::findOrFail($id);
-
-        try {
-            $color->update(['status' => 0]);
-
-            return redirect()->route('admin.color.index')->with('success', 'Product moved to inactive/deleted status successfully.');
-
-        } catch (\Exception $e) {
-            // Log any errors that occur during the status update process
-            Log::error('Product status update to inactive failed: ' . $e->getMessage(), [
-                'id' => $id,
-                'color_data' => $color->toArray(), // Log product data for context
-                'exception_trace' => $e->getTraceAsString() // Add trace for better debugging
-            ]);
-            // Redirect back with an error message
-            return back()->with('error', 'Failed to change product status. Please try again.');
         }
     }
 }

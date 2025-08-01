@@ -26,8 +26,8 @@
                 <div class="modal-header-add">
                     Add Calculate product
                 </div>
-                <hr class="border-1 border-gray-400">
-                <div class="modal-body p-4">
+
+                <div class="modal-body">
                     <form id="" name="" action="#" method="POST">
                         <div class="grid grid-cols-1 text-left">
                             <div class="box-form">
@@ -67,7 +67,7 @@
                         </div>
                     </div>
 
-                    <div class="model-footer flex justify-end space-x-2 px-4 pt-4">
+                    <div class="model-footer">
                         <button  @click="open = false" class="btn-close-model">Close</button>
                         <button class="btn-save-model" type="submit">Save</button>
                     </div>
@@ -123,7 +123,7 @@
                                         <div class="modal-header-add">
                                             Edit Calculate product
                                         </div>
-                                        <hr class="border-1 border-gray-400">
+                                        
                                         <div class="modal-body p-4">
                                             <form id="" name="" action="#" method="POST">
                                                 <div class="grid grid-cols-1 text-left">
@@ -164,7 +164,7 @@
                                                 </div>
                                             </div>
     
-                                            <div class="model-footer flex justify-end space-x-2 px-4 pt-4">
+                                            <div class="model-footer">
                                                 <button  @click="open = false" class="btn-close-model">Close</button>
                                                 <button class="btn-save-model">Save</button>
                                             </div>
@@ -189,12 +189,12 @@
                                         <div class="modal-header-del">Delete</div>
                                         <hr class="border-1 border-gray-400">
     
-                                        <div class="modal-body text-left px-4 py-2 whitespace-normal">
+                                        <div class="modal-body">
                                             <p class="text-lg text-red-500">Are you sure you want to delete this item?</p>
                                         </div>
     
                                         <form id="" name="" action="" method="POST">
-                                            <div class="model-footer flex justify-end space-x-2 px-4 pt-4">
+                                            <div class="model-footer">
                                                 <a @click="open = false" class="btn-close-model">Close</a>
                                                 <button type="submit" class="btn-del-model">Delete</button>
                                             </div>

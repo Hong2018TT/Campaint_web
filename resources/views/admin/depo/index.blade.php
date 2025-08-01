@@ -25,13 +25,12 @@
                 <label for="provinceFilter" class="block text-md font-bold leading-6 text-green-800">Filter by Province (EN)</label>
                 <div class="relative mt-1">
                     <!-- The select input with an underline style -->
-                    <select id="provinceFilter" name="provinceFilter" 
-                            class="filter-product">
+                    <select id="provinceFilter" name="provinceFilter" class="filter-product">
                         <option selected value="">Show All Province</option>
-                        <option value="">Battanbang</option>
-                        <option value="">Banteay Meanchey</option>
-                        <option value="">Battambang</option>
-                        <option value="">Kampong</option>
+                        @foreach ($provinces as $province)
+                            {{-- IMPORTANT: The text here must exactly match the text in the table cell --}}
+                            <option value="{{ $province->PROVINCE }}">{{ $province->PROVINCE }}</option>
+                        @endforeach
                     </select>
 
                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
@@ -83,19 +82,18 @@
                                             </a>
                                             <div x-show="open" x-cloak @include('components.modal.model-transition')>
                                                 <div x-show="open" @include('components.modal.model-fade')
-                                                    class="modal-box-md" @click.outside="open = false"> {{-- Changed @click.outside="open = true" to @click.outside="open = false" to allow closing --}}
+                                                    class="modal-box-md" @click.outside="open = true"> {{-- Changed @click.outside="open = true" to @click.outside="open = false" to allow closing --}}
 
                                                     <div class="modal-header-del">Delete</div>
-                                                    <hr class="border-1 border-gray-400">
 
-                                                    <div class="modal-body text-left px-4 py-2 whitespace-normal">
+                                                    <div class="modal-body">
                                                         <p class="text-lg text-red-500">Are you sure you want to delete this item?</p>
                                                     </div>
 
                                                     <form :action="`/depo-delete/${depoIdToDelete}`" method="POST">
                                                         @csrf
                                                         @method('DELETE') {{-- Important for Laravel DELETE routes --}}
-                                                        <div class="model-footer flex justify-end space-x-2 px-4 pt-4">
+                                                        <div class="model-footer">
                                                             <a @click="open = false" class="btn-close-model">Close</a>
                                                             <button type="submit" class="btn-del-model">Delete</button>
                                                         </div>
@@ -117,5 +115,4 @@
     </div>
     
 </div>
-
 @endsection
