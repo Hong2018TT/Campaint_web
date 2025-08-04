@@ -41,6 +41,7 @@ class UserController extends Controller
         ], [
             'password.min' => 'The password must be at least 8 characters.',
             'password.confirmed' => 'The password confirmation does not match.',
+            'name.unique' => 'The name is use alreay.',
             // You can add more custom messages if needed
         ]);
 

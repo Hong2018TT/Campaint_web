@@ -31,6 +31,9 @@
                     <div class="form-outline">
                         <input type="text" name="Name_EN" id="Name_EN" value="{{ old('Name_EN') }}" class="form-input" placeholder="Enter your product name en" required>
                     </div>
+                    @error('Name_EN')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="box-form">
@@ -38,6 +41,9 @@
                     <div class="form-outline">
                         <input type="text" name="Name_KH" id="Name_KH" value="{{ old('Name_KH') }}" class="form-input" placeholder="Enter your product name kh" required>
                     </div>
+                    @error('Name_KH')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="box-form">
@@ -45,6 +51,9 @@
                     <div class="form-outline">
                         <input type="text" name="brand" id="brand" value='{{old('brand')}}' class="form-input" placeholder="Enter your brand name" required>
                     </div>
+                    @error('brand')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="box-form">
@@ -52,6 +61,9 @@
                     <div class="form-outline">
                         <input type="number" step="0.01" name="original_price" id="original_price" value="{{ old('original_price')}}" class="form-input" placeholder="Enter your price" value>
                     </div>
+                    @error('original_price')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="box-form">
@@ -59,6 +71,9 @@
                     <div class="form-outline">
                         <input type="number" name="discount_percent" id="discount_percent" value="{{ old('discount_percent')}}" class="form-input" placeholder="Price after discount" value min="0" max="100">
                     </div>
+                    @error('discount_percent')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="box-form">
@@ -66,6 +81,9 @@
                     <div class="form-outline read-only:bg-gray-200">
                         <input type="number" step="0.01" name="price_after_discount" id="price_after_discount" value="{{ old('price_after_discount') }}" class="form-input" placeholder="Price after discount" readonly>
                     </div>
+                    @error('price_after_discount')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="box-form">
@@ -73,6 +91,9 @@
                     <div class="form-outline">
                         <input type="number" name="stock_quantity" id="stock_quantity" class="form-input" placeholder="Enter your quantity" value="{{ old('stock_quantity') }}">
                     </div>
+                    @error('stock_quantity')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="box-form">
@@ -80,6 +101,9 @@
                     <div class="form-outline">
                         <input type="text" name="color_type" id="color_type" class="form-input" placeholder="Enter your color" value="{{ old('color_type') }}">
                     </div>
+                    @error('color_type')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="box-form">
@@ -87,6 +111,9 @@
                     <div class="form-outline">
                         <input type="text" name="size" id="size" class="form-input" placeholder="Enter your size" value="{{ old('size') }}">
                     </div>
+                    @error('size')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="box-form">

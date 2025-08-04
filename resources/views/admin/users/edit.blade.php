@@ -30,6 +30,9 @@
                     <div class="form-outline">
                         <input type="text" name="name" id="name" class="form-input" value="{{ $user->name }}" placeholder="Enter your product name" required>
                     </div>
+                    @error('name')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="box-form">

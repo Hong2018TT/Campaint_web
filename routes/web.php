@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Auth\PasswordResetController;
 
 // Controller All In
 use App\Http\Controllers\{
@@ -14,8 +15,10 @@ use App\Http\Controllers\{
     CaculateProductController,
     UserController,
     AboutController,
-    Controller,
-    TaskController
+    TaskController,
+    CategoryController,
+    SubCategoryController,
+    Controller
 };
 
 Route::get('/', function () {
@@ -26,11 +29,14 @@ Route::get('/', function () {
     return app(\App\Http\Controllers\Auth\AuthController::class)->index();
 })->name('admin.auth.index');
 
+
 Route::post('/login', [AuthController::class, 'login'])->name('savelogin');
 
 Route::middleware(['admin'])->group(function () {
     Route::get('/dashboard',[DashboardController::class, 'index'])->name('admin.dashboard.home');
     Route::delete('/dashboard-color-del/{id}',[DashboardController::class, 'destroy'])->name('delete_dashboard_color');
+    Route::put('/dashboard-color-update/{id}', [DashboardController::class, 'update'])->name('update_dashboard_colorfamily');
+
     // Logout route
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
     
@@ -41,6 +47,12 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/products-edit/{id}',[ProductController::class, 'edit'])->name('admin.product.edit');
     Route::put('/products-update/{id}',[ProductController::class, 'update'])->name('update_product');
     Route::delete('/products-delete/{id}', [ProductController::class, 'destroy'])->name('delete_product');
+
+    //====== selection Category
+    Route::get('/categorys', [CategoryController::class, 'index'])->name('admin.categories.index');
+
+    //====== selection SubCategory
+    Route::get('/subcategories', [SubCategoryController::class, 'index'])->name('admin.subcategories.index');
 
     //====== selection ColorFamily=====
     Route::get('/colorfamilys', [ColorfamilyController::class, 'index'])->name('admin.colorfamily.index');
@@ -54,13 +66,20 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/colors',[ColorController::class, 'store'])->name('save_color');
     Route::get('/colors-edit/{id}',[ColorController::class, 'edit'])->name('admin.color.edit');
     Route::put('/colors-update{id}',[ColorController::class, 'update'])->name('update_color');
+
     Route::delete('/colors-delete/{id}',[ColorController::class, 'destroy'])->name('delete_color');
-    
+    Route::get('/colors/data', [ColorController::class, 'getColorsData'])->name('admin.color.data');
+
+
     //====== selection Depo=====
     Route::get('/depos',[DepoController::class, 'index'])->name('admin.depo.index');
+    // Add a new route for DataTables AJAX requests
+    Route::get('/depos/data', [DepoController::class, 'getDeposData'])->name('admin.depo.data');
+
     Route::get('/depos-create',[DepoController::class, 'create'])->name('admin.depo.create');
     Route::post('/depos',[DepoController::class, 'store'])->name('save_depo');
-    Route::get('/depos-edit',[DepoController::class, 'edit'])->name('admin.depo.edit');
+    Route::get('/depos-edit/{id}',[DepoController::class, 'edit'])->name('admin.depo.edit');
+    Route::put('/depo_update/{id}',[DepoController::class, 'update'])->name('update_depo');
     Route::delete('/depos-delete/{id}',[DepoController::class, 'destroy'])->name('delete_depo');
     
     //====== selection CaculateProduct=====

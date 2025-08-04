@@ -49,20 +49,26 @@
                             <div class="box-form mt-1">
                                 <label for="net_weight" class="title-form">Net/Weight</label>
                                 <div class="form-outline">
-                                    <input type="text" name="net_weight" id="net_weight" class="form-input" placeholder="Enter your net/weight" required>
+                                    <input type="text" name="net_weight" id="net_weight" value="{{ old('net_weight') }}" class="form-input" placeholder="Enter your net/weight" required>
                                 </div>
+                                @error('net_weight')
+                                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                                @enderror
                             </div>
 
                             <div class="box-form">
                                 <label for="coverage_area" class="title-form">Coverage Area:</label>
                                 <div class="form-outline">
-                                    <input type="text" name="coverage_area" id="coverage_area" class="form-input" placeholder="Enter your coverage area" required>
+                                    <input type="text" name="coverage_area" id="coverage_area" value="{{ old('coverage_area') }}" class="form-input" placeholder="Enter your coverage area" required>
                                 </div>
+                                @error('coverage_area')
+                                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                                @enderror
                             </div>
 
                             <div class="box-form">
-                                <label for="coverage_area" class="title-form">Result:</label>
-                                <span class="">111</span>
+                                <label for="result_total" class="title-form">Result:</label>
+                                <span class="result_total" id="result_total">111</span>
                             </div>
                         </div>
                     </div>
@@ -111,7 +117,7 @@
                                         <i class="ri-pencil-line"></i>
                                     </button>
     
-                                    <!-- Backdrop -->
+                                    <!-- Modal Edit -->
                                     <div x-show="open" x-cloak
                                         @include('components.modal.model-transition')>
     
@@ -146,14 +152,14 @@
                                                     <div class="box-form mt-1">
                                                         <label for="net_weight" class="title-form">Net/Weight</label>
                                                         <div class="form-outline">
-                                                            <input type="text" name="net_weight" id="net_weight" class="form-input" placeholder="Enter your net/weight" required>
+                                                            <input type="text" name="net_weight" id="net_weight" value="{{ old('net_weight') }}" class="form-input" placeholder="Enter your net/weight" required>
                                                         </div>
                                                     </div>
     
                                                     <div class="box-form">
                                                         <label for="coverage_area" class="title-form">Coverage Area:</label>
                                                         <div class="form-outline">
-                                                            <input type="text" name="coverage_area" id="coverage_area" class="form-input" placeholder="Enter your coverage area" required>
+                                                            <input type="text" name="coverage_area" id="coverage_area" value="{{ old('coverage_area') }}" class="form-input" placeholder="Enter your coverage area" required>
                                                         </div>
                                                     </div>
     
@@ -173,6 +179,7 @@
                                     </div>
                                 </div>
 
+                                {{-- Modal Delete --}}
                                 <div x-data="{ open: false }">
                                     <button @click="open = true" class="table-action-delete">
                                         <i class="ri-delete-bin-6-fill"></i>
@@ -187,7 +194,6 @@
                                             @click.outside="open = true">
     
                                         <div class="modal-header-del">Delete</div>
-                                        <hr class="border-1 border-gray-400">
     
                                         <div class="modal-body">
                                             <p class="text-lg text-red-500">Are you sure you want to delete this item?</p>

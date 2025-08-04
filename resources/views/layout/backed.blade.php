@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    
     {{-- Link set Logo tabs website --}}
     <link rel="icon" href="{{asset('assets/img/logo/favicon.ico')}}" type="image/x-icon">
 
@@ -15,13 +16,10 @@
 
     <!-- Remixicon CSS -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/>
-    <!-- Font Awesome CDN link -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
     {{-- Link node editor Quill styles --}}
     {{-- <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet" /> --}}
     <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
-
     <link href="https://cdn.jsdelivr.net/npm/quill@2/dist/quill.snow.css" rel="stylesheet" />
 
     {{-- Link Datatable.net --}}
@@ -92,7 +90,6 @@
       // Call the function for each password field you have
       PswToggleProfile('password', 'togglePassword');
       PswToggleProfile('password_confirmation', 'toggleComfirmPassword');
-
   });
 
 </script>

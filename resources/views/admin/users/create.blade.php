@@ -26,8 +26,11 @@
                 <div class="box-form">
                     <label for="product-en" class="title-form">Name</label>
                     <div class="form-outline">
-                        <input type="text" name="name" id="name" class="form-input" value="{{ old('name') }}" placeholder="Enter your product name" required>
+                        <input type="text" name="name" id="name" class="form-input" value="{{ old('name') }}" placeholder="Enter your name" required>
                     </div>
+                    @error('name')
+                        <span>{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="box-form">
@@ -44,7 +47,7 @@
                     <label for="password" class="block text-sm font-medium text-gray-700 mb-2">Password</label>
                     <div class="relative">
                         <div class="form-outline">
-                            <input type="password" id="password" name="password" class="form-input" placeholder="Enter user password (8 characters min)" required>
+                            <input type="password" id="password" name="password" class="form-input" placeholder="Enter your password (8 characters min)" required>
                             <div class="absolute inset-y-0 end-0 flex items-center pe-3 cursor-pointer">
                                 <i id="togglePassword" class="ri-eye-off-fill"></i>
                             </div>
@@ -85,6 +88,9 @@
                             <path fill-rule="evenodd" d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
                         </svg>
                     </div>
+                    @error('role')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 {{-- This just set layout --}}

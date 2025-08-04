@@ -50,10 +50,8 @@ class AuthController extends Controller
         if (Auth::attempt($credentials, $remember)) {
             // Regeneration of session ID to prevent session fixation attacks
             $request->session()->regenerate();
+            
             if ($remember) {
-                 // You could set a non-sensitive cookie if strictly necessary for UX,
-                 // but typically not needed for 'remember me' logic itself.
-                //  Cookie::queue('password', $request->password, 60 * 24 *30);
                  Cookie::queue('email', $request->email, 60 * 24 * 30); // Remember email for 30 days, for example
             } else {
                  // If 'remember me' is not checked, clear any 'remember_email' cookie if it exists.
@@ -65,13 +63,15 @@ class AuthController extends Controller
             if ($user->role === 'Administrator') { // Use strict comparison
                 // Use a proper success message with `session()->flash()` or `with()` helper
                 return redirect()->intended(route('admin.dashboard.home'))->with('success', 'Welcome back, Administrator!');
-            } else if(($user->role === 'Administrator') || ($user->role === 'Manager')) {
+            }elseif(($user->role === 'Manager')) {
                 // If the user is a Super Administrator, redirect to the intended route
                 return redirect()->intended(route('admin.dashboard.home'))->with('success', 'Welcome back, Super Administrator!');
-            }else{
-                // If the user logs in but isn't an administrator, perhaps redirect to a regular user dashboard
-                // or log them out if they are not supposed to be able to login here.
-                // If the user is not an administrator, log them out and redirect with an error
+            }elseif($user->role === 'User'){
+                // If the user is a Super Administrator, redirect to the intended route
+                return redirect()->intended(route('admin.dashboard.home'))->with('success', 'Welcome back, Super Administrator!');
+            }
+            else{
+                
                 Auth::logout();
                 $request->session()->invalidate();
                 $request->session()->regenerateToken();

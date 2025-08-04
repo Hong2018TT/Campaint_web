@@ -28,64 +28,91 @@
                 <div class="box-form">
                     <label for="product-en" class="title-form">Product Name (English)</label>
                     <div class="form-outline">
-                        <input type="text" name="Name_EN" id="Name_EN" class="form-input" value="{{ $product->Name_EN }}" placeholder="Enter your product name en">
+                        <input type="text" name="Name_EN" id="Name_EN" class="form-input" value="{{ old('Name_EN', $product->Name_EN) }}" placeholder="Enter your product name en">
                     </div>
+                    @error('Name_EN')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="box-form">
                     <label for="product-en" class="title-form">Product Name (Khmer)</label>
                     <div class="form-outline">
-                        <input type="text" name="Name_KH" id="Name_KH" class="form-input" value="{{ $product->Name_KH }}" placeholder="Enter your product name kh">
+                        <input type="text" name="Name_KH" id="Name_KH" class="form-input" value="{{ old('Name_KH', $product->Name_KH) }}" placeholder="Enter your product name kh">
                     </div>
+                    @error('Name_KH')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="box-form">
                     <label for="brand" class="title-form">Brand</label>
                     <div class="form-outline">
-                        <input type="text" name="brand" id="brand" class="form-input" value="{{ $product->brand }}" placeholder="Enter your brand name">
+                        <input type="text" name="brand" id="brand" class="form-input" value="{{ old('brand', $product->brand) }}" placeholder="Enter your brand name">
                     </div>
+                    @error('brand')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="box-form">
                     <label for="original-price" class="title-form">Original Price</label>
                     <div class="form-outline">
-                        <input type="number" step="0.01" name="original_price" id="original_price" class="form-input" value="{{ $product->original_price }}" placeholder="Enter your price">
+                        <input type="number" step="0.01" name="original_price" id="original_price" class="form-input" value="{{ old('original_price', $product->original_price) }}" placeholder="Enter your price">
                     </div>
+                    @error('original_price')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="box-form">
                     <label for="discount_percent" class="title-form">Discount (%)</label>
                     <div class="form-outline">
-                        <input type="number" name="discount_percent" id="discount_percent" value="{{ $product->discount_percent }}" class="form-input" placeholder="Price after discount" min="0" max="100">
+                        <input type="number" name="discount_percent" id="discount_percent" value="{{ old('discount_percent', $product->discount_percent) }}" class="form-input" placeholder="Price after discount" min="0" max="100">
                     </div>
+                    @error('discount_percent')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="box-form">
                     <label for="price-after-discount" class="title-form">Price After Discount</label>
                     <div class="form-outline read-only:bg-gray-200">
-                        <input type="number" step="0.01" name="price_after_discount" id="price_after_discount" class="form-input" value="{{ $product->price_after_discount }}" placeholder="Price after discount" readonly>
+                        <input type="number" step="0.01" name="price_after_discount" id="price_after_discount" class="form-input" value="{{ old('price_after_discount', $product->price_after_discount) }}" placeholder="Price after discount" readonly>
                     </div>
+                    @error('price_after_discount')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="box-form">
                     <label for="stock-quantity" class="title-form">Stock Quantity</label>
                     <div class="form-outline">
-                        <input type="number" name="stock_quantity" id="stock_quantity" class="form-input" value="{{ $product->stock_quantity }}" placeholder="Enter your quantity">
+                        <input type="number" name="stock_quantity" id="stock_quantity" class="form-input" value="{{ old('stock_quantity', $product->stock_quantity) }}" placeholder="Enter your quantity">
                     </div>
+                    @error('stock_quantity')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="box-form">
                     <label for="color" class="title-form">Color</label>
                     <div class="form-outline">
-                        <input type="text" name="color_type" id="color_type" class="form-input" value="{{ $product->color_type }}" placeholder="Enter your color">
+                        <input type="text" name="color_type" id="color_type" class="form-input" value="{{ old('color_type', $product->color_type) }}" placeholder="Enter your color">
                     </div>
+                    @error('color_type')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="box-form">
                     <label for="size" class="title-form">Size</label>
                     <div class="form-outline">
-                        <input type="text" name="size" id="size" class="form-input" value="{{ $product->size }}" placeholder="Enter your size">
+                        <input type="text" name="size" id="size" class="form-input" value="{{ old('size', $product->size) }}" placeholder="Enter your size">
                     </div>
+                    @error('size')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 {{-- This place for unknown category id--}}
@@ -125,7 +152,7 @@
             <div class="grid grid-cols-1 mt-5">
                 <div class="box-form">
                     <label for="description" class="title-form">Description</label>
-                    <textarea id="description" name="description" rows="6" class="description sr-only" placeholder="Write your description here..."></textarea>
+                    <textarea id="description" name="description" rows="6" value="{{ old('description') }}" class="description sr-only" placeholder="Write your description here..."></textarea>
                     <!-- Create the editor container -->
                     <div class="editor-container">
                         <!-- Create the first editor container -->

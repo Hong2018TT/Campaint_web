@@ -45,7 +45,7 @@
                         <tr class="td-bg-dash">
                             <td class="table-cell-primary">{{ $loop->iteration }}</td>
                             <td class="table-cell">
-                                <div class="relative w-14 h-14 p-[3px] rounded-sm overflow-hidden" style="background: linear-gradient(to bottom, red, blue, green , yellow);">
+                                <div class="relative w-12">
                                     @if($user->image_url)
                                         {{-- This will show if the user has an image --}}
                                         <img src="{{ asset($user->image_url) }}" class="tb-img-user" alt="admin & user" loading="lazy">
@@ -61,7 +61,8 @@
                                     @if($user->role === 'Administrator') text-red-700 bg-red-100
                                     @elseif($user->role === 'Manager') text-yellow-800 bg-yellow-100
                                     @else text-green-700 bg-green-100
-                                    @endif ">
+                                    @endif "
+                                    >
                                     {{ $user->role }}
                                 </span>
 

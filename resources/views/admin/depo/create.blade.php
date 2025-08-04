@@ -32,19 +32,19 @@
                             <div class="box-form">
                                 <label for="Name_EN" class="title-form">Name (English)</label>
                                 <div class="form-outline">
-                                    <input type="text" name="Name_EN" id="Name_EN" value="{{ old('Name_EN') }}" class="form-input" placeholder="Enter your product name en" required>
+                                    <input type="text" name="Name_EN" id="Name_EN" value="{{ old('Name_EN') }}" class="form-input" placeholder="Enter your depo name english" required>
                                 </div>
                             </div>
                             <div class="box-form">
-                                <label for="province_EN" class="title-form">Address (English)</label>
+                                <label for="Address_EN" class="title-form">Address (English)</label>
                                 <div class="form-outline">
-                                    <input type="text" name="province_EN" id="province_EN" value="{{ old('province_EN') }}" class="form-input" placeholder="Enter your product name en" required>
+                                    <input type="text" name="Address_EN" id="Address_EN" value="{{ old('Address_EN') }}" class="form-input" placeholder="Enter your province english" required>
                                 </div>
                             </div>
                             <div class="box-form">
-                                <label for="Address_EN" class="title-form">Address (Khmer)</label>
+                                <label for="Address_KH" class="title-form">Address (Khmer)</label>
                                 <div class="form-outline">
-                                    <input type="text" name="Address_EN" id="Address_EN" value="{{ old('Address_KH') }}" class="form-input" placeholder="Enter your product name en" required>
+                                    <input type="text" name="Address_KH" id="Address_KH value="{{ old('Address_KH') }}" class="form-input" placeholder="Enter your address english" required>
                                 </div>
                             </div>
                         </div>
@@ -58,20 +58,53 @@
                             <div class="box-form">
                                 <label for="Name_KH" class="title-form">Name (Khmer)</label>
                                 <div class="form-outline">
-                                    <input type="text" name="Name_KH" id="Name_KH" value="{{ old('Name_KH') }}" class="form-input" placeholder="Enter your product name en" required>
+                                    <input type="text" name="Name_KH" id="Name_KH" value="{{ old('Name_KH') }}" class="form-input" placeholder="Enter your depo name khmer" required>
                                 </div>
+                                @error('Name_KH')
+                                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                                @enderror
                             </div>
+
                             <div class="box-form">
                                 <label for="province_EN" class="title-form">Province (english)</label>
-                                <div class="form-outline">
-                                    <input type="text" name="province_KH" id="province_EN" value="{{ old('province_KH') }}" class="form-input" placeholder="Enter your product name en" required>
+                                <div class="grid grid-cols-1 focus-within:relative">
+                                    <select name="province_EN" id="province_EN" autocomplete="province_EN" aria-label="province_EN" class="form-select" required>
+                                        <option value="" hidden selected>Select province (english)</option>
+                                        @foreach ($provinces as $province)
+                                            <option value="{{ $province->PROVINCE }}" {{ old('province_EN') == $province->PROVINCE? 'selected' : '' }}>
+                                                {{ $province->PROVINCE }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+
+                                    <svg class="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-500 sm:size-4" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-slot="icon">
+                                        <path fill-rule="evenodd" d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                                    </svg>
                                 </div>
+                                @error('province_EN')
+                                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                                @enderror
                             </div>
+
                             <div class="box-form">
-                                <label for="Address_KH" class="title-form">Province (Khmer)</label>
-                                <div class="form-outline">
-                                    <input type="text" name="Address_KH" id="Address_KH" value="{{ old('Address_KH') }}" class="form-input" placeholder="Enter your product name en" required>
+                                <label for="province_KH" class="title-form">Province (khmer)</label>
+                                <div class="grid grid-cols-1 focus-within:relative">
+                                    <select name="province_KH" id="province_KH" autocomplete="province_KH" aria-label="province_KH" class="form-select" required>
+                                        <option value="" hidden selected>សូមជ្រើសរើសយកខេត្ត</option>
+                                        @foreach ($provinces as $province)
+                                            <option value="{{ $province->PROVINCE_KH }}" {{ old('province_KH') == $province->PROVINCE_KH ? 'selected' : '' }}>
+                                                {{ $province->PROVINCE_KH }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+
+                                    <svg class="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-500 sm:size-4" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-slot="icon">
+                                        <path fill-rule="evenodd" d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                                    </svg>
                                 </div>
+                                @error('province_KH')
+                                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
                 </fieldset>
@@ -81,14 +114,20 @@
                         <label for="Phone" class="title-form">Phone</label>
                         <div class="form-outline">
                             <div class="shrink-0 text-base text-gray-500 select-none sm:text-sm/6">(+855):</div>
-                            <input type="tel" name="Phone" id="Phone" class="form-input" placeholder="Enter your phone number" maxlength="14" required>
+                            <input type="tel" name="Phone" id="Phone" value="{{ old('Phone') }}" class="form-input" placeholder="Enter your phone number" maxlength="14" required>
                         </div>
+                        @error('Phone')
+                            <span class="text-red-500 text-sm">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="box-form">
                         <label for="GPS" class="title-form">GPS</label>
                         <div class="form-outline">
-                            <input type="text" name="GPS" id="GPS" class="form-input" placeholder="Enter your product name en" required>
+                            <input type="text" name="GPS" id="GPS" value="{{ old('GPS') }}" class="form-input" placeholder="Enter your product GPS" required>
                         </div>
+                        @error('GPS')
+                            <span class="text-red-500 text-sm">{{ $message }}</span>
+                        @enderror
                     </div>
                 </div>
 

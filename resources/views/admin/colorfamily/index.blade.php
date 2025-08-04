@@ -32,9 +32,11 @@
                 </div>
                 
                 <div class="modal-body p-4">
+
                     @error('name_en')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                     @enderror
+
                     <form id="form-colorfamily" name="form-colorfamily" action="{{ route('save_colorfamily') }}" method="POST">
                         @csrf
 
@@ -42,22 +44,31 @@
                             <div class="box-form">
                                 <label for="name_en" class="title-form">Name (English)</label>
                                 <div class="form-outline">
-                                    <input type="text" name="name_en" id="name_en" class="form-input" placeholder="Enter your color name en" required>
+                                    <input type="text" name="name_en" id="name_en" value="{{ old('name_en')}}" class="form-input" placeholder="Enter your name english" required>
                                 </div>
+                                @error('name_en')
+                                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="box-form">
                                 <label for="name_kh" class="title-form">Name (Khmer)</label>
                                 <div class="form-outline">
-                                    <input type="text" name="name_kh" id="name_kh" class="form-input" placeholder="Enter your color name kh" required>
+                                    <input type="text" name="name_kh" id="name_kh" value="{{ old('name_kh') }}" class="form-input" placeholder="Enter your name khmer" required>
                                 </div>
+                                @error('name_kh')
+                                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                                @enderror
                             </div>
 
                             <div class="box-form">
                                 <label for="color_code" class="title-form">Color</label>
                                 <div class="flex items-center rounded-sm bg-white outline-1 -outline-offset-1 outline-gray-300 
                                 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-green-600 mb-1 mt-1">
-                                    <input type="color" name="color_code" id="color_code" class="form-input" placeholder="Enter your color" required>
+                                    <input type="color" name="color_code" id="color_code" value="{{ old('color_code') }}" class="form-input" placeholder="Enter the color" required>
                                 </div>
+                                @error('color_code')
+                                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                                @enderror
                             </div>
                             
                             <div class="box-form">
@@ -147,20 +158,29 @@
                                                             <div class="box-form">
                                                                 <label for="name_en_edit" class="title-form">Name (English)</label>
                                                                 <div class="form-outline">
-                                                                    <input type="text" name="name_en_edit" id="name_en_edit" class="form-input" x-model="colorfamily.name">
+                                                                    <input type="text" name="name_en_edit" id="name_en_edit" value="{{ old('name_en_edit') }}" class="form-input" x-model="colorfamily.name" placeholder="Enter your name english">
                                                                 </div>
+                                                                @error('name_en_edit')
+                                                                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                                                                @enderror
                                                             </div>
                                                             <div class="box-form">
                                                                 <label for="name_kh_edit" class="title-form">Name (Khmer)</label>
                                                                 <div class="form-outline">
-                                                                    <input type="text" name="name_kh_edit" id="name_kh_edit" class="form-input" x-model="colorfamily.name_kh">
+                                                                    <input type="text" name="name_kh_edit" id="name_kh_edit" value="{{ old('name_kh_edit') }}" class="form-input" x-model="colorfamily.name_kh" placeholder="Enter your name khmer">
                                                                 </div>
+                                                                @error('name_kh_edit')
+                                                                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                                                                @enderror
                                                             </div>
                                                             <div class="box-form">
                                                                 <label for="color_code_edit" class="title-form">Color</label>
                                                                 <div class="flex items-center rounded-sm bg-white outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:outline-green-600 mb-1 mt-1">
-                                                                    <input type="color" name="color_code_edit" id="color_code_edit" class="form-input" x-model="colorfamily.color_code">
+                                                                    <input type="color" name="color_code_edit" id="color_code_edit" value="{{ old('color_code_edit') }}" class="form-input" x-model="colorfamily.color_code" placeholder="Enter the color">
                                                                 </div>
+                                                                @error('coloe_code_edit')
+                                                                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                                                                @enderror
                                                             </div>
                                                             <div class="box-form">
                                                                 <label for="parent_edit" class="title-form">Parent Color</label>

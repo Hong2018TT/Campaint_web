@@ -104,71 +104,77 @@
                             <td>
                                 <div class="table-cell-actions">
                                     {{-- For model edit --}}
-                                    <div x-data="{ open: false }">
+                                    <div x-data="{ open: false, colorfamily: {{ json_encode($colorfamily) }} }">
                                         <button @click="open = true" class="table-action-edit">
                                             <i class="ri-pencil-line"></i>
                                         </button>
-        
-                                        <!-- Backdrop -->
+                                        
                                         <div x-show="open" x-cloak
                                             @include('components.modal.model-transition')>
-        
+                                            
                                             <div x-show="open" @include('components.modal.model-fade')
                                                 class="modal-box-lg"
-                                                {{-- For set mourseout --}}
-                                                @click.outside="open = true">
-        
-                                            <div class="modal-header-add">
-                                                Edit Color Family
-                                            </div>
-
-                                            <div class="modal-body">
-                                                <form id="" name="" action="#" method="POST">
-                                                    <div class="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 sm:gap-2 md:gap-x-4 text-left">
-                                                        <div class="box-form">
-                                                            <label for="product-en" class="title-form">Name (English)</label>
-                                                            <div class="form-outline">
-                                                                <input type="text" name="Name_EN" id="Name_EN" class="form-input" placeholder="Enter your color name en" required>
-                                                            </div>
-                                                        </div>
-                                                        <div class="box-form">
-                                                            <label for="product-en" class="title-form">Name (Khmer)</label>
-                                                            <div class="form-outline">
-                                                                <input type="text" name="Name_KH" id="Name_KH" class="form-input" placeholder="Enter your color name kh" required>
-                                                            </div>
-                                                        </div>
-        
-                                                        <div class="box-form">
-                                                            <label for="product-en" class="title-form">Color</label>
-                                                            <div class="flex items-center rounded-sm bg-white outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-green-600 mb-1 mt-1">
-                                                                <input type="color" name="color" id="color" class="form-input" placeholder="Enter your color">
-                                                            </div>
-                                                        </div>
-                                                        <div class="box-form">
-                                                            <label for="parent" class="title-form">Parent Color</label>
-                                                            <div class="grid grid-cols-1 focus-within:relative">
-                                                                <select id="parent" name="parent" autocomplete="parent" aria-label="parent" class="form-select" required>
-                                                                    <option value="" hidden selected>Select color families</option>
-                                                                    <option value="0">Color Families (អម្បូរពណ៌)</option>
-                                                                    @foreach ($colorfamilyselects as $colorfamilyselect)
-                                                                        <option value="{{ $colorfamilyselect->id }}">{{ $colorfamilyselect->name }}</option>
-                                                                    @endforeach
-                                                                </select>
-        
-                                                                <svg class="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-500 sm:size-4" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-slot="icon">
-                                                                    <path fill-rule="evenodd" d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
-                                                                </svg>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                @click.outside="open = false">
+                                                
+                                                <div class="modal-header-add">
+                                                    Edit Color Family
                                                 </div>
-                                                    
-                                                    <div class="model-footer">
-                                                        <button  @click="open = false" class="btn-close-model">Close</button>
-                                                        <button type="submit" class="btn-save-model">update</button>
-                                                    </div>
-                                                </form>
-                                            
+                                                
+                                                <div class="modal-body p-4">
+                                                    <form id="form-colorfamily-edit" name="form-colorfamily-edit" :action="'{{ route('update_dashboard_colorfamily', ['id' => '__ID__']) }}'.replace('__ID__', colorfamily.id)" method="POST">
+
+                                                        @csrf
+                                                        @method('PUT') {{-- Or PUT depending on your route --}}
+
+                                                        <div class="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 sm:gap-2 md:gap-x-4 text-left">
+                                                            <div class="box-form">
+                                                                <label for="name_en_edit" class="title-form">Name (English)</label>
+                                                                <div class="form-outline">
+                                                                    <input type="text" name="name_en_edit" id="name_en_edit" value="{{ old('name_en_edit') }}" class="form-input" x-model="colorfamily.name" placeholder="Enter your name english">
+                                                                </div>
+                                                                @error('name_en_edit')
+                                                                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                                                                @enderror
+                                                            </div>
+                                                            <div class="box-form">
+                                                                <label for="name_kh_edit" class="title-form">Name (Khmer)</label>
+                                                                <div class="form-outline">
+                                                                    <input type="text" name="name_kh_edit" id="name_kh_edit" value="{{ old('name_kh_edit') }}" class="form-input" x-model="colorfamily.name_kh" placeholder="Enter your name khmer">
+                                                                </div>
+                                                                @error('name_kh_edit')
+                                                                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                                                                @enderror
+                                                            </div>
+                                                            <div class="box-form">
+                                                                <label for="color_code_edit" class="title-form">Color</label>
+                                                                <div class="flex items-center rounded-sm bg-white outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:outline-green-600 mb-1 mt-1">
+                                                                    <input type="color" name="color_code_edit" id="color_code_edit" value="{{ old('color_code_edit') }}" class="form-input" x-model="colorfamily.color_code" placeholder="Enter the color">
+                                                                </div>
+                                                                @error('coloe_code_edit')
+                                                                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                                                                @enderror
+                                                            </div>
+                                                            <div class="box-form">
+                                                                <label for="parent_edit" class="title-form">Parent Color</label>
+                                                                <div class="grid grid-cols-1 focus-within:relative">
+                                                                    <select id="parent_edit" name="parent_edit" autocomplete="parent_edit" aria-label="parent" class="form-select" x-model="colorfamily.parent_id">
+                                                                        <option value="" hidden selected>Select color families</option>
+                                                                        @foreach ($colorfamilys as $colorfamily1)
+                                                                            <option value="{{ $colorfamily1->id }}">{{ $colorfamily1->name }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                    <svg class="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-500 sm:size-4" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-slot="icon">
+                                                                        <path fill-rule="evenodd" d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                                                                    </svg>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="model-footer flex justify-end space-x-2 px-4 pt-4">
+                                                    <button @click="open = false" class="btn-close-model">Close</button>
+                                                    <button form="form-colorfamily-edit" type="submit" class="btn-save-model">update</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

@@ -98,7 +98,7 @@
 /* Customize Dashboard User*/
 @layer components{
   .table-cell .tb-img-user{
-    @apply absolute inset-[3px] w-[calc(100%-6px)] h-[calc(100%-6px)] object-cover rounded-[calc(0.125rem-3px)];
+    @apply object-cover border-3 border-green-700 rounded-sm;
   }
   .badge-role{
     @apply inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset;
@@ -107,6 +107,11 @@
 
 /* Customize Datatable */
 @layer components{
+
+  .btn-database{
+    @apply text-white px-2 py-0.5 rounded-sm transition cursor-pointer;
+  }
+
   /* Main Header tb */
   .header-main-tb{
     @apply flex sm:items-center justify-between items-center p-2.5 ;
@@ -116,7 +121,7 @@
   }
   /* Table Header */
   .table-header {
-    @apply p-2.5 text-left text-[14px] font-semibold text-white;
+    @apply p-2.5 text-left text-[15px] font-semibold text-white;
   }
 
   .table-header-action {
@@ -129,7 +134,7 @@
 
   /* Common table cell */
   .table-cell {
-    @apply p-2 text-sm whitespace-normal text-gray-500 text-[12px];
+    @apply px-2 py-2 text-sm whitespace-normal text-gray-500 text-[12px];
   }
 
   /* Action cell */
@@ -199,7 +204,7 @@
           outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-green-600 sm:text-sm/6;
   }
   .filter-product{
-    @apply w-full appearance-none border-0 border-b-2 border-l-2 border-gray-300 bg-green-100 py-1 pl-2 pr-10 text-green-800
+    @apply w-full appearance-none border-0 border-b-2 border-l-2 border-gray-300 bg-green-100 py-1 pl-2 pr-10 text-green-800 rounded-tr-md
      focus:border-green-600 focus:outline-none focus:ring-0 sm:text-sm sm:leading-6 transition-colors duration-200 ease-in-out;
   }
 }

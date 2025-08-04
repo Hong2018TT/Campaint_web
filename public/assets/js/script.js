@@ -72,81 +72,61 @@ function initializeTailwindDataTable(tableSelector) {
             }
           },
           buttons: [
-            {
-              extend: 'copy',
-              text: '<i class="ri-file-copy-2-fill"></i>',
-              className: 'bg-green-500 text-white px-2 py-0.5 rounded-sm hover:bg-green-600 transition cursor-pointer',
-              titleAttr: 'Copy to clipboard'
-            },
-            {
-              extend: 'excel',
-              text: '<i class="ri-file-excel-2-fill"></i>',
-              className: 'bg-blue-500 text-white px-2 py-0.5 rounded hover:bg-blue-600 transition cursor-pointer'
-            },
-            {
-              extend: 'csv',
-              text: '<i class="fas fa-file-csv"></i>',
-              className: 'bg-yellow-500 text-white px-2 py-0.5 rounded hover:bg-yellow-600 transition cursor-pointer'
-            },
-            {
-              extend: 'pdf',
-              text: '<i class="ri-file-pdf-2-fill"></i>',
-              className: 'bg-orange-500 text-white px-2 py-0.5 rounded hover:bg-red-600 transition cursor-pointer'
-            },
-            {
-              extend: 'print',
-              text: '<i class="ri-printer-fill"></i>',
-              className: 'bg-purple-500 text-white px-2 py-0.5 rounded hover:bg-purple-600 transition cursor-pointer'
-            }
+            { extend: 'copy', text: '<i class="ri-file-copy-2-fill"></i>', className: 'btn-database bg-green-500 hover:bg-green-600', titleAttr: 'Copy to clipboard' },
+            { extend: 'excel', text: '<i class="ri-file-excel-2-fill"></i>', className: 'btn-database bg-blue-500 rounded hover:bg-blue-600' },
+            { extend: 'csv', text: '<i class="ri-file-text-fill"></i>', className: 'btn-database bg-yellow-500 hover:bg-yellow-600' },
+            { extend: 'pdf', text: '<i class="ri-file-pdf-2-fill"></i>', className: 'btn-database bg-orange-500 hover:bg-red-600' },
+            { extend: 'print', text: '<i class="ri-printer-fill"></i>', className: 'btn-database bg-purple-500 hover:bg-purple-600' }
           ]
         },
-      language: {
-        search: "",
-        searchPlaceholder: "Search",
-        lengthMenu: "Show _MENU_ entries",
-        paginate: {
-          previous: '<button class="px-2 py-1 bg-green-700 text-white rounded hover:bg-green-800 transition cursor-pointer">&laquo;</button>',
-          next: '<button class="px-2 py-1 bg-green-700 text-white rounded hover:bg-green-800 transition cursor-pointer">&raquo;</button>'
+        language: {
+          search: "",
+          searchPlaceholder: "Search",
+          lengthMenu: "Show _MENU_ entries",
+          paginate: {
+            previous: '<button class="px-2 py-1 bg-green-700 text-white rounded hover:bg-green-800 transition cursor-pointer">&laquo;</button>',
+            next: '<button class="px-2 py-1 bg-green-700 text-white rounded hover:bg-green-800 transition cursor-pointer">&raquo;</button>'
+          }
+        },
+        initComplete: function () {
+          const wrapper = $(this).closest('.dataTables_wrapper');
+          const filter = wrapper.find('.dataTables_filter');
+          const length = wrapper.find('.dataTables_length');
+          const info = wrapper.find('.dataTables_info');
+          const paginate = wrapper.find('.dataTables_paginate');
+
+          const customTopBar = $('<div class="flex flex-wrap items-center justify-between mb-2 gap-2"></div>');
+          customTopBar.append(length);
+          customTopBar.append(filter);
+
+          const customBottomBar = $('<div class="flex flex-wrap items-center justify-between gap-2"></div>');
+          customBottomBar.append(info);
+          customBottomBar.append(paginate);
+
+          wrapper.find('> .row').first().remove();
+          wrapper.prepend(customTopBar);
+          wrapper.append(customBottomBar);
+
+          info.addClass('text-[13px] text-green-800');
+          
         }
-      },
-      initComplete: function () {
-        const wrapper = $(this).closest('.dataTables_wrapper');
-        const filter = wrapper.find('.dataTables_filter');
-        const length = wrapper.find('.dataTables_length');
-        const info = wrapper.find('.dataTables_info');
-        const paginate = wrapper.find('.dataTables_paginate');
-
-        const customTopBar = $('<div class="flex flex-wrap items-center justify-between mb-2 gap-2"></div>');
-        customTopBar.append(length);
-        customTopBar.append(filter);
-
-        const customBottomBar = $('<div class="flex flex-wrap items-center justify-between gap-2"></div>');
-        customBottomBar.append(info);
-        customBottomBar.append(paginate);
-
-        wrapper.find('> .row').first().remove();
-        wrapper.prepend(customTopBar);
-        wrapper.append(customBottomBar);
-
-        info.addClass('text-[13px] text-green-800');
-      }
     });
-});
+  });
 
-// For write lenght phone
-const phoneInput = document.getElementById('Phone');
-phoneInput.addEventListener('input', (e) => {
-  e.target.value = formatPhone(e.target.value);
-});
-
+  // For write lenght phone
+  const phoneInput = document.getElementById('Phone');
+  phoneInput.addEventListener('input', (e) => {
+    e.target.value = formatPhone(e.target.value);
+  });
+  
   const formatPhone = (val) => {
     // Change slice(0, 9) to slice(0, 10) for 10-digit numbers
     const digits = val.replace(/\D/g, '').slice(0, 10); 
     const match = digits.match(/^(\d{0,3})(\d{0,3})(\d{0,4})$/);
     if (!match) return digits;
     return [match[1], match[2], match[3]].filter(Boolean).join('-');
-  };
-}
+  }
+};
 
 // Javascript for Editor Quill
 // --- Global Quill Configuration (Do this only once) ---

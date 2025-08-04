@@ -30,14 +30,20 @@
                 <div class="box-form">
                     <label for="color_code" class="title-form">Color Code</label>
                     <div class="form-outline">
-                        <input type="text" name="color_code" id="color_code" value="{{ $color->color_code }}" class="form-input" placeholder="Enter your product name en" required>
+                        <input type="text" name="color_code" id="color_code" value="{{ $color->color_code }}" class="form-input" placeholder="Enter the color code" required>
                     </div>
+                    @error('color_code')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="box-form">
                     <label for="color_name" class="title-form">Color Name</label>
                     <div class="form-outline">
-                        <input type="text" name="color_name" id="color_name" value="{{ $color->color_name }}" class="form-input" placeholder="Enter your product name en" required>
+                        <input type="text" name="color_name" id="color_name" value="{{ $color->color_name }}" class="form-input" placeholder="Enter the color name" required>
                     </div>
+                    @error('color_name')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
                 </div>
             </div>
 
@@ -50,18 +56,27 @@
                                 <div class="shrink-0 text-base text-gray-500 select-none sm:text-sm/6">R:</div>
                                 <input type="number" name="r" id="r" class="form-input" value="{{ $color->r }}" placeholder="0-255" required pattern="\d{1,3}" maxlength="3" max="255" oninput="this.value = Math.min(255, this.value.replace(/[^0-9]/g, ''))">
                             </div>
+                            @error('r')
+                                <span class="text-red-500 text-sm">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div class="box-form">
                             <div class="form-outline">
                                 <div class="shrink-0 text-base text-gray-500 select-none sm:text-sm/6">G:</div>
                                 <input type="number" name="g" id="g" class="form-input" value="{{ $color->g }}" placeholder="0-255" required required pattern="\d{1,3}" maxlength="3" max="255" oninput="this.value = Math.min(255, this.value.replace(/[^0-9]/g, ''))">
                             </div>
+                            @error('g')
+                                <span class="text-red-500 text-sm">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div class="box-form">
                             <div class="form-outline">
                                 <div class="shrink-0 text-base text-gray-500 select-none sm:text-sm/6">B:</div>
                                 <input type="number" name="b" id="b" class="form-input" value="{{ $color->b }}" placeholder="0-255" required required pattern="\d{1,3}" maxlength="3" max="255" oninput="this.value = Math.min(255, this.value.replace(/[^0-9]/g, ''))">
                             </div>
+                            @error('b')
+                                <span class="text-red-500 text-sm">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
             </fieldset>
@@ -72,6 +87,9 @@
                     <div class="form-outline">
                         <input type="text" name="product_type" id="product_type" value="{{ $color->product_type }}" class="form-input" placeholder="Enter your product type">
                     </div>
+                    @error('product_type')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="box-form">
                     <label for="color_family" class="title-form">Color Family</label>
