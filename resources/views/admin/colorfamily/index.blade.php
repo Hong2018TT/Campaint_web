@@ -76,8 +76,9 @@
                                 <div class="grid grid-cols-1 focus-within:relative">
                                     <select id="parent" name="parent" autocomplete="parent" aria-label="parent" class="form-select">
                                         <option value="" hidden selected>Select color families</option>
+                                        <option value="Color Families (អម្បូរពណ៌)">Color Families (អម្បូរពណ៌)</option>
                                         @foreach ($colorfamilys as $colorfamily)
-                                            <option value="{{ $colorfamily->id }}">{{ $colorfamily->name }}</option>
+                                            <option value="{{ $colorfamily->name }}">{{ $colorfamily->name }}</option>
                                         @endforeach
                                     </select>
 
@@ -187,8 +188,9 @@
                                                                 <div class="grid grid-cols-1 focus-within:relative">
                                                                     <select id="parent_edit" name="parent_edit" autocomplete="parent_edit" aria-label="parent" class="form-select" x-model="colorfamily.parent_id">
                                                                         <option value="" hidden selected>Select color families</option>
+                                                                        <option value="Color Families (អម្បូរពណ៌)">Color Families (អម្បូរពណ៌)</option>
                                                                         @foreach ($colorfamilys as $colorfamily1)
-                                                                            <option value="{{ $colorfamily1->id }}">{{ $colorfamily1->name }}</option>
+                                                                            <option value="{{ $colorfamily1->name }}">{{ $colorfamily1->name }}</option>
                                                                         @endforeach
                                                                     </select>
                                                                     <svg class="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-500 sm:size-4" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-slot="icon">
