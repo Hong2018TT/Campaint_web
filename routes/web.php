@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Auth;
 // Controller All In
 use App\Http\Controllers\{
     Auth\AuthController,
+    Auth\ForgotPasswordController,
+    Auth\ResetPasswordController,
     DashboardController,
     ColorfamilyController,
     ProductController,
@@ -117,6 +119,16 @@ Route::middleware(['admin'])->group(function () {
             // Route User profile and update profile
             Route::get('/user-profile','profile')->name('admin.users.profile');
             Route::post('/user-profile','profileUpdate')->name('update_userprofile');
+        });
+
+        //====== selection ForgotPassword =====
+        Route::controller(ForgotPasswordController::class)->group(function(){
+
+        });
+
+        //====== selection ResetPassword =====
+        Route::controller(ResetPasswordController::class)->group(function(){
+
         });
 
         //====== selection AboutUs=====
