@@ -48,7 +48,9 @@
 
                   <td>
                     <div class="table-cell-actions">
-                      <a href="{{route('admin.product.edit', $product->id)}}" class="table-action-edit"><i class="ri-pencil-line"></i></a>
+                      <div class="">
+                        <a href="{{route('admin.product.edit', $product->id)}}" class="table-action-edit"><i class="ri-edit-2-fill"></i></a>
+                      </div>
                       
                       <div x-data="{ open: false, productIdToDelete: null }">
                         <a @click="open = true; productIdToDelete = {{ $product->id }}" class="table-action-delete">

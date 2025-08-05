@@ -44,13 +44,13 @@ class ColorfamilyController extends Controller
             if($colorfamily){
                 return redirect()->route('admin.colorfamily.index')->with('success', 'Color family created successfully.');
             } else {
-                return back()->withInput()->with('error', 'Failed to create product. No product instance returned.');
+                return back()->withInput()->with('error', 'Failed to color family. Please try again.');
             }
         }catch (\Exception $e) {
             Log::error('Product creation failed: ' . $e->getMessage(), [
                 'request_data' => $request->all(),
             ]);
-            return back()->withInput()->with('error', 'Failed to create product. Please try again.');
+            return back()->withInput()->with('error', 'Failed to create color family. Please try again.');
         }
     }
     
@@ -88,7 +88,7 @@ class ColorfamilyController extends Controller
             ]);
 
             // Redirect with a success message.
-            return redirect()->route('admin.colorfamily.index')->with('success', 'Update colorfamily successfully.');
+            return redirect()->route('admin.colorfamily.index')->with('success', 'Color family Updated successfully.');
 
         } catch (\Exception $e) {
             // Log any errors that occur during the update process.
@@ -110,7 +110,7 @@ class ColorfamilyController extends Controller
         try {
             $colorfamily->update(['status' => 0]);
 
-            return redirect()->route('admin.colorfamily.index')->with('success', 'Product moved to inactive/deleted status successfully.');
+            return redirect()->route('admin.colorfamily.index')->with('success', 'Product removed successfully.');
 
         } catch (\Exception $e) {
             // Log any errors that occur during the status update process
@@ -120,7 +120,7 @@ class ColorfamilyController extends Controller
                 'exception_trace' => $e->getTraceAsString() // Add trace for better debugging
             ]);
             // Redirect back with an error message
-            return back()->with('error', 'Failed to change product status. Please try again.');
+            return back()->with('error', 'Failed to deleted color family. Please try again.');
         }
     }
 }

@@ -49,7 +49,9 @@ class ColorController extends Controller
 
                     return <<<HTML
                         <div class="table-cell-actions">
-                            <a href="{$editUrl}" class="table-action-edit"><i class="ri-pencil-line"></i></a>
+                            <div class="">
+                                <a href="{$editUrl}" class="table-action-edit"><i class="ri-pencil-line"></i></a>
+                            </div>
                             <div x-data="{ open: false, colorIdToDelete: null }">
                                 <a @click="open = true; colorIdToDelete = {$color->id}" class="table-action-delete">
                                     <i class="ri-delete-bin-6-fill"></i>
@@ -117,7 +119,7 @@ class ColorController extends Controller
             if($color){
                 return redirect()->route('admin.color.index')->with('success', 'Color created successfully.');
             }else{
-                return back()->withInput()->with('error', 'Failed to create color. No color instance returned.');
+                return back()->withInput()->with('error', 'Failed to create color. Please try again.');
             }
         }catch(\Exception $e){
             Log::error('Color creation failed: ' . $e->getMessage(),[
@@ -128,7 +130,7 @@ class ColorController extends Controller
     }
 
     public function edit($id){
-        $colorfamilys = Colorfamily::All();
+        $colorfamilys = Colorfamily::All()->where('status','1');
         $color = Color::findOrFail($id);
         return view('admin.color.edit',compact('color','colorfamilys')); // Pass colors to the edit database
     }
@@ -150,7 +152,7 @@ class ColorController extends Controller
                 'status' => $validated['status'] ?? '1', // Default to '1' if not provided
             ]);
 
-            return redirect()->route('admin.color.index')->with('success','Color update cussessfully');
+            return redirect()->route('admin.color.index')->with('success','Color update successfully');
 
         }catch(\Exception $e){
              // Log any errors that occur during the status update process
@@ -160,7 +162,7 @@ class ColorController extends Controller
                 'exception_trace' => $e->getTraceAsString() // Add trace for better debugging
             ]);
             // Redirect back with an error message
-            return back()->with('error', 'Failed to change color status. Please try again.');
+            return back()->with('error', 'Failed to update product. Please try again..');
         }
     }
 
@@ -170,7 +172,7 @@ class ColorController extends Controller
         try {
             $color->update(['status' => 0]);
 
-            return redirect()->route('admin.color.index')->with('success', 'Color moved to inactive/deleted status successfully.');
+            return redirect()->route('admin.color.index')->with('success', 'Color removed successfully.');
 
         } catch (\Exception $e) {
             // Log any errors that occur during the status update process
@@ -180,7 +182,7 @@ class ColorController extends Controller
                 'exception_trace' => $e->getTraceAsString() // Add trace for better debugging
             ]);
             // Redirect back with an error message
-            return back()->with('error', 'Failed to change product status. Please try again.');
+            return back()->with('error', 'Failed to deleted product. Please try again.');
         }
     }
 

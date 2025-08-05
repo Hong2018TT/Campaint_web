@@ -65,10 +65,10 @@ class AuthController extends Controller
                 return redirect()->intended(route('admin.dashboard.home'))->with('success', 'Welcome back, Administrator!');
             }elseif(($user->role === 'Manager')) {
                 // If the user is a Super Administrator, redirect to the intended route
-                return redirect()->intended(route('admin.dashboard.home'))->with('success', 'Welcome back, Super Administrator!');
+                return redirect()->intended(route('admin.dashboard.home'))->with('success', 'Welcome back, Manager!');
             }elseif($user->role === 'User'){
                 // If the user is a Super Administrator, redirect to the intended route
-                return redirect()->intended(route('admin.dashboard.home'))->with('success', 'Welcome back, Super Administrator!');
+                return redirect()->intended(route('admin.dashboard.home'))->with('success', 'Welcome back, User!');
             }
             else{
                 
@@ -83,7 +83,7 @@ class AuthController extends Controller
             // Step 6: Authentication failed
             // Use specific error messages to avoid providing hints to attackers (e.g., "Email not found" vs "Invalid credentials")
             return redirect(route('admin.auth.index'))
-                ->withErrors(['email' => 'These credentials do not match our records.']) // Generic error message
+                ->withErrors(['email' => 'The email or password you entered is incorrect. Please try again.',]) // Generic error message
                 ->withInput($request->only('email', 'remember')); // Retain email and "Remember Me" status
         }
     }

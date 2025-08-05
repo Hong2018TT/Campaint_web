@@ -1,29 +1,7 @@
 @extends ('layout.backed')
 @section('content')
+@include('components.sweetalerttwo.alerttwo')
 
-@if(session('success'))
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // SweetAlert notification for success message
-        const Toast = Swal.mixin({
-            toast: true,
-            position: "top-end",
-            showConfirmButton: false,
-            timer: 2000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-                toast.onmouseenter = Swal.stopTimer;
-                toast.onmouseleave = Swal.resumeTimer;
-            }
-        });
-        Toast.fire({
-            icon: "success",
-            title: "{{ session('success') }}"
-        });
-    });
-</script>
-
-@endif
 {{-- content for display dashboard --}}
 <div class="w-full">
     <div class="main-grid-carts">
@@ -156,26 +134,18 @@
                                                             </div>
                                                             <div class="box-form">
                                                                 <label for="parent_edit" class="title-form">Parent Color</label>
-                                                                <div class="grid grid-cols-1 focus-within:relative">
-                                                                    <select id="parent_edit" name="parent_edit" autocomplete="parent_edit" aria-label="parent" class="form-select" x-model="colorfamily.parent_id">
-                                                                        <option value="" hidden selected>Select color families</option>
-                                                                        <option value="Color Families (អម្បូរពណ៌)">Color Families (អម្បូរពណ៌)</option>
-                                                                        @foreach ($colorfamilys as $colorfamily1)
-                                                                            <option value="{{ $colorfamily1->name }}">{{ $colorfamily1->name }}</option>
-                                                                        @endforeach
-                                                                    </select>
-                                                                    <svg class="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-500 sm:size-4" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-slot="icon">
-                                                                        <path fill-rule="evenodd" d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
-                                                                    </svg>
+                                                                <div class="form-outline">
+                                                                    <input type="text" id="parent_edit" name="parent_edit" value="{{ old('parent_edit') }}" class="form-input" x-model="colorfamily.parent" placeholder="Enter your name khmer">
                                                                 </div>
+                                                                    
                                                             </div>
                                                         </div>
-                                                    </form>
-                                                </div>
-                                                <div class="model-footer flex justify-end space-x-2 px-4 pt-4">
-                                                    <button @click="open = false" class="btn-close-model">Close</button>
-                                                    <button form="form-colorfamily-edit" type="submit" class="btn-save-model">update</button>
-                                                </div>
+                                                    </div>
+                                                    <div class="model-footer flex justify-end space-x-2 px-4 pt-4">
+                                                        <a @click="open = false" class="btn-close-model">Close</a>
+                                                        <button  type="submit" class="btn-save-model">update</button>
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>

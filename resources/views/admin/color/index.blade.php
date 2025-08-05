@@ -53,6 +53,7 @@
   </div>
 </div>
 </div>
+
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         // Initialize the DataTable and get the instance

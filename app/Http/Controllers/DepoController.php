@@ -77,7 +77,9 @@ class DepoController extends Controller
 
                     return <<<HTML
                         <div class="table-cell-actions">
-                            <a href="{$editUrl}" class="table-action-edit"><i class="ri-pencil-line"></i></a>
+                            <div class="">
+                                <a href="{$editUrl}" class="table-action-edit"><i class="ri-pencil-line"></i></a>
+                            </div>
 
                             <div x-data="{ open: false}" >
                                 <a @click="open = true" class="table-action-delete">
@@ -149,7 +151,7 @@ class DepoController extends Controller
             if ($depo) {
                 return redirect()->route('admin.depo.index')->with('success', 'Depo created successfully.');
             } else {
-                return back()->withInput()->with('error', 'Failed to create depo. No depo instance returned.');
+                return back()->withInput()->with('error', 'Failed to create depo. Please try again.');
             }
 
         } catch (\Exception $e) {
@@ -186,7 +188,7 @@ class DepoController extends Controller
             ]);
 
             if($depo){
-                return redirect()->route('admin.depo.index')->with('success', 'Depo undate successfully.');
+                return redirect()->route('admin.depo.index')->with('success', 'Depo undated successfully.');
             }
 
         }catch (\Exception $e) {
@@ -195,7 +197,7 @@ class DepoController extends Controller
                 'request_data' => $request->all(),
                 'exception_trace' => $e->getTraceAsString() // Add trace for better debugging
             ]);
-            return back()->withInput()->with('error', 'Failed to create product. Please try again.');
+            return back()->withInput()->with('error', 'Failed to update product. Please try again..');
         }
     }
 
@@ -206,7 +208,7 @@ class DepoController extends Controller
             // To change status = 0
             $depo->update(['status' => 0]);
 
-            return redirect()->route('admin.depo.index')->with('success', 'Product moved to inactive/deleted status successfully.');
+            return redirect()->route('admin.depo.index')->with('success', 'Product removed successfully.');
 
         } catch (\Exception $e) {
             // Log any errors that occur during the status update process

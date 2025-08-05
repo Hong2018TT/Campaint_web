@@ -1,22 +1,49 @@
+@if (session('success') || session('error'))
+
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // SweetAlert notifications for session messages
-        @if (session('success'))
-            Swal.fire({
-                position: "center",
-                icon: "success",
-                title: "{{ session('success') }}",
-                showConfirmButton: false,
-                timer: 1500
-            });
-        @elseif (session('error'))
-            Swal.fire({
-                position: "center",
-                icon: "error",
-                title: "{{ session('error') }}",
-                showConfirmButton: false,
-                timer: 1500
-            });
-        @endif
+document.addEventListener('DOMContentLoaded', function () {
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+        },
+        showClass: {
+            popup: 'animate__animated animate__fadeInRight'
+        },
+        hideClass: {
+            popup: 'animate__animated animate__fadeOut'
+        }
     });
+
+    @if (session('success'))
+        Toast.fire({
+            icon: "success",
+            title: "{{ session('success') }}",
+            customClass: {
+                // I've renamed the class to be more descriptive
+                popup: 'toast-success-container', 
+                title: 'swal-title-small-success' 
+            }
+        });
+    @endif
+
+    @if (session('error'))
+        Toast.fire({
+            icon: "error",
+            title: "{{ session('error') }}",
+            customClass: {
+                // I've renamed the class to be more descriptive
+                popup: 'toast-error-container', 
+                title: 'swal-title-small-error' 
+            }
+        });
+    @endif
+});
 </script>
+
+@endif

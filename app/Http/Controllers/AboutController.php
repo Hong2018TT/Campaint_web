@@ -28,6 +28,6 @@ class AboutController extends Controller
         // 3. Redirect back with a success message.
         // Using ->with() is a convenient shorthand for flashing session data.
         return redirect('/about-us')
-            ->with('success', 'About Us content updated successfully!');
+            ->with('success', 'About Us updated successfully!');
     }
 }

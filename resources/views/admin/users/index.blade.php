@@ -69,17 +69,19 @@
                             </td>
                             <td>
                                 <div class="table-cell-actions">
-                                    <a href="{{route('admin.users.edit', $user->id)}}" class="table-action-edit"><i class="ri-pencil-line"></i></a>
+                                    <div class="">
+                                        <a href="{{route('admin.users.edit', $user->id)}}" class="table-action-edit"><i class="ri-pencil-line"></i></a>
+                                    </div>
                                     
                                     <div x-data="{ open: false, userIdToDelete: null, deleteFormAction: '' }">
-                                        <button
+                                        <a
                                             @click=" open = true;
                                                 userIdToDelete = {{ $user->id }};
                                                 deleteFormAction = '{{ route('delete_user', ['id' => 'PLACEHOLDER_ID']) }}'.replace('PLACEHOLDER_ID', userIdToDelete);
                                             "
                                             class="table-action-delete" title="Delete User">
                                             <i class="ri-delete-bin-6-fill"></i>
-                                        </button>
+                                        </a>
         
                                         <div x-show="open" x-cloak @include('components.modal.model-transition')>
                                             <div x-show="open" @include('components.modal.model-fade')

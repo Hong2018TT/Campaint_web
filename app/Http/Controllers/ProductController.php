@@ -107,7 +107,7 @@ class ProductController extends Controller
             if ($product) {
                 return redirect()->route('admin.product.index')->with('success', 'Product created successfully.');
             } else {
-                return back()->withInput()->with('error', 'Failed to create product. No product instance returned.');
+                return back()->withInput()->with('error', 'Failed to create product. Please try again.');
             }
 
         } catch (\Exception $e) {
@@ -251,7 +251,7 @@ class ProductController extends Controller
             // }
 
             // 3. Redirect with success message
-            return redirect()->route('admin.product.index')->with('success', 'Product moved to inactive/deleted status successfully.');
+            return redirect()->route('admin.product.index')->with('success', 'Product removed successfully.');
 
         } catch (\Exception $e) {
             // Log any errors that occur during the status update process
@@ -261,7 +261,7 @@ class ProductController extends Controller
                 'exception_trace' => $e->getTraceAsString() // Add trace for better debugging
             ]);
             // Redirect back with an error message
-            return back()->with('error', 'Failed to change product status. Please try again.');
+            return back()->with('error', 'Failed to updated product. Please try again.');
         }
     }
 }
