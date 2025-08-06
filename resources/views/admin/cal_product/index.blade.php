@@ -56,6 +56,7 @@
                                 @enderror
                             </div>
 
+                            {{-- Note this to get variable to fronted user input total surfact --}}
                             <div class="box-form">
                                 <label for="coverage_area" class="title-form">Coverage Area:</label>
                                 <div class="form-outline">
@@ -74,8 +75,8 @@
                     </div>
 
                     <div class="model-footer">
-                        <button  @click="open = false" class="btn-close-model">Close</button>
-                        <button class="btn-save-model" type="submit">Save</button>
+                        <a @click="open = false" class="btn-close-model">Close</a>
+                        <button type="submit" class="btn-save-model">Save</button>
                     </div>
                 </form>
                 </div>
@@ -171,8 +172,8 @@
                                             </div>
     
                                             <div class="model-footer">
-                                                <button  @click="open = false" class="btn-close-model">Close</button>
-                                                <button class="btn-save-model">Save</button>
+                                                <a @click="open = false" class="btn-close-model">Close</a>
+                                                <button type='submit' class="btn-save-model">Save</button>
                                             </div>
                                         </form>
                                         </div>

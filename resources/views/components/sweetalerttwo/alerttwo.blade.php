@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
             popup: 'animate__animated animate__fadeInRight'
         },
         hideClass: {
-            popup: 'animate__animated animate__fadeOut'
+            popup: 'animate__animated animate__backOutRight'
         }
     });
 

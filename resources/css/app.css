@@ -80,7 +80,7 @@
     @apply p-2.5 sticky top-0 flex items-center justify-between h-16.5 bg-[#e31b23] w-full z-52;
   }
   .profile-admin{
-    @apply size-8 rounded-full bg-white shadow-2xl;
+    @apply size-9 rounded-full bg-white shadow-2xl border-2;
   }
   .dropdown-navbar{
     @apply absolute top-12 lg:left-0 md:-left-15 sm:-left-15 whitespace-nowrap bg-white shadow-sm rounded-sm py-1 origin-top
@@ -99,7 +99,7 @@
 /* Customize Dashboard User*/
 @layer components{
   .table-cell .tb-img-user{
-    @apply object-cover border-3 border-green-700 rounded-sm;
+    @apply object-cover border-3 border-gray-200 rounded-sm shadow-2xs shadow-gray-400;
   }
   .badge-role{
     @apply inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset;
