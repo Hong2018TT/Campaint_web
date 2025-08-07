@@ -169,7 +169,6 @@
             <fieldset class="border border-gray-300 px-4 pb-2 rounded mt-3">
                 <legend class="text-sm rounded-xs font-bold text-white px-2 bg-green-700 pb-0.5">Image:</legend>
                     <div class="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 sm:gap-2 md:gap-4 mt-3">
-                        {{-- Section main image product --}}
                         {{-- Section main image product (This remains separate as it has a unique name/label) --}}
                         <div class="box-form-img">
                             <label for="img_url_main" class="main-image-title text-sm/6 font-medium">Main Image</label>
@@ -186,8 +185,15 @@
                                         </label>
                                         <p class="pl-1">or drag and drop</p>
                                     </div>
+
                                     <p class="text-xs/5 text-gray-400">PNG, JPG, GIF up to 10MB</p>
                                     <p id="file-size-error-main" class="text-red-500 text-sm mt-1 hidden"></p>
+
+                                    <div id="delete-button-main" class="mt-1 hidden">
+                                        <button type="button" class="bg-red-500 text-white rounded-sm p-1 leading-none shadow-md text-[12px]" onclick="removeImage('main')">
+                                            Delete
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -218,6 +224,13 @@
                                         <p class="text-xs/5 text-gray-400">PNG, JPG, GIF up to 10MB</p>
                                         {{-- Dynamic ID for file size error message --}}
                                         <p id="file-size-error-{{ $i }}" class="text-red-500 text-sm mt-1 hidden"></p>
+                                        
+                                        <div id="delete-button-{{ $i }}" class="mt-1 hidden">
+                                            {{-- CRITICAL CHANGE: Pass the correct index to the function --}}
+                                            <button type="button" class="bg-red-500 text-white rounded-sm p-1 leading-none shadow-md text-[12px]" onclick="removeImage('{{ $i }}')">
+                                                Delete
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

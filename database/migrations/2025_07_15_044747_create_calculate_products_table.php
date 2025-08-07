@@ -13,11 +13,13 @@ return new class extends Migration
     {
         Schema::create('calculate_products', function (Blueprint $table) {
             $table->id();
-            $table->integer('brand_id');
-            $table->integer('net_weight');
+            $table->unsignedBigInteger('product_id'); // Reference to users table
+            $table->decimal('net_weight', 10, 2); 
             $table->integer('coverage_area');
             $table->tinyInteger('status')->default(1);
             $table->timestamps();
+            
+            $table->foreign('product_id')->references('id')->on('calculate_products')->onDelete('cascade');
         });
     }
 

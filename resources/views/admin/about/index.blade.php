@@ -2,11 +2,6 @@
 @section('content')
 @include('components.sweetalerttwo.alerttwo')
 
-    <style>
-    .ql-font-battambang {font-family: 'Battambang', sans-serif;}
-    .ql-picker.ql-font .ql-picker-label[data-value=battambang]::before,
-    .ql-picker.ql-font .ql-picker-item[data-value=battambang]::before {content: 'Battambang';font-family: 'Battambang', sans-serif;}
-    </style>
 {{-- content for display about --}}
 <div class="shadow-lg rounded-md bg-white">
     <div class="header-main-tb">

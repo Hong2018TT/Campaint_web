@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const Toast = Swal.mixin({
         toast: true,
         position: "top-end",
+        width: 'auto', 
         showConfirmButton: false,
         timer: 2000,
         timerProgressBar: true,

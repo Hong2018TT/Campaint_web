@@ -83,7 +83,7 @@ class ColorfamilyController extends Controller
                 'name' => $validated['name_en_edit'],
                 'name_kh' => $validated['name_kh_edit'],
                 'color_code' => $validated['color_code_edit'],
-                'parent' => $validated['parent_edit'],
+                'parent' => $validated['parent_edit'] ?? 'Color Families (អម្បូរពណ៌)',
                 'status' => $validated['status'] ?? '1',
             ]);
 

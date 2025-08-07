@@ -29,6 +29,13 @@
     <title>Campaint</title>
 </head>
 <body class="relative bg-mint-gradient">
+
+  <style>
+    /* Custom size editor quill */
+    .ql-font-battambang {font-family: 'Battambang', sans-serif;}
+    .ql-picker.ql-font .ql-picker-label[data-value=battambang]::before,
+    .ql-picker.ql-font .ql-picker-item[data-value=battambang]::before {content: 'Battambang';font-family: 'Battambang', sans-serif;}
+  </style>
   <aside class="sidebar">
     {{-- Header slide bar --}}
     @include('components.slide_header')

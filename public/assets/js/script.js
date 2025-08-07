@@ -214,55 +214,81 @@ function setupImagePreview(inputId, previewId) {
 }
 
 function UploadImage(inputId, previewId, iconId, errorId) {
-  const imgInput = document.getElementById(inputId);
-  const imgPreview = document.getElementById(previewId);
-  const uploadIcon = document.getElementById(iconId);
-  const errorMsg = document.getElementById(errorId);
+    const imgInput = document.getElementById(inputId);
+    const imgPreview = document.getElementById(previewId);
+    const uploadIcon = document.getElementById(iconId);
+    const errorMsg = document.getElementById(errorId);
 
-  const MAX_SIZE_MB = 10;
-  const MAX_SIZE_BYTES = MAX_SIZE_MB * 1024 * 1024; // 10MB in bytes
+    // Get the delete button's container. This needs to be dynamic.
+    const deleteButtonContainer = document.getElementById(`delete-button-${inputId.split('_').pop()}`);
 
-  // Helper to reset the UI state for this specific image section
-  const resetUI = () => {
-      imgPreview.src = '#';
-      imgPreview.classList.add('hidden');
-      uploadIcon.classList.remove('hidden');
-      errorMsg && errorMsg.classList.add('hidden'); // Hide error if it exists
-  };
+    const MAX_SIZE_MB = 10;
+    const MAX_SIZE_BYTES = MAX_SIZE_MB * 1024 * 1024;
 
-  if (imgInput) { // Ensure the input element exists before attaching event listener
-      imgInput.addEventListener('change', (e) => {
-          const file = e.target.files[0];
+    const resetUI = () => {
+        imgPreview.src = '#';
+        imgPreview.classList.add('hidden');
+        uploadIcon.classList.remove('hidden');
+        errorMsg && errorMsg.classList.add('hidden');
+        deleteButtonContainer && deleteButtonContainer.classList.add('hidden');
+    };
 
-          if (!file) { // No file selected (e.g., user canceled)
-              resetUI();
-              return;
-          }
+    if (imgInput) {
+        imgInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (!file) {
+                resetUI();
+                return;
+            }
 
-          // Validate file size
-          if (file.size > MAX_SIZE_BYTES) {
-              e.target.value = ''; // Clear the input field to allow re-selection of the same file
-              resetUI();
-              if (errorMsg) {
-                  errorMsg.textContent = `File size exceeds ${MAX_SIZE_MB}MB.`;
-                  errorMsg.classList.remove('hidden');
-              }
-              return; // Stop processing
-          }
+            if (file.size > MAX_SIZE_BYTES) {
+                e.target.value = '';
+                resetUI();
+                if (errorMsg) {
+                    errorMsg.textContent = `File size exceeds ${MAX_SIZE_MB}MB.`;
+                    errorMsg.classList.remove('hidden');
+                }
+                return;
+            }
 
-          // If size is valid, hide any previous error
-          errorMsg && errorMsg.classList.add('hidden');
+            errorMsg && errorMsg.classList.add('hidden');
 
-          // Read and display the image
-          const reader = new FileReader();
-          reader.onload = (event) => {
-              imgPreview.src = event.target.result;
-              imgPreview.classList.remove('hidden');
-              uploadIcon.classList.add('hidden');
-          };
-          reader.readAsDataURL(file);
-      });
-  }
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                imgPreview.src = event.target.result;
+                imgPreview.classList.remove('hidden');
+                uploadIcon.classList.add('hidden');
+
+                // This is the key line: remove the 'hidden' class to show the button
+                deleteButtonContainer && deleteButtonContainer.classList.remove('hidden');
+            };
+            reader.readAsDataURL(file);
+        });
+    }
+}
+
+
+function removeImage(imageIndex) {
+    // ... (existing code to find and manipulate elements) ...
+    const fileInput = document.getElementById(`img_url_${imageIndex}`);
+    const clearInput = document.getElementById(`img_url_${imageIndex}_clear`); // New: Get the hidden input
+
+    if (fileInput) fileInput.value = ''; // Clear the file input
+    
+    // New: Set the hidden input value to '1' to signal deletion
+    if (clearInput) clearInput.value = '1';
+
+    // ... (existing code to hide the preview and show the icon) ...
+    const previewImage = document.getElementById(`preview-image-${imageIndex}`);
+    const uploadIcon = document.getElementById(`upload-icon-${imageIndex}`);
+    const deleteButtonContainer = document.getElementById(`delete-button-${imageIndex}`);
+
+    if (previewImage) {
+        previewImage.classList.add('hidden');
+        previewImage.src = '#';
+    }
+    if (uploadIcon) uploadIcon.classList.remove('hidden');
+    if (deleteButtonContainer) deleteButtonContainer.classList.add('hidden');
 }
 
 // Set up passwordtoggle user porfile in form

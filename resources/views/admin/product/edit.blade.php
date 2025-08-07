@@ -188,6 +188,12 @@
                                     </div>
                                     <p class="text-xs/5 text-gray-400">PNG, JPG, GIF up to 10MB</p>
                                     <p id="file-size-error-main" class="text-red-500 text-sm mt-1 hidden"></p>
+
+                                    <div id="delete-button-main" class="mt-1 hidden">
+                                        <button type="button" class="bg-red-500 text-white rounded-sm p-1 leading-none shadow-md text-[12px]" onclick="removeImage('main')">
+                                            Delete
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>

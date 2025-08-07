@@ -224,13 +224,9 @@ input[type="color"] {
 
 /* Set style sweetalerttwo popup toast */
 .swal-title-small-success {
-    font-size: 0.9rem !important;
-    font-weight: 500 !important;
     color: #008832;/
 }
 .swal-title-small-error {
-    font-size: 0.9rem !important;
-    font-weight: 500 !important;
     color: #d00000;
 }
 .toast-success-container {

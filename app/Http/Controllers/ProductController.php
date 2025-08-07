@@ -20,8 +20,8 @@ class ProductController extends Controller
             'discount_percent' => 'nullable|numeric|min:0|max:100',
             'price_after_discount' => 'nullable|numeric',
             'original_price' => 'nullable|numeric',
-            'color_type' => 'required|string|max:7',
-            'size' => 'required|string|max:100',
+            'color_type' => 'nullable|string|max:7',
+            'size' => 'nullable|string|max:100',
             'description' => 'nullable|string',
             'image_url' => 'nullable|image|mimes:jpeg,jpg,png,gif,webp|max:2048',
             'image_url1' => 'nullable|image|mimes:jpeg,jpg,png,gif,webp|max:2048',
@@ -126,7 +126,6 @@ class ProductController extends Controller
         return view('admin.product.edit', compact('product'));
     }
 
-    // This function is for update product
     // It will handle both image uploads and updates
     public function update(Request $request, $id){
         // 1. Find the product or abort with 404
