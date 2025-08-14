@@ -48,6 +48,6 @@ class Product extends Model
         'stock_quantity',
         'category_id',
         'sub_category_id',
-        'status',
+        'is_active',
     ];
 }

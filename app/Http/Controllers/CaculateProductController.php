@@ -13,10 +13,10 @@ use Illuminate\Support\Facades\Log;
 class CaculateProductController extends Controller
 {
     public function index(){
-        $calculate_products = Calculate_product::join('products', 'calculate_products.product_id', '=', 'products.id')
-        ->select('calculate_products.*','products.Name_EN as product_name')->get();
+        $calculate_products = DB::table('calculate_products as cp')->join('products as p', 'cp.product_id', '=', 'p.id')
+        ->select('cp.*', 'p.Name_EN as product_name')->where('cp.is_active', 1)->get();
 
-        $products = DB::table('products')->select('id','Name_EN','Name_KH')->where('status','1')->get();
+        $products = DB::table('products')->select('id','Name_EN','Name_KH')->where('is_active','1')->get();
         // Clear and specific
         return view('admin.cal_product.index', ['products' => $products , 'calculate_products' => $calculate_products]);
     }
@@ -27,7 +27,7 @@ class CaculateProductController extends Controller
             'product_id' => 'required|integer|exists:products,id',
             'net_weight' => 'required|numeric|decimal:,2',
             'coverage_area' => 'required|numeric|decimal:0,2',
-            'status' => 'nullable|in:1,0',
+            'is_active' => 'nullable|in:1,0',
         ];
     }
 
@@ -53,7 +53,7 @@ class CaculateProductController extends Controller
             'edit_product_id' => 'required|integer|exists:products,id',
             'edit_net_weight' => 'required|numeric|decimal:,2',
             'edit_coverage_area' => 'required|numeric|decimal:0,2',
-            'status' => 'nullable|in:1,0',
+            'is_active' => 'nullable|in:1,0',
         ];
     }
 
@@ -74,7 +74,7 @@ class CaculateProductController extends Controller
                 'product_id' => $validated['edit_product_id'],
                 'net_weight' => $validated['edit_net_weight'],
                 'coverage_area' => $validated['edit_coverage_area'],
-                'status' => $validated['status'] ?? '1',
+                'is_active' => $validated['is_active'] ?? '1',
             ]);
 
             // Redirect with a success message.
@@ -98,19 +98,22 @@ class CaculateProductController extends Controller
         $calculate_product = Calculate_product::findOrFail($id);
 
         try {
-            $calculate_product->update(['status' => 0]);
+            $calculate_product->update(['is_active' => 0]);
 
             return redirect()->route('admin.cal_product.index')->with('success', 'Calculate product removed successfully.');
-
+            
         } catch (\Exception $e) {
+
             // Log any errors that occur during the status update process
             Log::error('Product status update to inactive failed: ' . $e->getMessage(), [
                 'id' => $id,
-                'calculateproduct_data' => $calculate_product->toArray(), // Log product data for context
+                'color_data' => $calculate_product->toArray(), // Log product data for context
                 'exception_trace' => $e->getTraceAsString() // Add trace for better debugging
             ]);
             // Redirect back with an error message
             return back()->with('error', 'Failed to deleted calculate product. Please try again.');
         }
     }
+    
+    
 }

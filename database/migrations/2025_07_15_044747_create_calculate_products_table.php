@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('product_id'); // Reference to users table
             $table->decimal('net_weight', 10, 2); 
             $table->integer('coverage_area');
-            $table->tinyInteger('status')->default(1);
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
             
             $table->foreign('product_id')->references('id')->on('calculate_products')->onDelete('cascade');

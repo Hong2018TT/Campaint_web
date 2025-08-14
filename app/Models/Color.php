@@ -18,6 +18,6 @@ class Color extends Model
         'b',
         'product_type',
         'color_family',
-        'status',
+        'is_active',
     ];
 }

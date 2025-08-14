@@ -12,6 +12,6 @@ class Colorfamily extends Model
         'name_kh',
         'color_code',
         'parent',
-        'status',
+        'is_active',
     ];
 }

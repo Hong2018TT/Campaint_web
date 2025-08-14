@@ -31,14 +31,14 @@ return new class extends Migration
             $table->integer('stock_quantity')->nullable();
             $table->unsignedBigInteger('category_id')->nullable();
             $table->unsignedBigInteger('sub_category_id')->nullable();
-            $table->tinyInteger('status')->default(1);
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
-     */
+     */ 
     public function down(): void
     {
         Schema::dropIfExists('products');

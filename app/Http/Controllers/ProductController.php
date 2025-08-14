@@ -28,13 +28,12 @@ class ProductController extends Controller
             'image_url2' => 'nullable|image|mimes:jpeg,jpg,png,gif,webp|max:2048',
             'image_url3' => 'nullable|image|mimes:jpeg,jpg,png,gif,webp|max:2048',
             'image_url4' => 'nullable|image|mimes:jpeg,jpg,png,gif,webp|max:2048',
-            'status' => 'nullable|in:1,0', // Assuming '1' is active and '0' is inactive
         ];
     }
     
     public function index(){
         // Display status = 1
-        $products = DB::table('products')->select('id','Name_EN','Name_KH','image_url')->where('status', '1')->get();
+        $products = DB::table('products')->select('id','Name_EN','Name_KH','image_url')->where('is_active', '1')->get();
         return view('admin.product.index',compact('products')); // Pass users to the view
     }
 
@@ -101,7 +100,7 @@ class ProductController extends Controller
                 'img_url2' => $imageFileNamesForDatabase['img_url2'],
                 'img_url3' => $imageFileNamesForDatabase['img_url3'],
                 'img_url4' => $imageFileNamesForDatabase['img_url4'],
-                'status' => $validated['status'] ?? '1', // Default to '1' if not provided
+                'status' => $validated['is_active'] ?? '1',// Default to '1' if not provided
             ]);
 
             if ($product) {
@@ -209,7 +208,7 @@ class ProductController extends Controller
                 'img_url2' => $imageFileNamesForDatabase['img_url2'],
                 'img_url3' => $imageFileNamesForDatabase['img_url3'],
                 'img_url4' => $imageFileNamesForDatabase['img_url4'],
-                'status' => $validated['status'] ?? '1', // Default to '1' if not provided
+                'status' => $validated['is_active'] ?? '1', // Default to '1' if not provided
             ]);
 
             // 5. Redirect with success message
@@ -236,7 +235,7 @@ class ProductController extends Controller
 
         try {
             // 2. Soft Delete: Update the 'status' column to 0 (or your chosen 'deleted' status)
-            $product->update(['status' => 0]); // Assuming 0 means 'inactive' or 'deleted'
+            $product->update(['is_active' => 0]); // Assuming 0 means 'inactive' or 'deleted'
 
             // Uncomment this section to delete images
             // $imageColumns = ['image_url', 'img_url1', 'img_url2', 'img_url3', 'img_url4'];

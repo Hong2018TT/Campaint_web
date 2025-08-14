@@ -17,6 +17,6 @@ class Depo extends Model
         'province_KH',
         'Phone',
         'GPS',
-        'status',
+        'is_active',
     ];
 }

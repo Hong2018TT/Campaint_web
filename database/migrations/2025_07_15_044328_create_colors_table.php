@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer('b')->nullable();
             $table->string('product_type', 255)->nullable();
             $table->string('color_family', 255)->nullable();
-            $table->tinyInteger('status')->default(1);
+            $table->boolean('is_active')->default(true);
             $table->timestamps(); // adds created_at and updated_at columns
         });
     }

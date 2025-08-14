@@ -14,6 +14,6 @@ class Calculate_product extends Model
         'product_id',
         'net_weight',
         'coverage_area',
-        'status',
+        'is_active',
     ];
 }

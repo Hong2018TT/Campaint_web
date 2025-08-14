@@ -20,14 +20,14 @@ class DepoController extends Controller
             'province_KH' => 'nullable|string|max:255',
             'Phone' => 'nullable|string|max:15',
             'GPS' => 'nullable|string|max:255',
-            'status' => 'nullable|in:1,0', // Default to '1' if not provided
+            'is_active' => 'nullable|in:1,0', // Default to '1' if not provided
         ];
     }
 
     public function index(){
-        $depos = Depo::where('status','1')->get();
+        $depos = Depo::where('is_active','1')->get();
         // Fetch a list of unique provinces directly from the database
-        $province_selete = Depo::where('status', '1')
+        $province_selete = Depo::where('is_active', '1')
                         ->distinct()
                         ->pluck('province_EN')
                         ->filter()
@@ -43,7 +43,7 @@ class DepoController extends Controller
     public function getDeposData(Request $request){
         if ($request->ajax()) {
             // Use the query builder directly, without calling ->get()
-            $query = Depo::where('status', '1');
+            $query = Depo::where('is_active', '1');
 
             // The rest of your filtering and processing logic is correct
             if ($request->has('search.value') && !empty($request->input('search.value'))) {
@@ -145,7 +145,7 @@ class DepoController extends Controller
                 'province_EN' => $validated['province_EN'],
                 'Phone' => $validated['Phone'],
                 'GPS' => $validated['GPS'],
-                'status' => $validated['status'] ?? '1', // Default to '1' if not provided
+                'is_active' => $validated['is_active'] ?? '1', // Default to '1' if not provided
             ]);
 
             if ($depo) {
@@ -184,7 +184,7 @@ class DepoController extends Controller
                 'province_EN' => $validated['province_EN'],
                 'Phone' => $validated['Phone'],
                 'GPS' => $validated['GPS'],
-                'status' => $validated['status'] ?? '1', // Default to '1' if not provided
+                'is_active' => $validated['is_active'] ?? '1', // Default to '1' if not provided
             ]);
 
             if($depo){
@@ -206,7 +206,7 @@ class DepoController extends Controller
 
         try {
             // To change status = 0
-            $depo->update(['status' => 0]);
+            $depo->update(['is_active' => 0]);
 
             return redirect()->route('admin.depo.index')->with('success', 'Product removed successfully.');
 

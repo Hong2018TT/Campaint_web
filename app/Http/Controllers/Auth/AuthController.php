@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Session; // For flash messages, if not already using 'with()'
 use Illuminate\Validation\ValidationException; // For specific validation error handling
 
+
 class AuthController extends Controller
 {
 
@@ -58,7 +59,9 @@ class AuthController extends Controller
                 Cookie::queue(Cookie::forget('email'));
             }
 
-            $user = Auth::user(); // Fetch the logged-in user
+            $user = Auth::user(); // Fetch the user right away
+            // Update the last login time here!
+            $user->forceFill(['last_login_at' => now()])->save();
 
             if ($user->role === 'Administrator') { // Use strict comparison
                 // Use a proper success message with `session()->flash()` or `with()` helper
@@ -79,6 +82,7 @@ class AuthController extends Controller
                     ->withErrors(['email' => 'You do not have administrative access.'])
                     ->withInput($request->only('email'));
             }
+            
         } else {
             // Step 6: Authentication failed
             // Use specific error messages to avoid providing hints to attackers (e.g., "Email not found" vs "Invalid credentials")

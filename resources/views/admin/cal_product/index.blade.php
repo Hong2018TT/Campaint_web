@@ -187,8 +187,8 @@
                                     </div>
 
                                     {{-- Modal Delete --}}
-                                    <div x-data="{ open: false, dashcolorIdToDelete: null }">
-                                        <a @click="open = true; dashcolorIdToDelete = {{ $calculate_product->id }}" class="table-action-delete">
+                                    <div x-data="{ open: false, calproductIdToDelete: null }">
+                                        <a @click="open = true; calproductIdToDelete = {{ $calculate_product->id }}" class="table-action-delete">
                                             <i class="ri-delete-bin-6-fill"></i>
                                         </a>
                                         <!-- Backdrop -->
@@ -206,11 +206,11 @@
                                                 <p class="text-lg text-red-500">Are you sure you want to delete this item?</p>
                                             </div>
         
-                                                <form :action="`/calculates-product-delete/${dashcolorIdToDelete}`" method="POST">
-
+                                                <form :action="`/calculate-products-delete/${calproductIdToDelete}`" method="POST">
                                                     @csrf
                                                     @method('DELETE') {{-- Important for Laravel DELETE routes --}}
 
+                                                    <input type="text" name="" value="{{ $calculate_product->id }}" id="">
                                                     <div class="model-footer">
                                                         <a @click="open = false" class="btn-close-model">Close</a>
                                                         <button type="submit" class="btn-del-model">Delete</button>

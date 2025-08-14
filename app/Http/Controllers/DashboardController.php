@@ -18,7 +18,7 @@ class DashboardController extends Controller
         $color_familycount = Colorfamily::All()->count();
         $colorfamilyselects = Colorfamily::All();
 
-        $colorfamilys = DB::table('colorfamilys')->select('id','name','name_kh','color_code','parent')->where('status','1')->get();
+        $colorfamilys = DB::table('colorfamilys')->select('id','name','name_kh','color_code','parent')->where('is_active','1')->get();
 
         return view('admin.dashboard.home' , compact('colorfamilys','depocount','product_typecount','colorcount','color_familycount','colorfamilyselects') ); // Pass users to the view
     }
@@ -35,7 +35,7 @@ class DashboardController extends Controller
             'color_code_edit' => 'required|string|max:7',
             // Corrected: Removed the extra double-quote
             'parent_edit' => 'nullable|string|max:255',
-            'status' => 'nullable|in:1,0',
+            'is_active' => 'nullable|in:1,0',
         ];
     }
 
@@ -52,7 +52,7 @@ class DashboardController extends Controller
                 'name_kh' => $validated['name_kh_edit'],
                 'color_code' => $validated['color_code_edit'],
                 'parent' => $validated['parent_edit'],
-                'status' => $validated['status'] ?? '1',
+                'is_active' => $validated['is_active'] ?? '1',
             ]);
 
             // Redirect with a success message.
@@ -76,7 +76,7 @@ class DashboardController extends Controller
         $colorfamily =Colorfamily::findOrFail($id);
 
         try {
-            $colorfamily->update(['status' => 0]);
+            $colorfamily->update(['is_active' => 0]);
 
             return redirect()->route('admin.dashboard.home')->with('success', 'Colorfamily moved successfully.');
 

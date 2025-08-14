@@ -107,7 +107,7 @@ Route::middleware(['admin'])->group(function () {
             Route::get('/calculate-products','index')->name('admin.cal_product.index');
             Route::post('/calculate-products','store')->name('save_calculateproduct');
             Route::put('/calculate-products/{id}','update')->name('update_calculateproduct');
-            Route::delete('calculate-products-delete/{id}','destroy')->name('delete_calculateproduct');
+            Route::delete('/calculate-products-delete/{id}','destroy')->name('delete_calculateproduct');
         });
 
         //====== selection User=====

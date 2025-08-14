@@ -20,18 +20,18 @@ class ColorController extends Controller
             'b' => 'required|integer|min:0|max:255',
             'product_type' => 'nullable|string|max:255',
             'color_family' => 'required|string|max:255',
-            'status' => 'nullable|in:1,0',
+            'is_active' => 'nullable|in:1,0',
         ];
     }
 
     public function index(){
-        $colors = Color::where('status', '1')->get();
+        $colors = Color::where('is_active', '1')->get();
         return view('admin.color.index', compact('colors'));
     }
 
     public function getColorsData(Request $request){
         if ($request->ajax()) {
-            $query = Color::where('status', '1');
+            $query = Color::where('is_active', '1');
 
             return DataTables::of($query)
                 ->addIndexColumn() // Adds the row index column
@@ -113,7 +113,7 @@ class ColorController extends Controller
                 'b' => $validated['b'],
                 'product_type' => $validated['product_type'],
                 'color_family' => $validated['color_family'],
-                'status' => $validated['status'] ?? '1', // Default to '1' if not provided
+                'is_active' => $validated['is_active'] ?? '1', // Default to '1' if not provided
             ]);
 
             if($color){
@@ -130,7 +130,7 @@ class ColorController extends Controller
     }
 
     public function edit($id){
-        $colorfamilys = Colorfamily::All()->where('status','1');
+        $colorfamilys = Colorfamily::All()->where('is_active','1');
         $color = Color::findOrFail($id);
         return view('admin.color.edit',compact('color','colorfamilys')); // Pass colors to the edit database
     }
@@ -149,7 +149,7 @@ class ColorController extends Controller
                 'b' => $validated['b'],
                 'product_type' => $validated['product_type'],
                 'color_family' => $validated['color_family'],
-                'status' => $validated['status'] ?? '1', // Default to '1' if not provided
+                'is_active' => $validated['is_active'] ?? '1', // Default to '1' if not provided
             ]);
 
             return redirect()->route('admin.color.index')->with('success','Color update successfully');
@@ -170,7 +170,7 @@ class ColorController extends Controller
         $color = Color::findOrFail($id);
 
         try {
-            $color->update(['status' => 0]);
+            $color->update(['is_active' => 0]);
 
             return redirect()->route('admin.color.index')->with('success', 'Color removed successfully.');
 

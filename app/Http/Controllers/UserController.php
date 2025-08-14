@@ -15,7 +15,7 @@ class UserController extends Controller
      */
     public function index(){
         // Big DESC
-        $users = User::orderBy('id', 'asc')->where('status','1')->get();
+        $users = User::orderBy('id', 'asc')->where('is_active','1')->get();
         return view('admin.users.index', compact('users'));
     }
 
@@ -127,7 +127,7 @@ class UserController extends Controller
     public function destroy($id){
         $user = User::findOrFail($id);
 
-        $user->update(['status' => 0]);
+        $user->update(['is_active' => 0]);
 
         // ✅ Delete the image if exists
         // if ($user->image_url && file_exists(public_path($user->image_url))) {

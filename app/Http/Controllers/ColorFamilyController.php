@@ -14,12 +14,12 @@ class ColorfamilyController extends Controller
             'name_kh' => 'required|string|max:255',
             'color_code' => 'required|string|max:7',
             'parent' => 'nullable|string|max:255',
-            'status' => 'nullable|in:1,0', // Default to '1' if not provided
+            'is_active' => 'nullable|in:1,0', // Default to '1' if not provided
         ];
     }
 
     public function index(){
-        $colorfamilys = Colorfamily::All()->where('status','1');
+        $colorfamilys = Colorfamily::All()->where('is_active','1');
         // $colorfamily1s = Colorfamily::All()->where('status','1');
         return view('admin.colorfamily.index',compact('colorfamilys'));
     }
@@ -37,7 +37,7 @@ class ColorfamilyController extends Controller
                 'color_code' => $validated['color_code'],
                 // If 'parent' is not provided, it defaults to 'Color Families (អម្បូរពណ៌)'
                 'parent' => $validated['parent'] ?? 'Color Families (អម្បូរពណ៌)',
-                'status' => $validated['status'] ?? '1', // Default to '1' if not provided
+                'is_active' => $validated['is_active'] ?? '1', // Default to '1' if not provided
             ]);
 
             // Check Create Color Family
@@ -67,7 +67,7 @@ class ColorfamilyController extends Controller
             'color_code_edit' => 'required|string|max:7',
             // Corrected: Removed the extra double-quote
             'parent_edit' => 'nullable|string|max:255',
-            'status' => 'nullable|in:1,0',
+            'is_active' => 'nullable|in:1,0',
         ];
     }
 
@@ -84,7 +84,7 @@ class ColorfamilyController extends Controller
                 'name_kh' => $validated['name_kh_edit'],
                 'color_code' => $validated['color_code_edit'],
                 'parent' => $validated['parent_edit'] ?? 'Color Families (អម្បូរពណ៌)',
-                'status' => $validated['status'] ?? '1',
+                'is_active' => $validated['is_active'] ?? '1',
             ]);
 
             // Redirect with a success message.
@@ -108,7 +108,7 @@ class ColorfamilyController extends Controller
         $colorfamily = Colorfamily::findOrFail($id);
 
         try {
-            $colorfamily->update(['status' => 0]);
+            $colorfamily->update(['is_active' => 0]);
 
             return redirect()->route('admin.colorfamily.index')->with('success', 'Product removed successfully.');
 
